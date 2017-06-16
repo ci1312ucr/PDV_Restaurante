@@ -16,7 +16,15 @@ namespace PDVRestaurante
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var login = new Login();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Principal(login.usuario()));
+            } else
+            {
+                Application.Exit();
+            }
         }
     }
 }
