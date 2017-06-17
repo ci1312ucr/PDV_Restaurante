@@ -18,9 +18,31 @@ namespace PDVRestaurante
             Application.SetCompatibleTextRenderingDefault(false);
 
             var login = new Login();
+            int tipo;
             if (login.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new Principal(login.usuario()));
+                tipo = login.tipo();
+                switch (tipo)
+                {
+                    case 1:
+                    Application.Run(new Principal(login.usuario()));
+                        break;
+                    case 2:
+                        //Application.Run(new Principal(login.usuario()));
+                        break;
+                    case 3:
+                        //Application.Run(new Principal(login.usuario()));
+                        break;
+                    case 4:
+                        //Application.Run(new Principal(login.usuario()));
+                        break;
+                    case 5:
+                        //Application.Run(new Principal(login.usuario()));
+                        break;
+                    case 6:
+                        //Application.Run(new Principal(login.usuario()));
+                        break;
+                }
             } else
             {
                 Application.Exit();

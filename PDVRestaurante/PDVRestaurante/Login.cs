@@ -43,7 +43,10 @@ namespace PDVRestaurante
                 this.Close();
             }
         }
-
+        public int tipo()
+        {
+            return _usuario.TipoUsuarioId;
+        }
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
