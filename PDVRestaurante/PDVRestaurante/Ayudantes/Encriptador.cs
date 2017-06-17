@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,31 +11,25 @@ namespace PDVRestaurante.Ayudantes
 {
     public static class Encriptador
     {
-        static byte[] entropy = System.Text.Encoding.Unicode.GetBytes("ci1312ucr");
-
-        public static string Encriptar(SecureString texto)
+        public static string Encriptar(SecureString texto, byte[] salt = null)
         {
-            byte[] datosEncryptados = System.Security.Cryptography.ProtectedData.Protect(
-                System.Text.Encoding.Unicode.GetBytes(ComoTextoInseguro(texto)),
-                entropy,
-                System.Security.Cryptography.DataProtectionScope.CurrentUser);
+            if (salt == null)
+            {
+                salt = CrearSalt();
+            }
+            var textoInseguro = ComoTextoInseguro(texto);
+            byte[] datosEncryptados = KeyDerivation.Pbkdf2(password: textoInseguro,salt: salt,prf: KeyDerivationPrf.HMACSHA1,iterationCount: 10000,numBytesRequested: 256 / 8);
             return Convert.ToBase64String(datosEncryptados);
         }
 
-        public static SecureString Desencriptar(string texto)
+        public static byte[] CrearSalt()
         {
-            try
+            var salt = new byte[128 / 8];
+            using (var rng = RandomNumberGenerator.Create())
             {
-                byte[] datosDesencriptados = System.Security.Cryptography.ProtectedData.Unprotect(
-                    Convert.FromBase64String(texto),
-                    entropy,
-                    System.Security.Cryptography.DataProtectionScope.CurrentUser);
-                return ComoTextoSeguro(System.Text.Encoding.Unicode.GetString(datosDesencriptados));
+                rng.GetBytes(salt);
             }
-            catch
-            {
-                return new SecureString();
-            }
+            return salt;
         }
 
         public static SecureString ComoTextoSeguro(string input)

@@ -129,7 +129,7 @@
             this.Controls.Add(this.txtBoxContrasena);
             this.Controls.Add(this.txtBoxUsuario);
             this.Name = "Login";
-            this.Text = "Autenticacion Usuario";
+            this.Text = "Autenticación Usuario";
             ((System.ComponentModel.ISupportInitialize)(this.errorAutenticacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
