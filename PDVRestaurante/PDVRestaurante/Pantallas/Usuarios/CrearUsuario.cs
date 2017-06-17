@@ -27,8 +27,9 @@ namespace PDVRestaurante.Pantallas.Usuarios
         {
             var empleado = (Empleado)comboBoxCedula.SelectedItem;
             var tipoUsuario = (TipoUsuario)comboBoxTipoUsuario.SelectedItem;
-            var contrasena = Ayudantes.Encriptador.Encriptar(Ayudantes.Encriptador.ComoTextoSeguro(textBoxContrasena.Text));
-            UsuarioDB.InsertarUsuario(textBoxNombre.Text.ToLower(), contrasena, empleado.Cedula, tipoUsuario.TipoUsuarioId);
+            var salt = Ayudantes.Encriptador.CrearSalt();
+            var contrasena = Ayudantes.Encriptador.Encriptar(Ayudantes.Encriptador.ComoTextoSeguro(textBoxContrasena.Text), salt);
+            UsuarioDB.InsertarUsuario(textBoxNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), empleado.Cedula, tipoUsuario.TipoUsuarioId);
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
