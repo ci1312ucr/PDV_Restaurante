@@ -24,21 +24,27 @@ namespace PDVRestaurante
                 tipo = login.tipo();
                 switch (tipo)
                 {
+                    //SuperAdmin
                     case 1:
                     Application.Run(new Principal(login.usuario()));
                         break;
+                    //Gerente
                     case 2:
                         //Application.Run(new Principal(login.usuario()));
                         break;
+                        //Cajero
                     case 3:
                         //Application.Run(new Principal(login.usuario()));
                         break;
+                        //Asistente
                     case 4:
                         //Application.Run(new Principal(login.usuario()));
                         break;
+                        //Mesero
                     case 5:
                         //Application.Run(new Principal(login.usuario()));
                         break;
+                        //Repartidor
                     case 6:
                         //Application.Run(new Principal(login.usuario()));
                         break;

@@ -45,7 +45,7 @@ namespace PDVRestaurante
         }
         public int tipo()
         {
-            return _usuario.TipoUsuarioId;
+            return _usuario.IdTipoUsuario;
         }
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
