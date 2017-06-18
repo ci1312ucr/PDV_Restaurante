@@ -25,11 +25,21 @@ namespace PDVRestaurante.Pantallas.Usuarios
 
         private void buttonCrear_Click(object sender, EventArgs e)
         {
-            var empleado = (Empleado)comboBoxCedula.SelectedItem;
+            string cedula;
+            Empleado empleado;
+            if(comboBoxCedula.SelectedItem is Empleado)
+            {
+                empleado = (Empleado)comboBoxCedula.SelectedItem;
+                cedula = empleado.Cedula;
+            } else
+            {
+                cedula = comboBoxCedula.Text;
+            }
+
             var tipoUsuario = (TipoUsuario)comboBoxTipoUsuario.SelectedItem;
             var salt = Ayudantes.Encriptador.CrearSalt();
             var contrasena = Ayudantes.Encriptador.Encriptar(Ayudantes.Encriptador.ComoTextoSeguro(textBoxContrasena.Text), salt);
-            UsuarioDB.InsertarUsuario(textBoxNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), empleado.Cedula, tipoUsuario.TipoUsuarioId);
+            UsuarioDB.InsertarUsuario(textBoxNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), cedula, tipoUsuario.IdTipoUsuario);
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)

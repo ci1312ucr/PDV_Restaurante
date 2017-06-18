@@ -8,7 +8,7 @@ namespace PDVRestaurante.Objetos
 {
     public class TipoUsuario
     {
-        public int TipoUsuarioId { get; set; }
+        public int IdTipoUsuario { get; set; }
         public string Nombre { get; set; }
     }
 }
