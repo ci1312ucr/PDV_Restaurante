@@ -1,5 +1,6 @@
 ﻿using PDVRestaurante.Objetos;
 using PDVRestaurante.Pantallas.Usuarios;
+using PDVRestaurante.Pantallas.Clientes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,20 @@ namespace PDVRestaurante
             var pantallaCrearUsuario = new CrearUsuario();
             pantallaCrearUsuario.MdiParent = this;
             pantallaCrearUsuario.Show();
+        }
+        private void consultarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pantallaConsultarEmpleado = new ConsultarCliente();
+            pantallaConsultarEmpleado.MdiParent = this;
+            pantallaConsultarEmpleado.Show();
+        }
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
