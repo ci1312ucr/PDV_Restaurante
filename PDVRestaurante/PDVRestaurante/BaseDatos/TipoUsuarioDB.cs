@@ -23,7 +23,7 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "INSERT INTO TipoUsuario (TipoUsuarioId, Nombre) VALUES (@tipoUsuarioId, @nombre)";
+                    command.CommandText = "INSERT INTO TipoUsuario (TipoUsuarioId, Nombre) VALUES (@IdtipoUsuario, @nombre)";
                     command.Parameters.AddWithValue("@tipoUsuarioId", tipoUsuarioId);
                     command.Parameters.AddWithValue("@nombre", nombre);
                     conn.Open();
@@ -40,7 +40,7 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT TipoUsuarioId, Nombre FROM TipoUsuario WHERE tipoUsuarioId = @tipoUsuarioId";
+                    command.CommandText = "SELECT IdTipoUsuario, Nombre FROM TipoUsuario WHERE IdtipoUsuario = @IdtipoUsuario";
                     command.Parameters.AddWithValue("@tipoUsuarioId", tipoUsuarioId);
                     conn.Open();
                     using (var reader = command.ExecuteReader())
@@ -48,7 +48,7 @@ namespace PDVRestaurante.BaseDatos
                         if (reader.Read())
                         {
                             tipoUsuario = new TipoUsuario();
-                            tipoUsuario.TipoUsuarioId = Convert.ToInt32(reader["TipoUsuarioId"]);
+                            tipoUsuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
                             tipoUsuario.Nombre = reader["Nombre"].ToString();
                         }
                     }
@@ -65,14 +65,14 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT TipoUsuarioId, Nombre FROM TipoUsuario";
+                    command.CommandText = "SELECT IdTipoUsuario, Nombre FROM TipoUsuario";
                     conn.Open();
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var tipoUsuario = new TipoUsuario();
-                            tipoUsuario.TipoUsuarioId = Convert.ToInt32(reader["TipoUsuarioId"]);
+                            tipoUsuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
                             tipoUsuario.Nombre = reader["Nombre"].ToString();
                             tipoUsuarioLista.Add(tipoUsuario);
                         }
