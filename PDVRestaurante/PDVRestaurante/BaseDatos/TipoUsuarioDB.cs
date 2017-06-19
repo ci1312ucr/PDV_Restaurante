@@ -28,6 +28,7 @@ namespace PDVRestaurante.BaseDatos
                     command.Parameters.AddWithValue("@nombre", nombre);
                     conn.Open();
                     command.ExecuteNonQuery();
+                    conn.Close();
                 }
             }
             return true;
@@ -52,6 +53,7 @@ namespace PDVRestaurante.BaseDatos
                             tipoUsuario.Nombre = reader["Nombre"].ToString();
                         }
                     }
+                    conn.Close();
                 }
             }
             return tipoUsuario;
@@ -77,6 +79,7 @@ namespace PDVRestaurante.BaseDatos
                             tipoUsuarioLista.Add(tipoUsuario);
                         }
                     }
+                    conn.Close();
                 }
             }
             return tipoUsuarioLista;
