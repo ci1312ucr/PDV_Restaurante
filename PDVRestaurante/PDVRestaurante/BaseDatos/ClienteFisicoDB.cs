@@ -62,7 +62,7 @@ namespace PDVRestaurante.BaseDatos
                             cliente.Nombre2 = reader["Nombre2"].ToString();
                             cliente.Apellido1 = reader["Apellido1"].ToString();
                             cliente.Apellido2 = reader["Apellido2"].ToString();
-                            cliente.Sexo = (char)reader["Sexo"];
+                            cliente.Sexo = reader["Sexo"].ToString()[0];
                             cliente.EstadoCivil = reader["EstadoCivil"].ToString();
                             cliente.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
                             cliente.Frecuente = (bool)reader["Frecuente"];
@@ -96,7 +96,7 @@ namespace PDVRestaurante.BaseDatos
                             cliente.Nombre2 = reader["Nombre2"].ToString();
                             cliente.Apellido1 = reader["Apellido1"].ToString();
                             cliente.Apellido2 = reader["Apellido2"].ToString();
-                            cliente.Sexo = (char)reader["Sexo"];
+                            cliente.Sexo = reader["Sexo"].ToString()[0];
                             cliente.EstadoCivil = reader["EstadoCivil"].ToString();
                             cliente.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
                             cliente.Frecuente = (bool)reader["Frecuente"];

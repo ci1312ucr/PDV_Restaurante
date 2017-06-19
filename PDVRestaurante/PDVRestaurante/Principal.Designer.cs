@@ -38,19 +38,21 @@
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelCrearUsuario = new System.Windows.Forms.Panel();
-            this.buttonCrear = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonCrearUsuario = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxTipoUsuario = new System.Windows.Forms.ComboBox();
-            this.comboBoxCedula = new System.Windows.Forms.ComboBox();
-            this.textBoxContrasena = new System.Windows.Forms.TextBox();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
+            this.comboBoxCreaUsuarioTipo = new System.Windows.Forms.ComboBox();
+            this.comboBoxCrearUsuario = new System.Windows.Forms.ComboBox();
+            this.textBoxCreaUsuarioContrasena = new System.Windows.Forms.TextBox();
+            this.textBoxCreaUsuarioNombre = new System.Windows.Forms.TextBox();
             this.panelConsultaEmpleados = new System.Windows.Forms.Panel();
             this.comboBoxConsultarEmpleado = new System.Windows.Forms.ComboBox();
             this.labelConsultaEmpleados = new System.Windows.Forms.Label();
@@ -69,13 +71,34 @@
             this.estadoCivilDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaNacimientoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idSucursalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panelConsultaCliente = new System.Windows.Forms.Panel();
+            this.comboBoxConsultaCliente = new System.Windows.Forms.ComboBox();
+            this.buttonConsultarCliente = new System.Windows.Forms.Button();
+            this.labelConsultaCliente = new System.Windows.Forms.Label();
+            this.buttonReiniciarConsultaCliente = new System.Windows.Forms.Button();
+            this.dataGridConsultaClientes = new System.Windows.Forms.DataGridView();
+            this.cedulaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoCivilDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaNacimientoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.frecuenteDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clienteFisicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambiarDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirDeAplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).BeginInit();
             this.panelCrearUsuario.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panelConsultaEmpleados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaEmpleados)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.panelConsultaCliente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteFisicoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -132,7 +155,8 @@
             // consultasToolStripMenuItem
             // 
             this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consultarToolStripMenuItem});
+            this.consultarToolStripMenuItem,
+            this.clienteToolStripMenuItem});
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.consultasToolStripMenuItem.Text = "Consultas";
@@ -142,7 +166,7 @@
             this.consultarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultarEmpleadoToolStripMenuItem});
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consultarToolStripMenuItem.Text = "Empleado";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -153,18 +177,26 @@
             this.consultarEmpleadoToolStripMenuItem.Text = "Consultar Empleado";
             this.consultarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.consultarEmpleadoToolStripMenuItem_Click);
             // 
+            // clienteToolStripMenuItem
+            // 
+            this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consultarClienteToolStripMenuItem});
+            this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clienteToolStripMenuItem.Text = "Cliente";
+            // 
+            // consultarClienteToolStripMenuItem
+            // 
+            this.consultarClienteToolStripMenuItem.Name = "consultarClienteToolStripMenuItem";
+            this.consultarClienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.consultarClienteToolStripMenuItem.Text = "Consultar Cliente";
+            this.consultarClienteToolStripMenuItem.Click += new System.EventHandler(this.consultarClienteToolStripMenuItem_Click);
+            // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // empleadoBindingSource
             // 
@@ -175,22 +207,40 @@
             // 
             this.panelCrearUsuario.Controls.Add(this.groupBox1);
             this.panelCrearUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCrearUsuario.Location = new System.Drawing.Point(0, 0);
+            this.panelCrearUsuario.Location = new System.Drawing.Point(0, 24);
             this.panelCrearUsuario.Name = "panelCrearUsuario";
-            this.panelCrearUsuario.Size = new System.Drawing.Size(1245, 678);
+            this.panelCrearUsuario.Size = new System.Drawing.Size(1245, 654);
             this.panelCrearUsuario.TabIndex = 2;
             this.panelCrearUsuario.Visible = false;
             // 
-            // buttonCrear
+            // groupBox1
             // 
-            this.buttonCrear.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCrear.Location = new System.Drawing.Point(278, 243);
-            this.buttonCrear.Name = "buttonCrear";
-            this.buttonCrear.Size = new System.Drawing.Size(177, 52);
-            this.buttonCrear.TabIndex = 18;
-            this.buttonCrear.Text = "Crear";
-            this.buttonCrear.UseVisualStyleBackColor = true;
-            this.buttonCrear.Click += new System.EventHandler(this.buttonCrear_Click);
+            this.groupBox1.Controls.Add(this.buttonCrearUsuario);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.comboBoxCreaUsuarioTipo);
+            this.groupBox1.Controls.Add(this.comboBoxCrearUsuario);
+            this.groupBox1.Controls.Add(this.textBoxCreaUsuarioContrasena);
+            this.groupBox1.Controls.Add(this.textBoxCreaUsuarioNombre);
+            this.groupBox1.Location = new System.Drawing.Point(232, 96);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(727, 332);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Crear Usuarios";
+            // 
+            // buttonCrearUsuario
+            // 
+            this.buttonCrearUsuario.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCrearUsuario.Location = new System.Drawing.Point(278, 243);
+            this.buttonCrearUsuario.Name = "buttonCrearUsuario";
+            this.buttonCrearUsuario.Size = new System.Drawing.Size(177, 52);
+            this.buttonCrearUsuario.TabIndex = 18;
+            this.buttonCrearUsuario.Text = "Crear";
+            this.buttonCrearUsuario.UseVisualStyleBackColor = true;
+            this.buttonCrearUsuario.Click += new System.EventHandler(this.buttonCrear_Click);
             // 
             // label4
             // 
@@ -232,40 +282,40 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Nombre de Usuario";
             // 
-            // comboBoxTipoUsuario
+            // comboBoxCreaUsuarioTipo
             // 
-            this.comboBoxTipoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxTipoUsuario.FormattingEnabled = true;
-            this.comboBoxTipoUsuario.Location = new System.Drawing.Point(390, 181);
-            this.comboBoxTipoUsuario.Name = "comboBoxTipoUsuario";
-            this.comboBoxTipoUsuario.Size = new System.Drawing.Size(252, 24);
-            this.comboBoxTipoUsuario.TabIndex = 13;
+            this.comboBoxCreaUsuarioTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxCreaUsuarioTipo.FormattingEnabled = true;
+            this.comboBoxCreaUsuarioTipo.Location = new System.Drawing.Point(390, 181);
+            this.comboBoxCreaUsuarioTipo.Name = "comboBoxCreaUsuarioTipo";
+            this.comboBoxCreaUsuarioTipo.Size = new System.Drawing.Size(252, 24);
+            this.comboBoxCreaUsuarioTipo.TabIndex = 13;
             // 
-            // comboBoxCedula
+            // comboBoxCrearUsuario
             // 
-            this.comboBoxCedula.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxCedula.FormattingEnabled = true;
-            this.comboBoxCedula.Location = new System.Drawing.Point(390, 128);
-            this.comboBoxCedula.Name = "comboBoxCedula";
-            this.comboBoxCedula.Size = new System.Drawing.Size(253, 24);
-            this.comboBoxCedula.TabIndex = 12;
+            this.comboBoxCrearUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxCrearUsuario.FormattingEnabled = true;
+            this.comboBoxCrearUsuario.Location = new System.Drawing.Point(390, 128);
+            this.comboBoxCrearUsuario.Name = "comboBoxCrearUsuario";
+            this.comboBoxCrearUsuario.Size = new System.Drawing.Size(253, 24);
+            this.comboBoxCrearUsuario.TabIndex = 12;
             // 
-            // textBoxContrasena
+            // textBoxCreaUsuarioContrasena
             // 
-            this.textBoxContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxContrasena.Location = new System.Drawing.Point(390, 81);
-            this.textBoxContrasena.Name = "textBoxContrasena";
-            this.textBoxContrasena.PasswordChar = '*';
-            this.textBoxContrasena.Size = new System.Drawing.Size(253, 22);
-            this.textBoxContrasena.TabIndex = 11;
+            this.textBoxCreaUsuarioContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCreaUsuarioContrasena.Location = new System.Drawing.Point(390, 81);
+            this.textBoxCreaUsuarioContrasena.Name = "textBoxCreaUsuarioContrasena";
+            this.textBoxCreaUsuarioContrasena.PasswordChar = '*';
+            this.textBoxCreaUsuarioContrasena.Size = new System.Drawing.Size(253, 22);
+            this.textBoxCreaUsuarioContrasena.TabIndex = 11;
             // 
-            // textBoxNombre
+            // textBoxCreaUsuarioNombre
             // 
-            this.textBoxNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombre.Location = new System.Drawing.Point(390, 35);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(253, 22);
-            this.textBoxNombre.TabIndex = 10;
+            this.textBoxCreaUsuarioNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCreaUsuarioNombre.Location = new System.Drawing.Point(390, 35);
+            this.textBoxCreaUsuarioNombre.Name = "textBoxCreaUsuarioNombre";
+            this.textBoxCreaUsuarioNombre.Size = new System.Drawing.Size(253, 22);
+            this.textBoxCreaUsuarioNombre.TabIndex = 10;
             // 
             // panelConsultaEmpleados
             // 
@@ -276,9 +326,9 @@
             this.panelConsultaEmpleados.Controls.Add(this.buttonConsultarEmpleados);
             this.panelConsultaEmpleados.Controls.Add(this.dataGridConsultaEmpleados);
             this.panelConsultaEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelConsultaEmpleados.Location = new System.Drawing.Point(0, 0);
+            this.panelConsultaEmpleados.Location = new System.Drawing.Point(0, 24);
             this.panelConsultaEmpleados.Name = "panelConsultaEmpleados";
-            this.panelConsultaEmpleados.Size = new System.Drawing.Size(1245, 678);
+            this.panelConsultaEmpleados.Size = new System.Drawing.Size(1245, 654);
             this.panelConsultaEmpleados.TabIndex = 4;
             this.panelConsultaEmpleados.Visible = false;
             this.panelConsultaEmpleados.Paint += new System.Windows.Forms.PaintEventHandler(this.panelConsultaEmpleados_Paint);
@@ -343,7 +393,7 @@
             this.idSucursalDataGridViewTextBoxColumn});
             this.dataGridConsultaEmpleados.DataSource = this.empleadoBindingSource;
             this.dataGridConsultaEmpleados.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridConsultaEmpleados.Location = new System.Drawing.Point(0, 138);
+            this.dataGridConsultaEmpleados.Location = new System.Drawing.Point(0, 114);
             this.dataGridConsultaEmpleados.Name = "dataGridConsultaEmpleados";
             this.dataGridConsultaEmpleados.ReadOnly = true;
             this.dataGridConsultaEmpleados.Size = new System.Drawing.Size(1245, 540);
@@ -435,32 +485,181 @@
             this.idSucursalDataGridViewTextBoxColumn.Name = "idSucursalDataGridViewTextBoxColumn";
             this.idSucursalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // groupBox1
+            // panelConsultaCliente
             // 
-            this.groupBox1.Controls.Add(this.buttonCrear);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBoxTipoUsuario);
-            this.groupBox1.Controls.Add(this.comboBoxCedula);
-            this.groupBox1.Controls.Add(this.textBoxContrasena);
-            this.groupBox1.Controls.Add(this.textBoxNombre);
-            this.groupBox1.Location = new System.Drawing.Point(232, 96);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(727, 332);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Crear Usuarios";
+            this.panelConsultaCliente.Controls.Add(this.comboBoxConsultaCliente);
+            this.panelConsultaCliente.Controls.Add(this.buttonConsultarCliente);
+            this.panelConsultaCliente.Controls.Add(this.labelConsultaCliente);
+            this.panelConsultaCliente.Controls.Add(this.buttonReiniciarConsultaCliente);
+            this.panelConsultaCliente.Controls.Add(this.dataGridConsultaClientes);
+            this.panelConsultaCliente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelConsultaCliente.Location = new System.Drawing.Point(0, 24);
+            this.panelConsultaCliente.Name = "panelConsultaCliente";
+            this.panelConsultaCliente.Size = new System.Drawing.Size(1245, 654);
+            this.panelConsultaCliente.TabIndex = 21;
+            this.panelConsultaCliente.Visible = false;
+            // 
+            // comboBoxConsultaCliente
+            // 
+            this.comboBoxConsultaCliente.FormattingEnabled = true;
+            this.comboBoxConsultaCliente.Location = new System.Drawing.Point(293, 55);
+            this.comboBoxConsultaCliente.Name = "comboBoxConsultaCliente";
+            this.comboBoxConsultaCliente.Size = new System.Drawing.Size(287, 21);
+            this.comboBoxConsultaCliente.TabIndex = 0;
+            // 
+            // buttonConsultarCliente
+            // 
+            this.buttonConsultarCliente.Location = new System.Drawing.Point(650, 35);
+            this.buttonConsultarCliente.Name = "buttonConsultarCliente";
+            this.buttonConsultarCliente.Size = new System.Drawing.Size(240, 59);
+            this.buttonConsultarCliente.TabIndex = 2;
+            this.buttonConsultarCliente.Text = "Consultar";
+            this.buttonConsultarCliente.UseVisualStyleBackColor = true;
+            this.buttonConsultarCliente.Click += new System.EventHandler(this.buttonConsultarCliente_Click);
+            // 
+            // labelConsultaCliente
+            // 
+            this.labelConsultaCliente.AutoSize = true;
+            this.labelConsultaCliente.Location = new System.Drawing.Point(92, 58);
+            this.labelConsultaCliente.Name = "labelConsultaCliente";
+            this.labelConsultaCliente.Size = new System.Drawing.Size(195, 13);
+            this.labelConsultaCliente.TabIndex = 4;
+            this.labelConsultaCliente.Text = "Ingrese la cédula del cliente por buscar:";
+            // 
+            // buttonReiniciarConsultaCliente
+            // 
+            this.buttonReiniciarConsultaCliente.Location = new System.Drawing.Point(969, 35);
+            this.buttonReiniciarConsultaCliente.Name = "buttonReiniciarConsultaCliente";
+            this.buttonReiniciarConsultaCliente.Size = new System.Drawing.Size(240, 59);
+            this.buttonReiniciarConsultaCliente.TabIndex = 1;
+            this.buttonReiniciarConsultaCliente.Text = "Reiniciar";
+            this.buttonReiniciarConsultaCliente.UseVisualStyleBackColor = true;
+            this.buttonReiniciarConsultaCliente.Click += new System.EventHandler(this.buttonReiniciarConsultaCliente_Click);
+            // 
+            // dataGridConsultaClientes
+            // 
+            this.dataGridConsultaClientes.AllowUserToAddRows = false;
+            this.dataGridConsultaClientes.AllowUserToDeleteRows = false;
+            this.dataGridConsultaClientes.AutoGenerateColumns = false;
+            this.dataGridConsultaClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridConsultaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridConsultaClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cedulaDataGridViewTextBoxColumn1,
+            this.nombre1DataGridViewTextBoxColumn1,
+            this.nombre2DataGridViewTextBoxColumn1,
+            this.apellido1DataGridViewTextBoxColumn1,
+            this.apellido2DataGridViewTextBoxColumn1,
+            this.sexoDataGridViewTextBoxColumn1,
+            this.estadoCivilDataGridViewTextBoxColumn1,
+            this.fechaNacimientoDataGridViewTextBoxColumn1,
+            this.frecuenteDataGridViewCheckBoxColumn});
+            this.dataGridConsultaClientes.DataSource = this.clienteFisicoBindingSource;
+            this.dataGridConsultaClientes.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridConsultaClientes.Location = new System.Drawing.Point(0, 143);
+            this.dataGridConsultaClientes.Name = "dataGridConsultaClientes";
+            this.dataGridConsultaClientes.ReadOnly = true;
+            this.dataGridConsultaClientes.Size = new System.Drawing.Size(1245, 511);
+            this.dataGridConsultaClientes.TabIndex = 3;
+            // 
+            // cedulaDataGridViewTextBoxColumn1
+            // 
+            this.cedulaDataGridViewTextBoxColumn1.DataPropertyName = "Cedula";
+            this.cedulaDataGridViewTextBoxColumn1.HeaderText = "Cedula";
+            this.cedulaDataGridViewTextBoxColumn1.Name = "cedulaDataGridViewTextBoxColumn1";
+            this.cedulaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nombre1DataGridViewTextBoxColumn1
+            // 
+            this.nombre1DataGridViewTextBoxColumn1.DataPropertyName = "Nombre1";
+            this.nombre1DataGridViewTextBoxColumn1.HeaderText = "Nombre1";
+            this.nombre1DataGridViewTextBoxColumn1.Name = "nombre1DataGridViewTextBoxColumn1";
+            this.nombre1DataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nombre2DataGridViewTextBoxColumn1
+            // 
+            this.nombre2DataGridViewTextBoxColumn1.DataPropertyName = "Nombre2";
+            this.nombre2DataGridViewTextBoxColumn1.HeaderText = "Nombre2";
+            this.nombre2DataGridViewTextBoxColumn1.Name = "nombre2DataGridViewTextBoxColumn1";
+            this.nombre2DataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // apellido1DataGridViewTextBoxColumn1
+            // 
+            this.apellido1DataGridViewTextBoxColumn1.DataPropertyName = "Apellido1";
+            this.apellido1DataGridViewTextBoxColumn1.HeaderText = "Apellido1";
+            this.apellido1DataGridViewTextBoxColumn1.Name = "apellido1DataGridViewTextBoxColumn1";
+            this.apellido1DataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // apellido2DataGridViewTextBoxColumn1
+            // 
+            this.apellido2DataGridViewTextBoxColumn1.DataPropertyName = "Apellido2";
+            this.apellido2DataGridViewTextBoxColumn1.HeaderText = "Apellido2";
+            this.apellido2DataGridViewTextBoxColumn1.Name = "apellido2DataGridViewTextBoxColumn1";
+            this.apellido2DataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // sexoDataGridViewTextBoxColumn1
+            // 
+            this.sexoDataGridViewTextBoxColumn1.DataPropertyName = "Sexo";
+            this.sexoDataGridViewTextBoxColumn1.HeaderText = "Sexo";
+            this.sexoDataGridViewTextBoxColumn1.Name = "sexoDataGridViewTextBoxColumn1";
+            this.sexoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // estadoCivilDataGridViewTextBoxColumn1
+            // 
+            this.estadoCivilDataGridViewTextBoxColumn1.DataPropertyName = "EstadoCivil";
+            this.estadoCivilDataGridViewTextBoxColumn1.HeaderText = "EstadoCivil";
+            this.estadoCivilDataGridViewTextBoxColumn1.Name = "estadoCivilDataGridViewTextBoxColumn1";
+            this.estadoCivilDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // fechaNacimientoDataGridViewTextBoxColumn1
+            // 
+            this.fechaNacimientoDataGridViewTextBoxColumn1.DataPropertyName = "FechaNacimiento";
+            this.fechaNacimientoDataGridViewTextBoxColumn1.HeaderText = "FechaNacimiento";
+            this.fechaNacimientoDataGridViewTextBoxColumn1.Name = "fechaNacimientoDataGridViewTextBoxColumn1";
+            this.fechaNacimientoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // frecuenteDataGridViewCheckBoxColumn
+            // 
+            this.frecuenteDataGridViewCheckBoxColumn.DataPropertyName = "Frecuente";
+            this.frecuenteDataGridViewCheckBoxColumn.HeaderText = "Frecuente";
+            this.frecuenteDataGridViewCheckBoxColumn.Name = "frecuenteDataGridViewCheckBoxColumn";
+            this.frecuenteDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // clienteFisicoBindingSource
+            // 
+            this.clienteFisicoBindingSource.DataSource = typeof(PDVRestaurante.Objetos.ClienteFisico);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cambiarDeUsuarioToolStripMenuItem,
+            this.salirDeAplicaciónToolStripMenuItem});
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.salirToolStripMenuItem.Text = "Salir";
+            // 
+            // cambiarDeUsuarioToolStripMenuItem
+            // 
+            this.cambiarDeUsuarioToolStripMenuItem.Name = "cambiarDeUsuarioToolStripMenuItem";
+            this.cambiarDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.cambiarDeUsuarioToolStripMenuItem.Text = "Cambiar de Usuario";
+            this.cambiarDeUsuarioToolStripMenuItem.Click += new System.EventHandler(this.cambiarDeUsuarioToolStripMenuItem_Click);
+            // 
+            // salirDeAplicaciónToolStripMenuItem
+            // 
+            this.salirDeAplicaciónToolStripMenuItem.Name = "salirDeAplicaciónToolStripMenuItem";
+            this.salirDeAplicaciónToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.salirDeAplicaciónToolStripMenuItem.Text = "Salir de aplicación";
+            this.salirDeAplicaciónToolStripMenuItem.Click += new System.EventHandler(this.salirDeAplicaciónToolStripMenuItem_Click_1);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1245, 678);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panelCrearUsuario);
+            this.Controls.Add(this.panelConsultaCliente);
             this.Controls.Add(this.panelConsultaEmpleados);
+            this.Controls.Add(this.panelCrearUsuario);
+            this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Principal";
@@ -470,11 +669,15 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).EndInit();
             this.panelCrearUsuario.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panelConsultaEmpleados.ResumeLayout(false);
             this.panelConsultaEmpleados.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaEmpleados)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.panelConsultaCliente.ResumeLayout(false);
+            this.panelConsultaCliente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteFisicoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,7 +690,6 @@
         private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
@@ -513,15 +715,36 @@
         private System.Windows.Forms.Label labelConsultaEmpleados;
         private System.Windows.Forms.Button buttonReiniciarConsultaEmpleados;
         private System.Windows.Forms.Button buttonConsultarEmpleados;
-        private System.Windows.Forms.Button buttonCrear;
+        private System.Windows.Forms.Button buttonCrearUsuario;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxTipoUsuario;
-        private System.Windows.Forms.ComboBox comboBoxCedula;
-        private System.Windows.Forms.TextBox textBoxContrasena;
-        private System.Windows.Forms.TextBox textBoxNombre;
+        private System.Windows.Forms.ComboBox comboBoxCreaUsuarioTipo;
+        private System.Windows.Forms.ComboBox comboBoxCrearUsuario;
+        private System.Windows.Forms.TextBox textBoxCreaUsuarioContrasena;
+        private System.Windows.Forms.TextBox textBoxCreaUsuarioNombre;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panelConsultaCliente;
+        private System.Windows.Forms.DataGridView dataGridConsultaClientes;
+        private System.Windows.Forms.Button buttonConsultarCliente;
+        private System.Windows.Forms.Button buttonReiniciarConsultaCliente;
+        private System.Windows.Forms.ComboBox comboBoxConsultaCliente;
+        private System.Windows.Forms.Label labelConsultaCliente;
+        private System.Windows.Forms.BindingSource clienteFisicoBindingSource;
+        private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultarClienteToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre1DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre2DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellido1DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellido2DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoCivilDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaNacimientoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn frecuenteDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cambiarDeUsuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirDeAplicaciónToolStripMenuItem;
     }
 }
