@@ -33,6 +33,7 @@ namespace PDVRestaurante.BaseDatos
                     command.Parameters.AddWithValue("@IdTipoUsuario", IdTipoUsuario);
                     command.ExecuteNonQuery();
                 }
+                conn.Close();
             }
             return true;
         }
@@ -60,6 +61,7 @@ namespace PDVRestaurante.BaseDatos
                         }
                     }
                 }
+                conn.Close();
             }
             return usuario;
         }
@@ -86,6 +88,7 @@ namespace PDVRestaurante.BaseDatos
                         }
                     }
                 }
+                conn.Close();
             }
             return usuarios;
         }

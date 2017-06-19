@@ -62,7 +62,10 @@
   <ItemGroup>
     <Compile Include="Autenticacion\Autenticacion.cs" />
     <Compile Include="Ayudantes\Encriptador.cs" />
+    <Compile Include="BaseDatos\ClienteFisicoDB.cs" />
     <Compile Include="BaseDatos\EmpleadoDB.cs" />
+    <Compile Include="BaseDatos\PersonaDB.cs" />
+    <Compile Include="BaseDatos\PersonaFisicaDB.cs" />
     <Compile Include="BaseDatos\RestauranteDB.cs" />
     <Compile Include="BaseDatos\TipoUsuarioDB.cs" />
     <Compile Include="BaseDatos\UsuarioDB.cs" />
@@ -72,15 +75,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\ClienteFisico.cs" />
     <Compile Include="Objetos\Empleado.cs" />
+    <Compile Include="Objetos\Persona.cs" />
+    <Compile Include="Objetos\PersonaFisica.cs" />
     <Compile Include="Objetos\TipoUsuario.cs" />
     <Compile Include="Objetos\Usuario.cs" />
-    <Compile Include="Pantallas\Empleados\ConsultarEmpleado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Empleados\ConsultarEmpleado.Designer.cs">
-      <DependentUpon>ConsultarEmpleado.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pantallas\Usuarios\CrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,9 +97,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\Empleados\ConsultarEmpleado.resx">
-      <DependentUpon>ConsultarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Usuarios\CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
