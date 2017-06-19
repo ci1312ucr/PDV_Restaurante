@@ -47,14 +47,24 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT Cedula, Tipo, Salario, IdSucursal, FechaInicio FROM Empleado WHERE Cedula = @cedula";
+                    command.CommandText = "SELECT CodPerFisica, Nombre1, Nombre2, Apellido1, Apellido2, Sexo, EstadoCivil, FechaNacimiento, " +
+                    "Frecuente " +
+                    "FROM PersonaFisica a INNER JOIN Cliente b ON a.CodPerFisica = b.Cedula " +
+                    "WHERE a.CodPerFisica = @cedula";
                     command.Parameters.AddWithValue("@cedula", cedula);
                     using (var reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
                             cliente = new ClienteFisico();
-                            cliente.Cedula = reader["Cedula"].ToString();
+                            cliente.Cedula = reader["CodPerFisica"].ToString();
+                            cliente.Nombre1 = reader["Nombre1"].ToString();
+                            cliente.Nombre2 = reader["Nombre2"].ToString();
+                            cliente.Apellido1 = reader["Apellido1"].ToString();
+                            cliente.Apellido2 = reader["Apellido2"].ToString();
+                            cliente.Sexo = (char)reader["Sexo"];
+                            cliente.EstadoCivil = reader["EstadoCivil"].ToString();
+                            cliente.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
                             cliente.Frecuente = (bool)reader["Frecuente"];
                         }
                     }
@@ -73,13 +83,22 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT Cedula, Tipo, Salario, IdSucursal, FechaInicio FROM Empleado";
+                    command.CommandText = "SELECT CodPerFisica, Nombre1, Nombre2, Apellido1, Apellido2, Sexo, EstadoCivil, FechaNacimiento, " +
+                    "Frecuente " +
+                    "FROM PersonaFisica a INNER JOIN Cliente b ON a.CodPerFisica = b.Cedula";
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var cliente = new ClienteFisico();
-                            cliente.Cedula = reader["Cedula"].ToString();
+                            cliente.Cedula = reader["CodPerFisica"].ToString();
+                            cliente.Nombre1 = reader["Nombre1"].ToString();
+                            cliente.Nombre2 = reader["Nombre2"].ToString();
+                            cliente.Apellido1 = reader["Apellido1"].ToString();
+                            cliente.Apellido2 = reader["Apellido2"].ToString();
+                            cliente.Sexo = (char)reader["Sexo"];
+                            cliente.EstadoCivil = reader["EstadoCivil"].ToString();
+                            cliente.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
                             cliente.Frecuente = (bool)reader["Frecuente"];
 
                             clientes.Add(cliente);
