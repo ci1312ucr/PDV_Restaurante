@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace PDVRestaurante.Objetos
 {
-    public class TipoUsuario
+    public class ClienteFisico : PersonaFisica
     {
-        public int IdTipoUsuario { get; set; }
-        public string Nombre { get; set; }
+        public bool Frecuente { get; set; }
     }
 }

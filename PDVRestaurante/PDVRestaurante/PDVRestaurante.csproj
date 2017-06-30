@@ -62,7 +62,10 @@
   <ItemGroup>
     <Compile Include="Autenticacion\Autenticacion.cs" />
     <Compile Include="Ayudantes\Encriptador.cs" />
+    <Compile Include="BaseDatos\ClienteFisicoDB.cs" />
     <Compile Include="BaseDatos\EmpleadoDB.cs" />
+    <Compile Include="BaseDatos\PersonaDB.cs" />
+    <Compile Include="BaseDatos\PersonaFisicaDB.cs" />
     <Compile Include="BaseDatos\RestauranteDB.cs" />
     <Compile Include="BaseDatos\TipoUsuarioDB.cs" />
     <Compile Include="BaseDatos\UsuarioDB.cs" />
@@ -72,7 +75,10 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\ClienteFisico.cs" />
     <Compile Include="Objetos\Empleado.cs" />
+    <Compile Include="Objetos\Persona.cs" />
+    <Compile Include="Objetos\PersonaFisica.cs" />
     <Compile Include="Objetos\TipoUsuario.cs" />
     <Compile Include="Objetos\Usuario.cs" />
     <Compile Include="Pantallas\Usuarios\CrearUsuario.cs">
@@ -108,6 +114,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\PDVRestaurante.Objetos.ClienteFisico.datasource" />
+    <None Include="Properties\DataSources\PDVRestaurante.Objetos.Empleado.datasource" />
+    <None Include="Properties\DataSources\PDVRestaurante.Objetos.PersonaFisica1.datasource" />
+    <None Include="Properties\DataSources\PDVRestaurante.Objetos.TipoUsuario.datasource" />
+    <None Include="Properties\DataSources\PDVRestaurante.Objetos.Usuario.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

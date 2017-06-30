@@ -1,4 +1,5 @@
 ﻿using PDVRestaurante.Objetos;
+using PDVRestaurante.BaseDatos;
 using PDVRestaurante.Pantallas.Usuarios;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace PDVRestaurante
 {
     public partial class Principal : Form
     {
+        private Usuario currentUser;
+
         public Principal(Usuario usuario)
         {
             InitializeComponent();
+            currentUser = usuario;
         }
 
         private void Principal_Load(object sender, EventArgs e)
@@ -24,16 +28,182 @@ namespace PDVRestaurante
 
         }
 
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void crearUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var pantallaCrearUsuario = new CrearUsuario();
-            pantallaCrearUsuario.MdiParent = this;
-            pantallaCrearUsuario.Show();
+            if (currentUser.IdTipoUsuario == 1)
+            {
+                // solo superadmin puede crear usuarios
+                comboBoxCrearUsuario.DataSource = EmpleadoDB.ObtenerEmpleados();
+                comboBoxCrearUsuario.DisplayMember = "Cedula";
+                comboBoxCreaUsuarioTipo.DataSource = TipoUsuarioDB.ObtenerTipoUsuarios();
+                comboBoxCreaUsuarioTipo.DisplayMember = "Nombre";
+                panelCrearUsuario.Visible = true;
+                panelCrearUsuario.BringToFront();
+            } else
+            {
+                // mostrar mensaje
+                MessageBox.Show("No tiene los permisos necesarios para crear ususarios.");
+            }
+            
+        }
+
+        private void consultarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentUser.IdTipoUsuario == 1 || currentUser.IdTipoUsuario == 2)
+            {
+                // superadmin y gerente pueden consultar empleados
+                dataGridConsultaEmpleados.DataSource = EmpleadoDB.ObtenerEmpleados();
+                comboBoxConsultarEmpleado.DataSource = EmpleadoDB.ObtenerEmpleados();
+                comboBoxConsultarEmpleado.DisplayMember = "Cedula";
+                panelConsultaEmpleados.Visible = true;
+                panelConsultaEmpleados.BringToFront();
+            } else
+            {
+                // mostrar mensaje
+                MessageBox.Show("No tiene los permisos necesarios para consultar empleados.");
+            }
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void empleadoBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelConsultaEmpleados_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonConsultarEmpleados_Click(object sender, EventArgs e)
+        {
+            Empleado empleado;
+            if (comboBoxConsultarEmpleado.SelectedItem is Empleado)
+            {
+                empleado = (Empleado)comboBoxConsultarEmpleado.SelectedItem;
+            }
+            else
+            {
+                empleado = EmpleadoDB.ObtenerEmpleado(comboBoxConsultarEmpleado.Text);
+            }
+            dataGridConsultaEmpleados.DataSource = null;
+            dataGridConsultaEmpleados.Rows.Clear();
+            if (empleado != null)
+            {
+                dataGridConsultaEmpleados.Rows.Add();
+                dataGridConsultaEmpleados[0, 0].Value = empleado.Cedula;
+                dataGridConsultaEmpleados[1, 0].Value = empleado.Nombre1;
+                dataGridConsultaEmpleados[2, 0].Value = empleado.Nombre1;
+                dataGridConsultaEmpleados[3, 0].Value = empleado.Apellido1;
+                dataGridConsultaEmpleados[4, 0].Value = empleado.Apellido2;
+                dataGridConsultaEmpleados[5, 0].Value = empleado.Tipo;
+                dataGridConsultaEmpleados[6, 0].Value = empleado.Salario;
+                dataGridConsultaEmpleados[7, 0].Value = empleado.FechaInicio;
+                dataGridConsultaEmpleados[8, 0].Value = empleado.Sexo;
+                dataGridConsultaEmpleados[9, 0].Value = empleado.EstadoCivil;
+                dataGridConsultaEmpleados[10, 0].Value = empleado.FechaNacimiento;
+                dataGridConsultaEmpleados[11, 0].Value = empleado.IdSucursal;
+            }
+        }
+
+        private void buttonReiniciarConsultaEmpleados_Click(object sender, EventArgs e)
+        {
+            dataGridConsultaEmpleados.DataSource = EmpleadoDB.ObtenerEmpleados();
+        }
+
+        private void buttonCrear_Click(object sender, EventArgs e)
+        {
+            string cedula;
+            Empleado empleado;
+            if (comboBoxCrearUsuario.SelectedItem is Empleado)
+            {
+                empleado = (Empleado)comboBoxCrearUsuario.SelectedItem;
+                cedula = empleado.Cedula;
+            }
+            else
+            {
+                cedula = comboBoxCrearUsuario.Text;
+            }
+
+            var tipoUsuario = (TipoUsuario)comboBoxCreaUsuarioTipo.SelectedItem;
+            var salt = Ayudantes.Encriptador.CrearSalt();
+            var contrasena = Ayudantes.Encriptador.Encriptar(Ayudantes.Encriptador.ComoTextoSeguro(textBoxCreaUsuarioContrasena.Text), salt);
+            UsuarioDB.InsertarUsuario(textBoxCreaUsuarioNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), cedula, tipoUsuario.IdTipoUsuario);
+        }
+
+        private void consultarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // todos los roles tienen permiso de consultar clientes por lo que no se efecúa un checkeo
+            dataGridConsultaClientes.DataSource = ClienteFisicoDB.ObtenerClientes();
+            comboBoxConsultaCliente.DataSource = ClienteFisicoDB.ObtenerClientes();
+            comboBoxConsultaCliente.DisplayMember = "Cedula";
+            panelConsultaCliente.Visible = true;
+            panelConsultaCliente.BringToFront();
+        }
+
+        private void buttonReiniciarConsultaCliente_Click(object sender, EventArgs e)
+        {
+            dataGridConsultaClientes.DataSource = ClienteFisicoDB.ObtenerClientes();
+        }
+
+        private void buttonConsultarCliente_Click(object sender, EventArgs e)
+        {
+            ClienteFisico cliente;
+            if (comboBoxConsultaCliente.SelectedItem is ClienteFisico)
+            {
+                cliente = (ClienteFisico)comboBoxConsultaCliente.SelectedItem;
+            }
+            else
+            {
+                cliente = ClienteFisicoDB.ObtenerCliente(comboBoxConsultaCliente.Text);
+            }
+            dataGridConsultaClientes.DataSource = null;
+            dataGridConsultaClientes.Rows.Clear();
+            if (cliente != null)
+            {
+                dataGridConsultaClientes.Rows.Add();
+                dataGridConsultaClientes[0, 0].Value = cliente.Cedula;
+                dataGridConsultaClientes[1, 0].Value = cliente.Nombre1;
+                dataGridConsultaClientes[2, 0].Value = cliente.Nombre1;
+                dataGridConsultaClientes[3, 0].Value = cliente.Apellido1;
+                dataGridConsultaClientes[4, 0].Value = cliente.Apellido2;
+                dataGridConsultaClientes[5, 0].Value = cliente.Sexo;
+                dataGridConsultaClientes[6, 0].Value = cliente.EstadoCivil;
+                dataGridConsultaClientes[7, 0].Value = cliente.FechaNacimiento;
+                dataGridConsultaClientes[8, 0].Value = cliente.Frecuente;
+            }
+        }
+
+        private void salirDeAplicaciónToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void cambiarDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var login = new Login();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                currentUser = login.usuario();
+                panelConsultaCliente.Visible = false;
+                panelConsultaEmpleados.Visible = false;
+                panelCrearUsuario.Visible = false;
+            }
+
         }
     }
 }

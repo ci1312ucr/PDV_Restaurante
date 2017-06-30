@@ -17,7 +17,7 @@ namespace PDVRestaurante.BaseDatos
             return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
         }
 
-        public static bool InsertarUsuario(string nombre, string contrasena, string salt, string cedula, int tipoUsuarioId)
+        public static bool InsertarUsuario(string nombre, string contrasena, string salt, string cedula, int IdTipoUsuario)
         {
             using (var conn = new SqlConnection(ConnectionString()))
             {
@@ -25,14 +25,15 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "INSERT INTO Usuario (Nombre, Contrasena, Salt, Cedula, TipoUsuarioId) VALUES (@nombre, @contrasena, @salt, @cedula, @tipoUsuarioId)";
+                    command.CommandText = "INSERT INTO Usuario (Nombre, Contrasena, Salt, IdEmpleado, IdTipoUsuario) VALUES (@nombre, @contrasena, @salt, @IdEmpleado, @IdTipoUsuario)";
                     command.Parameters.AddWithValue("@nombre", nombre);
                     command.Parameters.AddWithValue("@contrasena", contrasena);
                     command.Parameters.AddWithValue("@salt", salt);
-                    command.Parameters.AddWithValue("@cedula", cedula);
-                    command.Parameters.AddWithValue("@tipoUsuarioId", tipoUsuarioId);
+                    command.Parameters.AddWithValue("@IdEmpleado", cedula);
+                    command.Parameters.AddWithValue("@IdTipoUsuario", IdTipoUsuario);
                     command.ExecuteNonQuery();
                 }
+                conn.Close();
             }
             return true;
         }
@@ -45,7 +46,7 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT Nombre, Contrasena, Salt, Cedula, TipoUsuarioId FROM Usuario WHERE Nombre = @nombre";
+                    command.CommandText = "SELECT Nombre, Contrasena, Salt, IdEmpleado, IdTipoUsuario FROM Usuario WHERE Nombre = @nombre";
                     command.Parameters.AddWithValue("@nombre", nombre);
                     using (var reader = command.ExecuteReader())
                     {
@@ -55,11 +56,12 @@ namespace PDVRestaurante.BaseDatos
                             usuario.Nombre = reader["Nombre"].ToString();
                             usuario.Constrasena = reader["Contrasena"].ToString();
                             usuario.Salt = reader["Salt"].ToString();
-                            usuario.Cedula = reader["Cedula"].ToString();
-                            usuario.TipoUsuarioId = Convert.ToInt32(reader["TipoUsuarioId"]);
+                            usuario.IdEmpleado = reader["IdEmpleado"].ToString();
+                            usuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
                         }
                     }
                 }
+                conn.Close();
             }
             return usuario;
         }
@@ -73,19 +75,20 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT Nombre, Cedula, TipoUsuarioId FROM Usuario";
+                    command.CommandText = "SELECT Nombre, Cedula, IdTipoUsuario FROM Usuario";
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var usuario = new Usuario();
                             usuario.Nombre = reader["Nombre"].ToString();
-                            usuario.Cedula = reader["Cedula"].ToString();
-                            usuario.TipoUsuarioId = Convert.ToInt32(reader["TipoUsuarioId"]);
+                            usuario.IdEmpleado = reader["Cedula"].ToString();
+                            usuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
                             usuarios.Add(usuario);
                         }
                     }
                 }
+                conn.Close();
             }
             return usuarios;
         }
