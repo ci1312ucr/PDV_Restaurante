@@ -16,7 +16,7 @@ namespace PDVRestaurante.Objetos
             return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
         }
 
-        public static bool InsertarPersona(string cedula)
+        public static bool InsertarPersona(string cedula, char tipo)
         {
             using (var conn = new SqlConnection(ConnectionString()))
             {
@@ -24,8 +24,9 @@ namespace PDVRestaurante.Objetos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "INSERT INTO Persona (Cedula) VALUES (@cedula)";
+                    command.CommandText = "INSERT INTO Persona (Cedula, TipoP) VALUES (@cedula, @tipo)";
                     command.Parameters.AddWithValue("@cedula", cedula);
+                    command.Parameters.AddWithValue("@tipo", tipo);
                     command.ExecuteNonQuery();
                 }
                 conn.Close();
@@ -42,7 +43,7 @@ namespace PDVRestaurante.Objetos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT Cedula FROM Empleado WHERE Cedula = @cedula";
+                    command.CommandText = "SELECT Cedula, TipoP FROM Persona WHERE Cedula = @cedula";
                     command.Parameters.AddWithValue("@cedula", cedula);
                     using (var reader = command.ExecuteReader())
                     {
@@ -50,6 +51,7 @@ namespace PDVRestaurante.Objetos
                         {
                             persona = new Persona();
                             persona.Cedula = reader["Cedula"].ToString();
+                            persona.TipoP = reader["TipoP"].ToString()[0];
                         }
                     }
                 }
@@ -67,14 +69,14 @@ namespace PDVRestaurante.Objetos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT Cedula FROM Persona";
+                    command.CommandText = "SELECT Cedula, TipoP FROM Persona";
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var persona = new Persona();
                             persona.Cedula = reader["Cedula"].ToString();
-
+                            persona.TipoP = reader["TipoP"].ToString()[0];
                             personas.Add(persona);
                         }
                     }

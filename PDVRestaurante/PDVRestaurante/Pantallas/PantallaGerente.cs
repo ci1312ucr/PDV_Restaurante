@@ -1,6 +1,5 @@
 ﻿using PDVRestaurante.Objetos;
 using PDVRestaurante.BaseDatos;
-using PDVRestaurante.Pantallas.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,80 +12,24 @@ using System.Windows.Forms;
 
 namespace PDVRestaurante
 {
-    public partial class Principal : Form
+    public partial class PantallaGerente : Form
     {
         private Usuario currentUser;
 
-        public Principal(Usuario usuario)
+        public PantallaGerente(Usuario usuario)
         {
             InitializeComponent();
             currentUser = usuario;
         }
 
-        private void Principal_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void crearUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (currentUser.IdTipoUsuario == 1)
-            {
-                // solo superadmin puede crear usuarios
-                comboBoxCrearUsuario.DataSource = EmpleadoDB.ObtenerEmpleados();
-                comboBoxCrearUsuario.DisplayMember = "Cedula";
-                comboBoxCreaUsuarioTipo.DataSource = TipoUsuarioDB.ObtenerTipoUsuarios();
-                comboBoxCreaUsuarioTipo.DisplayMember = "Nombre";
-                panelCrearUsuario.Visible = true;
-                panelCrearUsuario.BringToFront();
-            } else
-            {
-                // mostrar mensaje
-                MessageBox.Show("No tiene los permisos necesarios para crear ususarios.");
-            }
-            
-        }
 
         private void consultarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (currentUser.IdTipoUsuario == 1 || currentUser.IdTipoUsuario == 2)
-            {
-                // superadmin y gerente pueden consultar empleados
-                dataGridConsultaEmpleados.DataSource = EmpleadoDB.ObtenerEmpleados();
-                comboBoxConsultarEmpleado.DataSource = EmpleadoDB.ObtenerEmpleados();
-                comboBoxConsultarEmpleado.DisplayMember = "Cedula";
-                panelConsultaEmpleados.Visible = true;
-                panelConsultaEmpleados.BringToFront();
-            } else
-            {
-                // mostrar mensaje
-                MessageBox.Show("No tiene los permisos necesarios para consultar empleados.");
-            }
-        }
-
-        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void empleadoBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelConsultaEmpleados_Paint(object sender, PaintEventArgs e)
-        {
-
+            dataGridConsultaEmpleados.DataSource = EmpleadoDB.ObtenerEmpleados();
+            comboBoxConsultarEmpleado.DataSource = EmpleadoDB.ObtenerEmpleados();
+            comboBoxConsultarEmpleado.DisplayMember = "Cedula";
+            panelConsultaEmpleados.Visible = true;
+            panelConsultaEmpleados.BringToFront();
         }
 
         private void buttonConsultarEmpleados_Click(object sender, EventArgs e)
@@ -110,7 +53,7 @@ namespace PDVRestaurante
                 dataGridConsultaEmpleados[2, 0].Value = empleado.Nombre1;
                 dataGridConsultaEmpleados[3, 0].Value = empleado.Apellido1;
                 dataGridConsultaEmpleados[4, 0].Value = empleado.Apellido2;
-                dataGridConsultaEmpleados[5, 0].Value = empleado.Tipo;
+                dataGridConsultaEmpleados[5, 0].Value = empleado.TipoE;
                 dataGridConsultaEmpleados[6, 0].Value = empleado.Salario;
                 dataGridConsultaEmpleados[7, 0].Value = empleado.FechaInicio;
                 dataGridConsultaEmpleados[8, 0].Value = empleado.Sexo;
@@ -125,29 +68,8 @@ namespace PDVRestaurante
             dataGridConsultaEmpleados.DataSource = EmpleadoDB.ObtenerEmpleados();
         }
 
-        private void buttonCrear_Click(object sender, EventArgs e)
-        {
-            string cedula;
-            Empleado empleado;
-            if (comboBoxCrearUsuario.SelectedItem is Empleado)
-            {
-                empleado = (Empleado)comboBoxCrearUsuario.SelectedItem;
-                cedula = empleado.Cedula;
-            }
-            else
-            {
-                cedula = comboBoxCrearUsuario.Text;
-            }
-
-            var tipoUsuario = (TipoUsuario)comboBoxCreaUsuarioTipo.SelectedItem;
-            var salt = Ayudantes.Encriptador.CrearSalt();
-            var contrasena = Ayudantes.Encriptador.Encriptar(Ayudantes.Encriptador.ComoTextoSeguro(textBoxCreaUsuarioContrasena.Text), salt);
-            UsuarioDB.InsertarUsuario(textBoxCreaUsuarioNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), cedula, tipoUsuario.IdTipoUsuario);
-        }
-
         private void consultarClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // todos los roles tienen permiso de consultar clientes por lo que no se efecúa un checkeo
             dataGridConsultaClientes.DataSource = ClienteFisicoDB.ObtenerClientes();
             comboBoxConsultaCliente.DataSource = ClienteFisicoDB.ObtenerClientes();
             comboBoxConsultaCliente.DisplayMember = "Cedula";
@@ -190,20 +112,14 @@ namespace PDVRestaurante
 
         private void salirDeAplicaciónToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.DialogResult = DialogResult.Abort;
+            this.Close();
         }
 
         private void cambiarDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var login = new Login();
-            if (login.ShowDialog() == DialogResult.OK)
-            {
-                currentUser = login.usuario();
-                panelConsultaCliente.Visible = false;
-                panelConsultaEmpleados.Visible = false;
-                panelCrearUsuario.Visible = false;
-            }
-
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

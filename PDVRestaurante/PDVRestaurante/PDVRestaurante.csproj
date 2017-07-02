@@ -69,11 +69,13 @@
     <Compile Include="BaseDatos\RestauranteDB.cs" />
     <Compile Include="BaseDatos\TipoUsuarioDB.cs" />
     <Compile Include="BaseDatos\UsuarioDB.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Pantallas\Login.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Pantallas\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Objetos\ClienteFisico.cs" />
     <Compile Include="Objetos\Empleado.cs" />
@@ -81,27 +83,46 @@
     <Compile Include="Objetos\PersonaFisica.cs" />
     <Compile Include="Objetos\TipoUsuario.cs" />
     <Compile Include="Objetos\Usuario.cs" />
-    <Compile Include="Pantallas\Usuarios\CrearUsuario.cs">
+    <Compile Include="Pantallas\PantallaGerente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Usuarios\CrearUsuario.Designer.cs">
-      <DependentUpon>CrearUsuario.cs</DependentUpon>
+    <Compile Include="Pantallas\PantallaGerente.Designer.cs">
+      <DependentUpon>PantallaGerente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Principal.cs">
+    <Compile Include="Pantallas\PantallaAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Principal.Designer.cs">
+    <Compile Include="Pantallas\PantallaAdmin.Designer.cs">
+      <DependentUpon>PantallaAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\PantallaCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\PantallaCajero.Designer.cs">
+      <DependentUpon>PantallaCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Pantallas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\Usuarios\CrearUsuario.resx">
-      <DependentUpon>CrearUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="Pantallas\PantallaGerente.resx">
+      <DependentUpon>PantallaGerente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Principal.resx">
+    <EmbeddedResource Include="Pantallas\PantallaAdmin.resx">
+      <DependentUpon>PantallaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\PantallaCajero.resx">
+      <DependentUpon>PantallaCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

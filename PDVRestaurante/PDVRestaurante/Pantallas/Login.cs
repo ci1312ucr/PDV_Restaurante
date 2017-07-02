@@ -30,6 +30,7 @@ namespace PDVRestaurante
             errorAutenticacion.Clear();
             labelErrorAut.Text = "";
             var usuario = Autenticacion.Autenticacion.Autenticar(txtBoxUsuario.Text, Encriptador.ComoTextoSeguro(txtBoxContrasena.Text));
+            txtBoxContrasena.Clear();
             if (usuario == null)
             {
                 //Usuario invalido
@@ -46,6 +47,7 @@ namespace PDVRestaurante
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

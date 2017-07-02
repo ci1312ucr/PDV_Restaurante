@@ -8,7 +8,7 @@ namespace PDVRestaurante.Objetos
 {
     public class Empleado : PersonaFisica
     {
-        public string Tipo { get; set; }
+        public string TipoE { get; set; }
         public decimal Salario { get; set; }
         public int IdSucursal { get; set; }
         public DateTime FechaInicio { get; set; }
