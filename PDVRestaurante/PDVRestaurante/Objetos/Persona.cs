@@ -9,5 +9,6 @@ namespace PDVRestaurante.Objetos
     public class Persona
     {
         public string Cedula { get; set; }
+        public char TipoP { get; set; }
     }
 }
