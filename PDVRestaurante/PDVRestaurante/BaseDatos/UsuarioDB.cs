@@ -75,14 +75,14 @@ namespace PDVRestaurante.BaseDatos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = "SELECT Nombre, Cedula, IdTipoUsuario FROM Usuario";
+                    command.CommandText = "SELECT Nombre, IdEmpleado, IdTipoUsuario FROM Usuario";
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var usuario = new Usuario();
                             usuario.Nombre = reader["Nombre"].ToString();
-                            usuario.IdEmpleado = reader["Cedula"].ToString();
+                            usuario.IdEmpleado = reader["IdEmpleado"].ToString();
                             usuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
                             usuarios.Add(usuario);
                         }
