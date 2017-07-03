@@ -20,7 +20,7 @@ namespace PDVRestaurante.BaseDatos
             char sexo, string estadoCivil, DateTime fechaNacimiento)
         {
             // inserta la persona regular para mantener integridad referencial
-            PersonaDB.InsertarPersona(cedula);
+            PersonaDB.InsertarPersona(cedula, 'F');
 
             // inserta la persona física
             using (var conn = new SqlConnection(ConnectionString()))
@@ -69,6 +69,7 @@ namespace PDVRestaurante.BaseDatos
                             personaFisica.Sexo = (char)reader["Sexo"];
                             personaFisica.EstadoCivil = reader["EstadoCivil"].ToString();
                             personaFisica.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
+                            personaFisica.TipoP = 'F';
                         }                 
                     }                     
                 }                         
@@ -100,6 +101,7 @@ namespace PDVRestaurante.BaseDatos
                             personaFisica.Sexo = (char)reader["Sexo"];
                             personaFisica.EstadoCivil = reader["EstadoCivil"].ToString();
                             personaFisica.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
+                            personaFisica.TipoP = 'F';
 
                             personasFisicas.Add(personaFisica);
                         }

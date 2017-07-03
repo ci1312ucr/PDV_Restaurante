@@ -52,7 +52,7 @@ namespace PDVRestaurante.BaseDatos
                     command.Connection = conn;
 
                     command.CommandText = "SELECT CodPerFisica, Nombre1, Nombre2, Apellido1, Apellido2, Sexo, EstadoCivil, FechaNacimiento, " +
-                    "Tipo, Salario, IdSucursal, FechaInicio " +
+                    "TipoE, Salario, IdSucursal, FechaInicio " +
                     "FROM PersonaFisica a INNER JOIN Empleado b ON a.CodPerFisica = b.Cedula " +
                     "WHERE a.CodPerFisica = @cedula";
 
@@ -69,10 +69,11 @@ namespace PDVRestaurante.BaseDatos
                             empleado.Sexo = reader["Sexo"].ToString()[0];
                             empleado.EstadoCivil = reader["EstadoCivil"].ToString();
                             empleado.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
-                            empleado.Tipo = reader["Tipo"].ToString();
+                            empleado.TipoE = reader["TipoE"].ToString();
                             empleado.Salario = (decimal)reader["Salario"];
                             empleado.IdSucursal = (int)reader["IdSucursal"];
                             empleado.FechaInicio = (DateTime)reader["FechaInicio"];
+                            empleado.TipoP = 'F';
                         }
                     }
                 }
@@ -91,7 +92,7 @@ namespace PDVRestaurante.BaseDatos
                 {
                     command.Connection = conn;
                     command.CommandText = "SELECT CodPerFisica, Nombre1, Nombre2, Apellido1, Apellido2, Sexo, EstadoCivil, FechaNacimiento, " +
-                    "Tipo, Salario, IdSucursal, FechaInicio " +
+                    "TipoE, Salario, IdSucursal, FechaInicio " +
                     "FROM PersonaFisica a INNER JOIN Empleado b ON a.CodPerFisica = b.Cedula";
                     using (var reader = command.ExecuteReader())
                     {
@@ -106,10 +107,11 @@ namespace PDVRestaurante.BaseDatos
                             empleado.Sexo = reader["Sexo"].ToString()[0];
                             empleado.EstadoCivil = reader["EstadoCivil"].ToString();
                             empleado.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
-                            empleado.Tipo = reader["Tipo"].ToString();
+                            empleado.TipoE = reader["TipoE"].ToString();
                             empleado.Salario = (decimal)reader["Salario"];
                             empleado.IdSucursal = (int)reader["IdSucursal"];
                             empleado.FechaInicio = (DateTime)reader["FechaInicio"];
+                            empleado.TipoP = 'F';
 
                             empleados.Add(empleado);
                         }
