@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PDVRestaurante.Constantes;
 
 namespace PDVRestaurante
 {
@@ -24,69 +25,65 @@ namespace PDVRestaurante
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            ValidarMenu();
         }
 
-        private void crearUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+
+        #region OpcionesDelMenu
+        private void MenuCrearUsuario_Click(object sender, EventArgs e)
         {
-            if (currentUser.IdTipoUsuario == 1)
+            // solo superadmin puede crear usuarios
+            comboBoxCrearUsuario.DataSource = EmpleadoDB.ObtenerEmpleados();
+            comboBoxCrearUsuario.DisplayMember = "Cedula";
+            comboBoxCreaUsuarioTipo.DataSource = TipoUsuarioDB.ObtenerTipoUsuarios();
+            comboBoxCreaUsuarioTipo.DisplayMember = "Nombre";
+            panelCrearUsuario.Visible = true;
+            panelCrearUsuario.BringToFront();
+        }
+
+        private void MenuConsultarEmpleado_Click(object sender, EventArgs e)
+        {
+            // superadmin y gerente pueden consultar empleados
+            dataGridConsultaEmpleados.DataSource = EmpleadoDB.ObtenerEmpleados();
+            comboBoxConsultarEmpleado.DataSource = EmpleadoDB.ObtenerEmpleados();
+            comboBoxConsultarEmpleado.DisplayMember = "Cedula";
+            panelConsultaEmpleados.Visible = true;
+            panelConsultaEmpleados.BringToFront();
+        }
+        private void MenuConsultarCliente_Click(object sender, EventArgs e)
+        {
+            // todos los roles tienen permiso de consultar clientes por lo que no se efecúa un checkeo
+            dataGridConsultaClientes.DataSource = ClienteFisicoDB.ObtenerClientes();
+            comboBoxConsultaCliente.DataSource = ClienteFisicoDB.ObtenerClientes();
+            comboBoxConsultaCliente.DisplayMember = "Cedula";
+            panelConsultaCliente.Visible = true;
+            panelConsultaCliente.BringToFront();
+        }
+
+        private void MenuCambiarUsuario_Click(object sender, EventArgs e)
+        {
+            var login = new Login();
+            this.Hide();
+            if (login.ShowDialog() == DialogResult.OK)
             {
-                // solo superadmin puede crear usuarios
-                comboBoxCrearUsuario.DataSource = EmpleadoDB.ObtenerEmpleados();
-                comboBoxCrearUsuario.DisplayMember = "Cedula";
-                comboBoxCreaUsuarioTipo.DataSource = TipoUsuarioDB.ObtenerTipoUsuarios();
-                comboBoxCreaUsuarioTipo.DisplayMember = "Nombre";
-                panelCrearUsuario.Visible = true;
-                panelCrearUsuario.BringToFront();
-            } else
-            {
-                // mostrar mensaje
-                MessageBox.Show("No tiene los permisos necesarios para crear ususarios.");
+                currentUser = login.usuario();
+                ValidarMenu();
+                this.Show();
+                panelConsultaCliente.Visible = false;
+                panelConsultaEmpleados.Visible = false;
+                panelCrearUsuario.Visible = false;
             }
-            
-        }
-
-        private void consultarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (currentUser.IdTipoUsuario == 1 || currentUser.IdTipoUsuario == 2)
+            else
             {
-                // superadmin y gerente pueden consultar empleados
-                dataGridConsultaEmpleados.DataSource = EmpleadoDB.ObtenerEmpleados();
-                comboBoxConsultarEmpleado.DataSource = EmpleadoDB.ObtenerEmpleados();
-                comboBoxConsultarEmpleado.DisplayMember = "Cedula";
-                panelConsultaEmpleados.Visible = true;
-                panelConsultaEmpleados.BringToFront();
-            } else
-            {
-                // mostrar mensaje
-                MessageBox.Show("No tiene los permisos necesarios para consultar empleados.");
+                Application.Exit();
             }
         }
 
-        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenuSalirAplicacion_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
-
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void empleadoBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelConsultaEmpleados_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        #endregion
 
         private void buttonConsultarEmpleados_Click(object sender, EventArgs e)
         {
@@ -144,16 +141,6 @@ namespace PDVRestaurante
             UsuarioDB.InsertarUsuario(textBoxCreaUsuarioNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), cedula, tipoUsuario.IdTipoUsuario);
         }
 
-        private void consultarClienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // todos los roles tienen permiso de consultar clientes por lo que no se efecúa un checkeo
-            dataGridConsultaClientes.DataSource = ClienteFisicoDB.ObtenerClientes();
-            comboBoxConsultaCliente.DataSource = ClienteFisicoDB.ObtenerClientes();
-            comboBoxConsultaCliente.DisplayMember = "Cedula";
-            panelConsultaCliente.Visible = true;
-            panelConsultaCliente.BringToFront();
-        }
-
         private void buttonReiniciarConsultaCliente_Click(object sender, EventArgs e)
         {
             dataGridConsultaClientes.DataSource = ClienteFisicoDB.ObtenerClientes();
@@ -187,22 +174,57 @@ namespace PDVRestaurante
             }
         }
 
-        private void salirDeAplicaciónToolStripMenuItem_Click_1(object sender, EventArgs e)
+
+
+        #region Funciones
+        private void ValidarMenu()
         {
-            this.Dispose();
+            ActivaMenu(this.menuStrip1.Items);
+            switch (this.currentUser.IdTipoUsuario)
+            {
+                case (int)TipoDeUsuario.Superadmin:
+                    break;
+                case (int)TipoDeUsuario.Gerente:
+                    DesactivaMenu("MenuMantenimiento");
+                    break;
+                case (int)TipoDeUsuario.Cajero:
+                    DesactivaMenu("MenuMantenimiento");
+                    DesactivaMenu("MenuConsultasEmpleado");
+                    break;
+                default:
+                    break;
+            }
+            this.menuStrip1.Refresh();
         }
 
-        private void cambiarDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ActivaMenu(ToolStripItemCollection items)
         {
-            var login = new Login();
-            if (login.ShowDialog() == DialogResult.OK)
+            foreach (ToolStripMenuItem item in items)
             {
-                currentUser = login.usuario();
-                panelConsultaCliente.Visible = false;
-                panelConsultaEmpleados.Visible = false;
-                panelCrearUsuario.Visible = false;
+                item.Visible = true;
+                item.Enabled = true;
+                ActivaMenu(item.DropDown.Items);
             }
+        }
 
+        private void DesactivaMenu(string nombreMenu)
+        {
+            var menuDesactivar = this.menuStrip1.Items.Find(nombreMenu, true).FirstOrDefault();
+            menuDesactivar.Visible = false;
+            menuDesactivar.Enabled = false;
+        }
+        #endregion
+
+        private void cambiarAGerenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.currentUser.IdTipoUsuario = 2;
+            ValidarMenu();
+        }
+
+        private void cambiarACajeroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.currentUser.IdTipoUsuario = 3;
+            ValidarMenu();
         }
     }
 }

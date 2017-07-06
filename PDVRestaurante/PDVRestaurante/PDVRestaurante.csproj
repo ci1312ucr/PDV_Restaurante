@@ -69,6 +69,7 @@
     <Compile Include="BaseDatos\RestauranteDB.cs" />
     <Compile Include="BaseDatos\TipoUsuarioDB.cs" />
     <Compile Include="BaseDatos\UsuarioDB.cs" />
+    <Compile Include="Constantes\TipoDeUsuario.cs" />
     <Compile Include="Pantallas\Login.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -83,24 +84,6 @@
     <Compile Include="Objetos\PersonaFisica.cs" />
     <Compile Include="Objetos\TipoUsuario.cs" />
     <Compile Include="Objetos\Usuario.cs" />
-    <Compile Include="Pantallas\PantallaGerente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\PantallaGerente.Designer.cs">
-      <DependentUpon>PantallaGerente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pantallas\PantallaAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\PantallaAdmin.Designer.cs">
-      <DependentUpon>PantallaAdmin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pantallas\PantallaCajero.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\PantallaCajero.Designer.cs">
-      <DependentUpon>PantallaCajero.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pantallas\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,15 +95,6 @@
     <EmbeddedResource Include="Pantallas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\PantallaGerente.resx">
-      <DependentUpon>PantallaGerente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\PantallaAdmin.resx">
-      <DependentUpon>PantallaAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\PantallaCajero.resx">
-      <DependentUpon>PantallaCajero.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -155,7 +129,13 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Pantallas\Ayuda\" />
+    <Folder Include="Pantallas\Consultas\" />
+    <Folder Include="Pantallas\Facturas\" />
+    <Folder Include="Pantallas\Mantenimiento\" />
+    <Folder Include="Pantallas\Ordenes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
