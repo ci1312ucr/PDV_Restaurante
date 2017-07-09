@@ -9,11 +9,26 @@ using System.Data.SqlClient;
 
 namespace PDVRestaurante.BaseDatos
 {
-    public static class PersonaFisicaDB
+    public static class TablaPersonaFisica
     {
         private static string ConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
+        }
+
+        private static string Tabla()
+        {
+            return "PersonaFisica";
+        }
+
+        private static string Columnas()
+        {
+            return "";
+        }
+
+        private static string LlavePrincipal()
+        {
+            return "";
         }
 
         public static bool InsertarPersonaFisica(string cedula, string nombre1, string nombre2, string apellido1, string apellido2, 

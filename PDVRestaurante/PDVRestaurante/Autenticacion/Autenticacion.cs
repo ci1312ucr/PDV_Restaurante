@@ -13,7 +13,7 @@ namespace PDVRestaurante.Autenticacion
     {
         public static Usuario Autenticar(string nombre, SecureString contrasena)
         {
-            var usuario = UsuarioDB.ObtenerUsuario(nombre.ToLower());
+            var usuario = TablaUsuario.ObtenerUsuario(nombre.ToLower());
             if (usuario != null)
             {
                 var salt = Convert.FromBase64String(usuario.Salt);
