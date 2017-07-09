@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -62,14 +63,67 @@
   <ItemGroup>
     <Compile Include="Autenticacion\Autenticacion.cs" />
     <Compile Include="Ayudantes\Encriptador.cs" />
-    <Compile Include="BaseDatos\ClienteFisicoDB.cs" />
-    <Compile Include="BaseDatos\EmpleadoDB.cs" />
-    <Compile Include="BaseDatos\PersonaDB.cs" />
-    <Compile Include="BaseDatos\PersonaFisicaDB.cs" />
-    <Compile Include="BaseDatos\RestauranteDB.cs" />
-    <Compile Include="BaseDatos\TipoUsuarioDB.cs" />
-    <Compile Include="BaseDatos\UsuarioDB.cs" />
+    <Compile Include="Ayudantes\InterpreteSQL.cs" />
+    <Compile Include="Ayudantes\ManejoExcepciones.cs" />
+    <Compile Include="BaseDatos\TablaCliente.cs" />
+    <Compile Include="BaseDatos\TablaCorreosPersona.cs" />
+    <Compile Include="BaseDatos\TablaDireccionesPersona.cs" />
+    <Compile Include="BaseDatos\TablaEmpleado.cs" />
+    <Compile Include="BaseDatos\TablaEmpleados_Factura.cs" />
+    <Compile Include="BaseDatos\TablaFactura.cs" />
+    <Compile Include="BaseDatos\TablaIngrediente.cs" />
+    <Compile Include="BaseDatos\TablaInventario.cs" />
+    <Compile Include="BaseDatos\TablaInventario_Ingredientes.cs" />
+    <Compile Include="BaseDatos\TablaMesa_Factura.cs" />
+    <Compile Include="BaseDatos\TablaOrdenCompra.cs" />
+    <Compile Include="BaseDatos\TablaOrdenCompra_Ingrediente.cs" />
+    <Compile Include="BaseDatos\TablaPersona.cs" />
+    <Compile Include="BaseDatos\TablaPersonaFisica.cs" />
+    <Compile Include="BaseDatos\TablaPersonaJuridica.cs" />
+    <Compile Include="BaseDatos\TablaPlato.cs" />
+    <Compile Include="BaseDatos\TablaPlatos_Factura.cs" />
+    <Compile Include="BaseDatos\TablaPlato_Ingredientes.cs" />
+    <Compile Include="BaseDatos\TablaProveedor.cs" />
+    <Compile Include="BaseDatos\TablaProvincia.cs" />
+    <Compile Include="BaseDatos\TablaSucursal.cs" />
+    <Compile Include="BaseDatos\TablaCanton.cs" />
+    <Compile Include="BaseDatos\TablaTelefonosPersona.cs" />
+    <Compile Include="BaseDatos\TablaTelefonoSucursal.cs" />
+    <Compile Include="BaseDatos\TablaTipoUsuario.cs" />
+    <Compile Include="BaseDatos\TablaUsuario.cs" />
+    <Compile Include="Constantes\CriterioSQL.cs" />
     <Compile Include="Constantes\TipoDeUsuario.cs" />
+    <Compile Include="Objetos\Sucursal.cs" />
+    <Compile Include="Pantallas\Consultas\ConsultaClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaClientes.Designer.cs">
+      <DependentUpon>ConsultaClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaEmpleados.Designer.cs">
+      <DependentUpon>ConsultaEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaFacturas.Designer.cs">
+      <DependentUpon>ConsultaFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaUsuarios.Designer.cs">
+      <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaSucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\ConsultaSucursales.Designer.cs">
+      <DependentUpon>ConsultaSucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Login.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -84,20 +138,62 @@
     <Compile Include="Objetos\PersonaFisica.cs" />
     <Compile Include="Objetos\TipoUsuario.cs" />
     <Compile Include="Objetos\Usuario.cs" />
+    <Compile Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.Designer.cs">
+      <DependentUpon>CrearEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.Designer.cs">
+      <DependentUpon>CrearUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pantallas\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Restaurante\ControlRestaurante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Restaurante\ControlRestaurante.Designer.cs">
+      <DependentUpon>ControlRestaurante.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pantallas\Consultas\ConsultaClientes.resx">
+      <DependentUpon>ConsultaClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Consultas\ConsultaEmpleados.resx">
+      <DependentUpon>ConsultaEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Consultas\ConsultaFacturas.resx">
+      <DependentUpon>ConsultaFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Consultas\ConsultaSucursales.resx">
+      <DependentUpon>ConsultaSucursales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Consultas\ConsultaUsuarios.resx">
+      <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.resx">
+      <DependentUpon>CrearEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.resx">
+      <DependentUpon>CrearUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Restaurante\ControlRestaurante.resx">
+      <DependentUpon>ControlRestaurante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,6 +207,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.ClienteFisico.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.Empleado.datasource" />
+    <None Include="Properties\DataSources\PDVRestaurante.Objetos.Grid.EmpleadoGrid.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.PersonaFisica1.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.TipoUsuario.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.Usuario.datasource" />
@@ -131,10 +228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pantallas\Ayuda\" />
-    <Folder Include="Pantallas\Consultas\" />
-    <Folder Include="Pantallas\Facturas\" />
-    <Folder Include="Pantallas\Mantenimiento\" />
-    <Folder Include="Pantallas\Ordenes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

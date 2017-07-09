@@ -9,11 +9,26 @@ using System.Threading.Tasks;
 
 namespace PDVRestaurante.BaseDatos
 {
-    public static class TipoUsuarioDB
+    public static class TablaTipoUsuario
     {
         private static string ConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
+        }
+
+        private static string Tabla()
+        {
+            return "TipoUsuario";
+        }
+
+        private static string Columnas()
+        {
+            return "";
+        }
+
+        private static string LlavePrincipal()
+        {
+            return "";
         }
 
         public static bool InsertarTipoUsuario(int tipoUsuarioId, string nombre)

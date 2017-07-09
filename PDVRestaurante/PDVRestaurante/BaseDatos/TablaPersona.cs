@@ -16,6 +16,21 @@ namespace PDVRestaurante.Objetos
             return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
         }
 
+        private static string Tabla()
+        {
+            return "Persona";
+        }
+
+        private static string Columnas()
+        {
+            return "";
+        }
+
+        private static string LlavePrincipal()
+        {
+            return "";
+        }
+
         public static bool InsertarPersona(string cedula, char tipo)
         {
             using (var conn = new SqlConnection(ConnectionString()))

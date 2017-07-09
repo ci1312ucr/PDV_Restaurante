@@ -10,11 +10,26 @@ using System.Threading.Tasks;
 
 namespace PDVRestaurante.BaseDatos
 {
-    public static class UsuarioDB
+    public static class TablaUsuario
     {
         private static string ConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
+        }
+
+        private static string Tabla()
+        {
+            return "Usuario";
+        }
+
+        private static string Columnas()
+        {
+            return "";
+        }
+
+        private static string LlavePrincipal()
+        {
+            return "";
         }
 
         public static bool InsertarUsuario(string nombre, string contrasena, string salt, string cedula, int IdTipoUsuario)
