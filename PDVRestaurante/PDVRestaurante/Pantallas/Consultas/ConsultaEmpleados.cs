@@ -31,14 +31,14 @@ namespace PDVRestaurante.Pantallas.Consultas
             CargarListView(TablaEmpleado.ObtenerEmpleados());
 
             //Carga la lista de posibles filtros para búsqueda
-            comboBoxBuscarEmpleado.Items.AddRange(_columnas.ToArray());
-            comboBoxBuscarEmpleado.DisplayMember = "DisplayName";
+            comboBoxBuscar.Items.AddRange(_columnas.ToArray());
+            comboBoxBuscar.DisplayMember = "DisplayName";
 
             //Carga la lista de posibles filtros para ordenar
             comboBoxOrdenar.Items.AddRange(_columnas.ToArray());
             comboBoxOrdenar.DisplayMember = "DisplayName";
 
-            buttonBuscarEmpleado.Enabled = false;
+            buttonBuscar.Enabled = false;
         }
 
         private void listViewEmpleados_Ajuste(object sender, EventArgs e)
@@ -49,8 +49,8 @@ namespace PDVRestaurante.Pantallas.Consultas
         private void buttonBuscarEmpleado_Click(object sender, EventArgs e)
         {
             //Realiza una búsqueda de empleado(s) basado en el filtro seleccionado
-            var columna = (Propiedad)comboBoxBuscarEmpleado.SelectedItem;
-            var valor = textBoxBuscarEmpleado.Text;
+            var columna = (Propiedad)comboBoxBuscar.SelectedItem;
+            var valor = textBoxBuscar.Text;
 
             //Define el criterio de comparación para enviar la consulta SQL adecuada
             var criterio = CriterioSQL.IgualA;
@@ -78,15 +78,15 @@ namespace PDVRestaurante.Pantallas.Consultas
         private void buttonLimpiarFiltro_Click(object sender, EventArgs e)
         {
             //Limpia el filtro de búsqueda y carga el Grid de nuevo con todos los empleados
-            comboBoxBuscarEmpleado.ResetText();
-            textBoxBuscarEmpleado.Clear();
+            comboBoxBuscar.ResetText();
+            textBoxBuscar.Clear();
             CargarListView(TablaEmpleado.ObtenerEmpleados());
         }
 
         private void textBoxBuscarEmpleado_TextChanged(object sender, EventArgs e)
         {
             //Para realizar una búsqueda por filtro tiene que haber algo escrito en el campo del valor del filtro
-            buttonBuscarEmpleado.Enabled = textBoxBuscarEmpleado.Text.Length > 0;
+            buttonBuscar.Enabled = textBoxBuscar.Text.Length > 0;
         }
 
         private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)

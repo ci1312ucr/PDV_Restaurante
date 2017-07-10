@@ -18,7 +18,7 @@ namespace PDVRestaurante.Pantallas.Consultas
             InitializeComponent();
         }
 
-        private void buttonCrearUsuario_Click(object sender, EventArgs e)
+        private void buttonCrear_Click(object sender, EventArgs e)
         {
             var crearUsuarioForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearUsuario");
             if (crearUsuarioForm == null)
