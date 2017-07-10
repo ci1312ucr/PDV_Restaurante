@@ -21,7 +21,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "";
+            return "IdFactura,CedulaEmpleado";
         }
 
         private static string LlavePrincipal()
