@@ -13,7 +13,7 @@ namespace PDVRestaurante.Objetos
         public int IdDistrito { get; set; }
         public int IdCanton { get; set; }
         public int IdProvincia { get; set; }
-        public int? IdGerente { get; set; }
+        public string IdGerente { get; set; }
         public DateTime? FechaInicio { get; set; }
         public string Detalle { get; set; }
     }

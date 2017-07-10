@@ -10,8 +10,9 @@ namespace PDVRestaurante.Objetos
 {
     public class Persona
     {
+        [Display(Name = "Cedula", Order = 1)]
         public string Cedula { get; set; }
-        [DisplayName("Tipo de Persona")]
+        [Display(Name = "Tipo de Persona", Order = 0)]
         public char? TipoP { get; set; }
     }
 }
