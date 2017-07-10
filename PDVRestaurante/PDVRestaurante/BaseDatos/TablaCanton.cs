@@ -21,12 +21,12 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "";
+            return "IdProvincia,IdCanton,Descripcion";
         }
 
         private static string LlavePrincipal()
         {
-            return "";
+            return "IdProvincia|IdCanton";
         }
     }
 }

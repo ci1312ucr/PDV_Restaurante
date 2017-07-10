@@ -24,12 +24,12 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "";
+            return "Nombre,Contrasena,Salt,IdEmpleado,IdTipoUsuario";
         }
 
         private static string LlavePrincipal()
         {
-            return "";
+            return "Nombre";
         }
 
         public static bool InsertarUsuario(string nombre, string contrasena, string salt, string cedula, int IdTipoUsuario)

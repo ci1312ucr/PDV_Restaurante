@@ -21,12 +21,12 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "";
+            return "IdSucursal,Telefono";
         }
 
         private static string LlavePrincipal()
         {
-            return "";
+            return "IdSucursal|Telefono";
         }
     }
 }

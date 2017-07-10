@@ -23,12 +23,12 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "";
+            return "CodPerFisica,Nombre1,Nombre2,Apellido1,Apellido2,Sexo,Estado,FechaNacimiento";
         }
 
         private static string LlavePrincipal()
         {
-            return "";
+            return "CodPerFisica";
         }
 
         public static bool InsertarPersonaFisica(string cedula, string nombre1, string nombre2, string apellido1, string apellido2, 
