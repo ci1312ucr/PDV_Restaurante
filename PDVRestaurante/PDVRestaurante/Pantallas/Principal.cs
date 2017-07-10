@@ -42,7 +42,7 @@ namespace PDVRestaurante
                 case (int)TipoDeUsuario.Gerente:
                     break;
                 case (int)TipoDeUsuario.Cajero:
-                    DesactivaMenu("MenuConsultasEmpleado");
+                    DesactivaMenu("MenuConsultasEmpleados");
                     DesactivaMenu("MenuConsultasUsuarios");
                     break;
                 default:
@@ -64,8 +64,11 @@ namespace PDVRestaurante
         private void DesactivaMenu(string nombreMenu)
         {
             var menuDesactivar = this.MenuPrincipal.Items.Find(nombreMenu, true).FirstOrDefault();
-            menuDesactivar.Visible = false;
-            menuDesactivar.Enabled = false;
+            if (menuDesactivar != null)
+            {
+                menuDesactivar.Visible = false;
+                menuDesactivar.Enabled = false;
+            }
         }
 
         private void ActivarMantenimiento()
