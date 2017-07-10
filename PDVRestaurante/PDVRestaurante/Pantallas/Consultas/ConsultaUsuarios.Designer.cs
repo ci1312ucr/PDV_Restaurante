@@ -28,80 +28,124 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCrearUsuario = new System.Windows.Forms.Button();
-            this.buttonEliminarUsuario = new System.Windows.Forms.Button();
-            this.buttonModificarUsuario = new System.Windows.Forms.Button();
-            this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
-            this.buttonBuscarUsuario = new System.Windows.Forms.Button();
-            this.comboBoxBuscarUsuario = new System.Windows.Forms.ComboBox();
-            this.textBoxBuscarUsuario = new System.Windows.Forms.TextBox();
-            this.labelConsultaEmpleados = new System.Windows.Forms.Label();
-            this.dataGridConsultaUsuarios = new System.Windows.Forms.DataGridView();
+            this.comboBoxOrdenar = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listViewUsuarios = new System.Windows.Forms.ListView();
             this.buttonCerrar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaUsuarios)).BeginInit();
+            this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
+            this.buttonCrear = new System.Windows.Forms.Button();
+            this.buttonEliminar = new System.Windows.Forms.Button();
+            this.buttonBuscar = new System.Windows.Forms.Button();
+            this.buttonModificar = new System.Windows.Forms.Button();
+            this.comboBoxBuscar = new System.Windows.Forms.ComboBox();
+            this.textBoxBuscar = new System.Windows.Forms.TextBox();
+            this.labelConsultaEmpleados = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // buttonCrearUsuario
+            // comboBoxOrdenar
             // 
-            this.buttonCrearUsuario.Location = new System.Drawing.Point(948, 12);
-            this.buttonCrearUsuario.Name = "buttonCrearUsuario";
-            this.buttonCrearUsuario.Size = new System.Drawing.Size(228, 51);
-            this.buttonCrearUsuario.TabIndex = 25;
-            this.buttonCrearUsuario.Text = "Nuevo Usuario";
-            this.buttonCrearUsuario.UseVisualStyleBackColor = true;
-            this.buttonCrearUsuario.Click += new System.EventHandler(this.buttonCrearUsuario_Click);
+            this.comboBoxOrdenar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOrdenar.FormattingEnabled = true;
+            this.comboBoxOrdenar.Location = new System.Drawing.Point(524, 112);
+            this.comboBoxOrdenar.Name = "comboBoxOrdenar";
+            this.comboBoxOrdenar.Size = new System.Drawing.Size(261, 21);
+            this.comboBoxOrdenar.TabIndex = 24;
             // 
-            // buttonEliminarUsuario
+            // label1
             // 
-            this.buttonEliminarUsuario.Location = new System.Drawing.Point(703, 12);
-            this.buttonEliminarUsuario.Name = "buttonEliminarUsuario";
-            this.buttonEliminarUsuario.Size = new System.Drawing.Size(228, 51);
-            this.buttonEliminarUsuario.TabIndex = 24;
-            this.buttonEliminarUsuario.Text = "Eliminar";
-            this.buttonEliminarUsuario.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(449, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Ordernar por:";
             // 
-            // buttonModificarUsuario
+            // listViewUsuarios
             // 
-            this.buttonModificarUsuario.Location = new System.Drawing.Point(457, 12);
-            this.buttonModificarUsuario.Name = "buttonModificarUsuario";
-            this.buttonModificarUsuario.Size = new System.Drawing.Size(228, 51);
-            this.buttonModificarUsuario.TabIndex = 23;
-            this.buttonModificarUsuario.Text = "Modificar";
-            this.buttonModificarUsuario.UseVisualStyleBackColor = true;
+            this.listViewUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewUsuarios.FullRowSelect = true;
+            this.listViewUsuarios.Location = new System.Drawing.Point(12, 142);
+            this.listViewUsuarios.MultiSelect = false;
+            this.listViewUsuarios.Name = "listViewUsuarios";
+            this.listViewUsuarios.Size = new System.Drawing.Size(776, 346);
+            this.listViewUsuarios.TabIndex = 22;
+            this.listViewUsuarios.UseCompatibleStateImageBehavior = false;
+            this.listViewUsuarios.View = System.Windows.Forms.View.Details;
+            // 
+            // buttonCerrar
+            // 
+            this.buttonCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCerrar.Location = new System.Drawing.Point(774, 0);
+            this.buttonCerrar.Name = "buttonCerrar";
+            this.buttonCerrar.Size = new System.Drawing.Size(26, 21);
+            this.buttonCerrar.TabIndex = 21;
+            this.buttonCerrar.Text = "X";
+            this.buttonCerrar.UseVisualStyleBackColor = true;
             // 
             // buttonLimpiarFiltro
             // 
-            this.buttonLimpiarFiltro.Location = new System.Drawing.Point(346, 67);
+            this.buttonLimpiarFiltro.Location = new System.Drawing.Point(212, 67);
             this.buttonLimpiarFiltro.Name = "buttonLimpiarFiltro";
             this.buttonLimpiarFiltro.Size = new System.Drawing.Size(75, 23);
-            this.buttonLimpiarFiltro.TabIndex = 22;
+            this.buttonLimpiarFiltro.TabIndex = 20;
             this.buttonLimpiarFiltro.Text = "Limpiar Filtro";
             this.buttonLimpiarFiltro.UseVisualStyleBackColor = true;
             // 
-            // buttonBuscarUsuario
+            // buttonCrear
             // 
-            this.buttonBuscarUsuario.Location = new System.Drawing.Point(346, 38);
-            this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
-            this.buttonBuscarUsuario.Size = new System.Drawing.Size(75, 23);
-            this.buttonBuscarUsuario.TabIndex = 21;
-            this.buttonBuscarUsuario.Text = "Buscar";
-            this.buttonBuscarUsuario.UseVisualStyleBackColor = true;
+            this.buttonCrear.Location = new System.Drawing.Point(635, 25);
+            this.buttonCrear.Name = "buttonCrear";
+            this.buttonCrear.Size = new System.Drawing.Size(96, 35);
+            this.buttonCrear.TabIndex = 19;
+            this.buttonCrear.Text = "Nuevo Usuario";
+            this.buttonCrear.UseVisualStyleBackColor = true;
+            this.buttonCrear.Click += new System.EventHandler(this.buttonCrear_Click);
             // 
-            // comboBoxBuscarUsuario
+            // buttonEliminar
             // 
-            this.comboBoxBuscarUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBuscarUsuario.FormattingEnabled = true;
-            this.comboBoxBuscarUsuario.Location = new System.Drawing.Point(79, 9);
-            this.comboBoxBuscarUsuario.Name = "comboBoxBuscarUsuario";
-            this.comboBoxBuscarUsuario.Size = new System.Drawing.Size(261, 21);
-            this.comboBoxBuscarUsuario.TabIndex = 19;
+            this.buttonEliminar.Location = new System.Drawing.Point(522, 25);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(96, 35);
+            this.buttonEliminar.TabIndex = 14;
+            this.buttonEliminar.Text = "Eliminar";
+            this.buttonEliminar.UseVisualStyleBackColor = true;
             // 
-            // textBoxBuscarUsuario
+            // buttonBuscar
             // 
-            this.textBoxBuscarUsuario.Location = new System.Drawing.Point(78, 40);
-            this.textBoxBuscarUsuario.Name = "textBoxBuscarUsuario";
-            this.textBoxBuscarUsuario.Size = new System.Drawing.Size(262, 20);
-            this.textBoxBuscarUsuario.TabIndex = 20;
+            this.buttonBuscar.Location = new System.Drawing.Point(113, 67);
+            this.buttonBuscar.Name = "buttonBuscar";
+            this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
+            this.buttonBuscar.TabIndex = 18;
+            this.buttonBuscar.Text = "Buscar";
+            this.buttonBuscar.UseVisualStyleBackColor = true;
+            // 
+            // buttonModificar
+            // 
+            this.buttonModificar.Location = new System.Drawing.Point(405, 25);
+            this.buttonModificar.Name = "buttonModificar";
+            this.buttonModificar.Size = new System.Drawing.Size(96, 35);
+            this.buttonModificar.TabIndex = 13;
+            this.buttonModificar.Text = "Modificar";
+            this.buttonModificar.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxBuscar
+            // 
+            this.comboBoxBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuscar.FormattingEnabled = true;
+            this.comboBoxBuscar.Location = new System.Drawing.Point(79, 9);
+            this.comboBoxBuscar.Name = "comboBoxBuscar";
+            this.comboBoxBuscar.Size = new System.Drawing.Size(261, 21);
+            this.comboBoxBuscar.TabIndex = 16;
+            // 
+            // textBoxBuscar
+            // 
+            this.textBoxBuscar.Location = new System.Drawing.Point(78, 40);
+            this.textBoxBuscar.Name = "textBoxBuscar";
+            this.textBoxBuscar.Size = new System.Drawing.Size(262, 20);
+            this.textBoxBuscar.TabIndex = 17;
             // 
             // labelConsultaEmpleados
             // 
@@ -109,57 +153,31 @@
             this.labelConsultaEmpleados.Location = new System.Drawing.Point(12, 9);
             this.labelConsultaEmpleados.Name = "labelConsultaEmpleados";
             this.labelConsultaEmpleados.Size = new System.Drawing.Size(61, 13);
-            this.labelConsultaEmpleados.TabIndex = 18;
+            this.labelConsultaEmpleados.TabIndex = 15;
             this.labelConsultaEmpleados.Text = "Buscar por:";
-            // 
-            // dataGridConsultaUsuarios
-            // 
-            this.dataGridConsultaUsuarios.AllowUserToAddRows = false;
-            this.dataGridConsultaUsuarios.AllowUserToDeleteRows = false;
-            this.dataGridConsultaUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridConsultaUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridConsultaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridConsultaUsuarios.Location = new System.Drawing.Point(1, 103);
-            this.dataGridConsultaUsuarios.Name = "dataGridConsultaUsuarios";
-            this.dataGridConsultaUsuarios.ReadOnly = true;
-            this.dataGridConsultaUsuarios.Size = new System.Drawing.Size(1283, 359);
-            this.dataGridConsultaUsuarios.TabIndex = 17;
-            // 
-            // buttonCerrar
-            // 
-            this.buttonCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCerrar.Location = new System.Drawing.Point(1258, 0);
-            this.buttonCerrar.Name = "buttonCerrar";
-            this.buttonCerrar.Size = new System.Drawing.Size(26, 21);
-            this.buttonCerrar.TabIndex = 26;
-            this.buttonCerrar.Text = "X";
-            this.buttonCerrar.UseVisualStyleBackColor = true;
-            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
             // ConsultaUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1285, 462);
+            this.ClientSize = new System.Drawing.Size(800, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.comboBoxOrdenar);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listViewUsuarios);
             this.Controls.Add(this.buttonCerrar);
-            this.Controls.Add(this.buttonCrearUsuario);
-            this.Controls.Add(this.buttonEliminarUsuario);
-            this.Controls.Add(this.buttonModificarUsuario);
             this.Controls.Add(this.buttonLimpiarFiltro);
-            this.Controls.Add(this.buttonBuscarUsuario);
-            this.Controls.Add(this.comboBoxBuscarUsuario);
-            this.Controls.Add(this.textBoxBuscarUsuario);
+            this.Controls.Add(this.buttonCrear);
+            this.Controls.Add(this.buttonEliminar);
+            this.Controls.Add(this.buttonBuscar);
+            this.Controls.Add(this.buttonModificar);
+            this.Controls.Add(this.comboBoxBuscar);
+            this.Controls.Add(this.textBoxBuscar);
             this.Controls.Add(this.labelConsultaEmpleados);
-            this.Controls.Add(this.dataGridConsultaUsuarios);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultaUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConsultaUsuario";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,15 +185,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonCrearUsuario;
-        private System.Windows.Forms.Button buttonEliminarUsuario;
-        private System.Windows.Forms.Button buttonModificarUsuario;
-        private System.Windows.Forms.Button buttonLimpiarFiltro;
-        private System.Windows.Forms.Button buttonBuscarUsuario;
-        private System.Windows.Forms.ComboBox comboBoxBuscarUsuario;
-        private System.Windows.Forms.TextBox textBoxBuscarUsuario;
-        private System.Windows.Forms.Label labelConsultaEmpleados;
-        private System.Windows.Forms.DataGridView dataGridConsultaUsuarios;
+        private System.Windows.Forms.ComboBox comboBoxOrdenar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView listViewUsuarios;
         private System.Windows.Forms.Button buttonCerrar;
+        private System.Windows.Forms.Button buttonLimpiarFiltro;
+        private System.Windows.Forms.Button buttonCrear;
+        private System.Windows.Forms.Button buttonEliminar;
+        private System.Windows.Forms.Button buttonBuscar;
+        private System.Windows.Forms.Button buttonModificar;
+        private System.Windows.Forms.ComboBox comboBoxBuscar;
+        private System.Windows.Forms.TextBox textBoxBuscar;
+        private System.Windows.Forms.Label labelConsultaEmpleados;
     }
 }
