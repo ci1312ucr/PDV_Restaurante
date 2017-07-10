@@ -68,7 +68,7 @@ namespace PDVRestaurante.BaseDatos
                     sucursal.IdDistrito = (int)dataRow["IdDistrito"];
                     sucursal.IdCanton = (int)dataRow["IdCanton"];
                     sucursal.IdProvincia = (int)dataRow["IdProvincia"];
-                    sucursal.IdGerente = dataRow["IdGerente"] == DBNull.Value ? null : (int?)dataRow["IdGerente"];
+                    sucursal.IdGerente = dataRow["IdGerente"] == DBNull.Value ? "" : dataRow["IdGerente"].ToString();
                     sucursal.FechaInicio = dataRow["FechaInicio"] == DBNull.Value ? null : (DateTime?)dataRow["FechaInicio"];
                     sucursal.Detalle = dataRow["Detalle"] == DBNull.Value ? "" : dataRow["Detalle"].ToString();
                 }
@@ -97,7 +97,7 @@ namespace PDVRestaurante.BaseDatos
                         sucursal.IdDistrito = (int)r["IdDistrito"];
                         sucursal.IdCanton = (int)r["IdCanton"];
                         sucursal.IdProvincia = (int)r["IdProvincia"];
-                        sucursal.IdGerente = r["IdGerente"] == DBNull.Value ? null : (int?)r["IdGerente"];
+                        sucursal.IdGerente = r["IdGerente"] == DBNull.Value ? "" : r["IdGerente"].ToString();
                         sucursal.FechaInicio = r["FechaInicio"] == DBNull.Value ? null : (DateTime?)r["FechaInicio"];
                         sucursal.Detalle = r["Detalle"] == DBNull.Value ? "" : r["Detalle"].ToString();
                         sucursales.Add(sucursal);

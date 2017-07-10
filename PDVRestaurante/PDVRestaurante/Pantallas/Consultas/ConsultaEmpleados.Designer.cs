@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.buttonCrearEmpleado = new System.Windows.Forms.Button();
             this.buttonBuscarEmpleado = new System.Windows.Forms.Button();
             this.textBoxBuscarEmpleado = new System.Windows.Forms.TextBox();
@@ -36,26 +35,11 @@
             this.labelConsultaEmpleados = new System.Windows.Forms.Label();
             this.buttonEliminarEmpleado = new System.Windows.Forms.Button();
             this.buttonModificarEmpleado = new System.Windows.Forms.Button();
-            this.dataGridConsultaEmpleados = new System.Windows.Forms.DataGridView();
-            this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
-            this.cedulaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaInicioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreSucursalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaNacimientoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sexoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoCivilDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idSucursalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonCerrar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaEmpleados)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).BeginInit();
+            this.listViewEmpleados = new System.Windows.Forms.ListView();
+            this.comboBoxOrdenar = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonCrearEmpleado
@@ -66,6 +50,7 @@
             this.buttonCrearEmpleado.TabIndex = 7;
             this.buttonCrearEmpleado.Text = "Nuevo Empleado";
             this.buttonCrearEmpleado.UseVisualStyleBackColor = true;
+            this.buttonCrearEmpleado.Click += new System.EventHandler(this.buttonCrearEmpleado_Click);
             // 
             // buttonBuscarEmpleado
             // 
@@ -111,6 +96,7 @@
             this.buttonEliminarEmpleado.TabIndex = 2;
             this.buttonEliminarEmpleado.Text = "Eliminar";
             this.buttonEliminarEmpleado.UseVisualStyleBackColor = true;
+            this.buttonEliminarEmpleado.Click += new System.EventHandler(this.buttonEliminarEmpleado_Click);
             // 
             // buttonModificarEmpleado
             // 
@@ -120,46 +106,7 @@
             this.buttonModificarEmpleado.TabIndex = 1;
             this.buttonModificarEmpleado.Text = "Modificar";
             this.buttonModificarEmpleado.UseVisualStyleBackColor = true;
-            // 
-            // dataGridConsultaEmpleados
-            // 
-            this.dataGridConsultaEmpleados.AllowUserToAddRows = false;
-            this.dataGridConsultaEmpleados.AllowUserToDeleteRows = false;
-            this.dataGridConsultaEmpleados.AllowUserToResizeColumns = false;
-            this.dataGridConsultaEmpleados.AllowUserToResizeRows = false;
-            this.dataGridConsultaEmpleados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridConsultaEmpleados.AutoGenerateColumns = false;
-            this.dataGridConsultaEmpleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridConsultaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridConsultaEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cedulaDataGridViewTextBoxColumn,
-            this.nombre1DataGridViewTextBoxColumn,
-            this.nombre2DataGridViewTextBoxColumn,
-            this.apellido1DataGridViewTextBoxColumn,
-            this.apellido2DataGridViewTextBoxColumn,
-            this.tipoEDataGridViewTextBoxColumn,
-            this.fechaInicioDataGridViewTextBoxColumn,
-            this.nombreSucursalDataGridViewTextBoxColumn,
-            this.fechaNacimientoDataGridViewTextBoxColumn,
-            this.sexoDataGridViewTextBoxColumn,
-            this.estadoCivilDataGridViewTextBoxColumn,
-            this.salarioDataGridViewTextBoxColumn,
-            this.tipoPDataGridViewTextBoxColumn,
-            this.idSucursalDataGridViewTextBoxColumn});
-            this.dataGridConsultaEmpleados.DataSource = this.empleadoBindingSource;
-            this.dataGridConsultaEmpleados.Location = new System.Drawing.Point(0, 116);
-            this.dataGridConsultaEmpleados.MultiSelect = false;
-            this.dataGridConsultaEmpleados.Name = "dataGridConsultaEmpleados";
-            this.dataGridConsultaEmpleados.ReadOnly = true;
-            this.dataGridConsultaEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridConsultaEmpleados.Size = new System.Drawing.Size(1245, 346);
-            this.dataGridConsultaEmpleados.TabIndex = 0;
-            // 
-            // empleadoBindingSource
-            // 
-            this.empleadoBindingSource.DataSource = typeof(PDVRestaurante.Objetos.Empleado);
+            this.buttonModificarEmpleado.Click += new System.EventHandler(this.buttonModificarEmpleado_Click);
             // 
             // buttonLimpiarFiltro
             // 
@@ -170,106 +117,6 @@
             this.buttonLimpiarFiltro.Text = "Limpiar Filtro";
             this.buttonLimpiarFiltro.UseVisualStyleBackColor = true;
             this.buttonLimpiarFiltro.Click += new System.EventHandler(this.buttonLimpiarFiltro_Click);
-            // 
-            // cedulaDataGridViewTextBoxColumn
-            // 
-            this.cedulaDataGridViewTextBoxColumn.DataPropertyName = "Cedula";
-            this.cedulaDataGridViewTextBoxColumn.HeaderText = "Cedula";
-            this.cedulaDataGridViewTextBoxColumn.Name = "cedulaDataGridViewTextBoxColumn";
-            this.cedulaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombre1DataGridViewTextBoxColumn
-            // 
-            this.nombre1DataGridViewTextBoxColumn.DataPropertyName = "Nombre1";
-            this.nombre1DataGridViewTextBoxColumn.HeaderText = "Primer Nombre";
-            this.nombre1DataGridViewTextBoxColumn.Name = "nombre1DataGridViewTextBoxColumn";
-            this.nombre1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombre2DataGridViewTextBoxColumn
-            // 
-            this.nombre2DataGridViewTextBoxColumn.DataPropertyName = "Nombre2";
-            this.nombre2DataGridViewTextBoxColumn.HeaderText = "Segundo Nombre";
-            this.nombre2DataGridViewTextBoxColumn.Name = "nombre2DataGridViewTextBoxColumn";
-            this.nombre2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // apellido1DataGridViewTextBoxColumn
-            // 
-            this.apellido1DataGridViewTextBoxColumn.DataPropertyName = "Apellido1";
-            this.apellido1DataGridViewTextBoxColumn.HeaderText = "Primer Apellido";
-            this.apellido1DataGridViewTextBoxColumn.Name = "apellido1DataGridViewTextBoxColumn";
-            this.apellido1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // apellido2DataGridViewTextBoxColumn
-            // 
-            this.apellido2DataGridViewTextBoxColumn.DataPropertyName = "Apellido2";
-            this.apellido2DataGridViewTextBoxColumn.HeaderText = "Segundo Apellido";
-            this.apellido2DataGridViewTextBoxColumn.Name = "apellido2DataGridViewTextBoxColumn";
-            this.apellido2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tipoEDataGridViewTextBoxColumn
-            // 
-            this.tipoEDataGridViewTextBoxColumn.DataPropertyName = "TipoE";
-            this.tipoEDataGridViewTextBoxColumn.HeaderText = "Tipo de Empleado";
-            this.tipoEDataGridViewTextBoxColumn.Name = "tipoEDataGridViewTextBoxColumn";
-            this.tipoEDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaInicioDataGridViewTextBoxColumn
-            // 
-            this.fechaInicioDataGridViewTextBoxColumn.DataPropertyName = "FechaInicio";
-            this.fechaInicioDataGridViewTextBoxColumn.HeaderText = "Fecha de Inicio";
-            this.fechaInicioDataGridViewTextBoxColumn.Name = "fechaInicioDataGridViewTextBoxColumn";
-            this.fechaInicioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombreSucursalDataGridViewTextBoxColumn
-            // 
-            this.nombreSucursalDataGridViewTextBoxColumn.DataPropertyName = "NombreSucursal";
-            this.nombreSucursalDataGridViewTextBoxColumn.HeaderText = "Sucursal Asignada";
-            this.nombreSucursalDataGridViewTextBoxColumn.Name = "nombreSucursalDataGridViewTextBoxColumn";
-            this.nombreSucursalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaNacimientoDataGridViewTextBoxColumn
-            // 
-            this.fechaNacimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaNacimiento";
-            this.fechaNacimientoDataGridViewTextBoxColumn.HeaderText = "Fecha de Nacimiento";
-            this.fechaNacimientoDataGridViewTextBoxColumn.Name = "fechaNacimientoDataGridViewTextBoxColumn";
-            this.fechaNacimientoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sexoDataGridViewTextBoxColumn
-            // 
-            this.sexoDataGridViewTextBoxColumn.DataPropertyName = "Sexo";
-            this.sexoDataGridViewTextBoxColumn.HeaderText = "Sexo";
-            this.sexoDataGridViewTextBoxColumn.Name = "sexoDataGridViewTextBoxColumn";
-            this.sexoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // estadoCivilDataGridViewTextBoxColumn
-            // 
-            this.estadoCivilDataGridViewTextBoxColumn.DataPropertyName = "EstadoCivil";
-            this.estadoCivilDataGridViewTextBoxColumn.HeaderText = "Estado Civil";
-            this.estadoCivilDataGridViewTextBoxColumn.Name = "estadoCivilDataGridViewTextBoxColumn";
-            this.estadoCivilDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // salarioDataGridViewTextBoxColumn
-            // 
-            this.salarioDataGridViewTextBoxColumn.DataPropertyName = "Salario";
-            this.salarioDataGridViewTextBoxColumn.HeaderText = "Salario";
-            this.salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
-            this.salarioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tipoPDataGridViewTextBoxColumn
-            // 
-            this.tipoPDataGridViewTextBoxColumn.DataPropertyName = "TipoP";
-            this.tipoPDataGridViewTextBoxColumn.HeaderText = "Tipo de Persona";
-            this.tipoPDataGridViewTextBoxColumn.Name = "tipoPDataGridViewTextBoxColumn";
-            this.tipoPDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tipoPDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idSucursalDataGridViewTextBoxColumn
-            // 
-            this.idSucursalDataGridViewTextBoxColumn.DataPropertyName = "IdSucursal";
-            this.idSucursalDataGridViewTextBoxColumn.HeaderText = "Id de Sucursal";
-            this.idSucursalDataGridViewTextBoxColumn.Name = "idSucursalDataGridViewTextBoxColumn";
-            this.idSucursalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idSucursalDataGridViewTextBoxColumn.Visible = false;
             // 
             // buttonCerrar
             // 
@@ -283,6 +130,40 @@
             this.buttonCerrar.UseVisualStyleBackColor = true;
             this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
+            // listViewEmpleados
+            // 
+            this.listViewEmpleados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewEmpleados.FullRowSelect = true;
+            this.listViewEmpleados.Location = new System.Drawing.Point(12, 142);
+            this.listViewEmpleados.MultiSelect = false;
+            this.listViewEmpleados.Name = "listViewEmpleados";
+            this.listViewEmpleados.Size = new System.Drawing.Size(1221, 337);
+            this.listViewEmpleados.TabIndex = 10;
+            this.listViewEmpleados.UseCompatibleStateImageBehavior = false;
+            this.listViewEmpleados.View = System.Windows.Forms.View.Details;
+            this.listViewEmpleados.Resize += new System.EventHandler(this.listViewEmpleados_Ajuste);
+            // 
+            // comboBoxOrdenar
+            // 
+            this.comboBoxOrdenar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOrdenar.FormattingEnabled = true;
+            this.comboBoxOrdenar.Location = new System.Drawing.Point(972, 115);
+            this.comboBoxOrdenar.Name = "comboBoxOrdenar";
+            this.comboBoxOrdenar.Size = new System.Drawing.Size(261, 21);
+            this.comboBoxOrdenar.TabIndex = 12;
+            this.comboBoxOrdenar.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrdenar_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(905, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Ordernar por:";
+            // 
             // ConsultaEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,11 +172,13 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonCerrar;
-            this.ClientSize = new System.Drawing.Size(1245, 462);
+            this.ClientSize = new System.Drawing.Size(1245, 491);
             this.ControlBox = false;
+            this.Controls.Add(this.comboBoxOrdenar);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listViewEmpleados);
             this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonLimpiarFiltro);
-            this.Controls.Add(this.dataGridConsultaEmpleados);
             this.Controls.Add(this.buttonCrearEmpleado);
             this.Controls.Add(this.buttonEliminarEmpleado);
             this.Controls.Add(this.buttonBuscarEmpleado);
@@ -303,12 +186,12 @@
             this.Controls.Add(this.comboBoxBuscarEmpleado);
             this.Controls.Add(this.textBoxBuscarEmpleado);
             this.Controls.Add(this.labelConsultaEmpleados);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultaEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConsultaEmpleado";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaEmpleados)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).EndInit();
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,26 +202,13 @@
         private System.Windows.Forms.Label labelConsultaEmpleados;
         private System.Windows.Forms.Button buttonEliminarEmpleado;
         private System.Windows.Forms.Button buttonModificarEmpleado;
-        private System.Windows.Forms.DataGridView dataGridConsultaEmpleados;
-        private System.Windows.Forms.BindingSource empleadoBindingSource;
         private System.Windows.Forms.TextBox textBoxBuscarEmpleado;
         private System.Windows.Forms.Button buttonBuscarEmpleado;
         private System.Windows.Forms.Button buttonCrearEmpleado;
         private System.Windows.Forms.Button buttonLimpiarFiltro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellido1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellido2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreSucursalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaNacimientoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sexoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estadoCivilDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idSucursalDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button buttonCerrar;
+        private System.Windows.Forms.ListView listViewEmpleados;
+        private System.Windows.Forms.ComboBox comboBoxOrdenar;
+        private System.Windows.Forms.Label label1;
     }
 }

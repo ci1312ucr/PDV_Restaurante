@@ -11,17 +11,15 @@ namespace PDVRestaurante.Objetos
 {
     public class Empleado : PersonaFisica
     {
-        [DisplayName("Tipo de Empleado")]
+        [Display(Name = "Tipo de Empleado", Order = 6)]
         public string TipoE { get; set; }
+        [Display(Name = "Salario", Order = 12)]
         public decimal Salario { get; set; }
-        [DisplayName("Id de Sucursal")]
+        [Display(Name = "Id de Sucursal", Order = 0)]
         public int IdSucursal { get; set; }
-        [DisplayName("Sucursal Asignada")]
-        public string NombreSucursal
-        {
-            get {return TablaSucursal.ObtenerSucursal("IdSucursal", IdSucursal.ToString()).Detalle; }
-        }
-        [DisplayName("Fecha de Inicio")]
+        [Display(Name = "Sucursal Asignada", Order = 8)]
+        public string NombreSucursal { get; set; }
+        [Display(Name = "Fecha de Inicio", Order = 7)]
         public DateTime FechaInicio { get; set; }
     }
 }

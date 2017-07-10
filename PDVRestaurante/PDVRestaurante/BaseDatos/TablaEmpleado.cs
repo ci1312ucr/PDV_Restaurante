@@ -26,7 +26,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string TablaEmpleadoPersona()
         {
-            return "PersonaFisica a INNER JOIN Empleado b ON a.CodPerFisica = b.Cedula";
+            return "Empleado e INNER JOIN PersonaFisica p ON p.CodPerFisica = e.Cedula INNER JOIN Sucursal s ON s.IdSucursal = e.IdSucursal";
         }
 
         private static string Columnas()
@@ -35,7 +35,7 @@ namespace PDVRestaurante.BaseDatos
         }
         private static string ColumnasEmpleadoPersona()
         {
-            return "CodPerFisica,Nombre1,Nombre2,Apellido1,Apellido2,Sexo,EstadoCivil,FechaNacimiento,TipoE,Salario,IdSucursal,FechaInicio";
+            return "CodPerFisica,Nombre1,Nombre2,Apellido1,Apellido2,Sexo,EstadoCivil,FechaNacimiento,TipoE,Salario,e.IdSucursal,Detalle,e.FechaInicio";
         }
 
         private static string LlavePrincipal()
@@ -64,7 +64,7 @@ namespace PDVRestaurante.BaseDatos
         public static Empleado ObtenerEmpleado(string cedula)
         {
             Empleado empleado = null;
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), TablaEmpleadoPersona(), ColumnasEmpleadoPersona(), "a.CodPerFisica", cedula, CriterioSQL.IgualA);
+            var dataSet = InterpreteSQL.Obtener(ConnectionString(), TablaEmpleadoPersona(), ColumnasEmpleadoPersona(), "p.CodPerFisica", cedula, CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -83,6 +83,7 @@ namespace PDVRestaurante.BaseDatos
                     empleado.TipoE = dataRow["TipoE"].ToString();
                     empleado.Salario = (decimal)dataRow["Salario"];
                     empleado.IdSucursal = (int)dataRow["IdSucursal"];
+                    empleado.NombreSucursal = dataRow["Detalle"] == DBNull.Value ? "" : dataRow["Detalle"].ToString();
                     empleado.FechaInicio = (DateTime)dataRow["FechaInicio"];
                     empleado.TipoP = 'F';
                 }
@@ -103,21 +104,22 @@ namespace PDVRestaurante.BaseDatos
             {
                 try
                 {
-                    foreach (DataRow r in dataSet.Tables[0].Rows)
+                    foreach (DataRow row in dataSet.Tables[0].Rows)
                     {
                         var empleado = new Empleado();
-                        empleado.Cedula = r["CodPerFisica"].ToString();
-                        empleado.Nombre1 = r["Nombre1"].ToString();
-                        empleado.Nombre2 = r["Nombre2"] == DBNull.Value ? "" : r["Nombre2"].ToString();
-                        empleado.Apellido1 = r["Apellido1"].ToString();
-                        empleado.Apellido2 = r["Apellido2"] == DBNull.Value ? "" : r["Apellido2"].ToString();
-                        empleado.Sexo = r["Sexo"].ToString()[0];
-                        empleado.EstadoCivil = r["EstadoCivil"] == DBNull.Value ? "" : r["EstadoCivil"].ToString();
-                        empleado.FechaNacimiento = (DateTime)r["FechaNacimiento"];
-                        empleado.TipoE = r["TipoE"].ToString();
-                        empleado.Salario = (decimal)r["Salario"];
-                        empleado.IdSucursal = (int)r["IdSucursal"];
-                        empleado.FechaInicio = (DateTime)r["FechaInicio"];
+                        empleado.Cedula = row["CodPerFisica"].ToString();
+                        empleado.Nombre1 = row["Nombre1"].ToString();
+                        empleado.Nombre2 = row["Nombre2"] == DBNull.Value ? "" : row["Nombre2"].ToString();
+                        empleado.Apellido1 = row["Apellido1"].ToString();
+                        empleado.Apellido2 = row["Apellido2"] == DBNull.Value ? "" : row["Apellido2"].ToString();
+                        empleado.Sexo = row["Sexo"].ToString()[0];
+                        empleado.EstadoCivil = row["EstadoCivil"] == DBNull.Value ? "" : row["EstadoCivil"].ToString();
+                        empleado.FechaNacimiento = (DateTime)row["FechaNacimiento"];
+                        empleado.TipoE = row["TipoE"].ToString();
+                        empleado.Salario = (decimal)row["Salario"];
+                        empleado.IdSucursal = (int)row["IdSucursal"];
+                        empleado.NombreSucursal = row["Detalle"] == DBNull.Value ? "" : row["Detalle"].ToString();
+                        empleado.FechaInicio = (DateTime)row["FechaInicio"];
                         empleado.TipoP = 'F';
                         empleados.Add(empleado);
                     }

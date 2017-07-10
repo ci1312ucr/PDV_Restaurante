@@ -10,18 +10,19 @@ namespace PDVRestaurante.Objetos
 {
     public class PersonaFisica : Persona
     {
-        [DisplayName("Primer Nombre")]
+        [Display(Name = "Primer Nombre", Order = 2)]
         public string Nombre1 { get; set; }
-        [DisplayName("Segundo Nombre")]
+        [Display(Name = "Segundo Nombre", Order = 3)]
         public string Nombre2 { get; set; }
-        [DisplayName("Primer Apellido")]
+        [Display(Name = "Primer Apellido", Order = 4)]
         public string Apellido1 { get; set; }
-        [DisplayName("Segundo Apellido")]
+        [Display(Name = "Segundo Apellido", Order = 5)]
         public string Apellido2 { get; set; }
+        [Display(Name = "Sexo", Order = 10)]
         public char Sexo { get; set; }
-        [DisplayName("Estado Civil")]
+        [Display(Name = "Estado Civil", Order = 11)]
         public string EstadoCivil { get; set; }
-        [DisplayName("Fecha de Nacimiento")]
+        [Display(Name ="Fecha de Nacimiento", Order = 9)]
         public DateTime FechaNacimiento { get; set; }
     }
 }

@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autenticacion\Autenticacion.cs" />
+    <Compile Include="Ayudantes\Convertidor.cs" />
     <Compile Include="Ayudantes\Encriptador.cs" />
+    <Compile Include="Ayudantes\Extensiones.cs" />
     <Compile Include="Ayudantes\InterpreteSQL.cs" />
     <Compile Include="Ayudantes\ManejoExcepciones.cs" />
     <Compile Include="BaseDatos\TablaCliente.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="BaseDatos\TablaUsuario.cs" />
     <Compile Include="Constantes\CriterioSQL.cs" />
     <Compile Include="Constantes\TipoDeUsuario.cs" />
+    <Compile Include="Objetos\Propiedad.cs" />
     <Compile Include="Objetos\Sucursal.cs" />
     <Compile Include="Pantallas\Consultas\ConsultaClientes.cs">
       <SubType>Form</SubType>
@@ -143,6 +146,12 @@
     </Compile>
     <Compile Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.Designer.cs">
       <DependentUpon>CrearEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Empleados\ModificarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Empleados\ModificarEmpleado.Designer.cs">
+      <DependentUpon>ModificarEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.cs">
       <SubType>Form</SubType>
