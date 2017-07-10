@@ -677,47 +677,89 @@ insert into distrito(IdProvincia, IdCanton, IdDistrito, Descripcion) values (7,6
 
 -- PERSONAS: 40
 -- 10 jurídicas
-INSERT INTO Persona (Cedula) VALUES ('1000715298');
-INSERT INTO Persona (Cedula) VALUES ('0850058785');
-INSERT INTO Persona (Cedula) VALUES ('4077591685');
-INSERT INTO Persona (Cedula) VALUES ('7677612795');
-INSERT INTO Persona (Cedula) VALUES ('4104814001');
-INSERT INTO Persona (Cedula) VALUES ('1777871031');
-INSERT INTO Persona (Cedula) VALUES ('2200784864');
-INSERT INTO Persona (Cedula) VALUES ('6769475370');
-INSERT INTO Persona (Cedula) VALUES ('2607626583');
-INSERT INTO Persona (Cedula) VALUES ('9914101540');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('1000715298', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('0850058785', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('4077591685', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('7677612795', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('4104814001', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('1777871031', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('2200784864', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('6769475370', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('2607626583', 'J');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('9914101540', 'J');
 -- 30 físicas
-INSERT INTO Persona (Cedula) VALUES ('7151944124');
-INSERT INTO Persona (Cedula) VALUES ('8652091730');
-INSERT INTO Persona (Cedula) VALUES ('7666106828');
-INSERT INTO Persona (Cedula) VALUES ('7821711937');
-INSERT INTO Persona (Cedula) VALUES ('8572548065');
-INSERT INTO Persona (Cedula) VALUES ('2277441121');
-INSERT INTO Persona (Cedula) VALUES ('3599958456');
-INSERT INTO Persona (Cedula) VALUES ('6555791824');
-INSERT INTO Persona (Cedula) VALUES ('5984812230');
-INSERT INTO Persona (Cedula) VALUES ('0946330861');
-INSERT INTO Persona (Cedula) VALUES ('2176175826');
-INSERT INTO Persona (Cedula) VALUES ('5149791839');
-INSERT INTO Persona (Cedula) VALUES ('9441467565');
-INSERT INTO Persona (Cedula) VALUES ('0171759163');
-INSERT INTO Persona (Cedula) VALUES ('0450614084');
-INSERT INTO Persona (Cedula) VALUES ('5483517283');
-INSERT INTO Persona (Cedula) VALUES ('2064587693');
-INSERT INTO Persona (Cedula) VALUES ('9426176636');
-INSERT INTO Persona (Cedula) VALUES ('1306694640');
-INSERT INTO Persona (Cedula) VALUES ('5825426356');
-INSERT INTO Persona (Cedula) VALUES ('3684272745');
-INSERT INTO Persona (Cedula) VALUES ('0338446563');
-INSERT INTO Persona (Cedula) VALUES ('5511981551');
-INSERT INTO Persona (Cedula) VALUES ('5657299013');
-INSERT INTO Persona (Cedula) VALUES ('3257481726');
-INSERT INTO Persona (Cedula) VALUES ('1748482408');
-INSERT INTO Persona (Cedula) VALUES ('7504861461');
-INSERT INTO Persona (Cedula) VALUES ('0745030611');
-INSERT INTO Persona (Cedula) VALUES ('3653868265');
-INSERT INTO Persona (Cedula) VALUES ('0556742382');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('7151944124', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('8652091730', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('7666106828', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('7821711937', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('8572548065', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('2277441121', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('3599958456', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('6555791824', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('5984812230', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('0946330861', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('2176175826', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('5149791839', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('9441467565', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('0171759163', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('0450614084', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('5483517283', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('2064587693', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('9426176636', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('1306694640', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('5825426356', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('3684272745', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('0338446563', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('5511981551', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('5657299013', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('3257481726', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('1748482408', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('7504861461', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('0745030611', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('3653868265', 'F');
+INSERT INTO Persona (Cedula, TipoP) VALUES ('0556742382', 'F');
+
+
+-- DIRECIONESPERSONA
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('1000715298','Trabajo',3,5,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('0850058785','Hogar',7,3,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('4077591685','Trabajo',2,2,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('7677612795','Trabajo',1,2,3,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('4104814001','Otro',1,4,7,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('1777871031','Trabajo',4,6,4,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('2200784864','Otro',1,6,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('6769475370','Otro',1,10,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('2607626583','Otro',2,9,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('9914101540','Hogar',3,6,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('7151944124','Trabajo',1,6,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('8652091730','Otro',3,7,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('7666106828','Trabajo',3,5,7,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('7821711937','Trabajo',6,9,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('8572548065','Trabajo',1,10,6,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('2277441121','Otro',4,4,2,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('3599958456','Otro',2,3,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('6555791824','Otro',2,2,5,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('5984812230','Trabajo',6,6,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('0946330861','Otro',3,5,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('2176175826','Hogar',1,2,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('5149791839','Trabajo',5,2,2,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('9441467565','Trabajo',8,1,6,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('0171759163','Otro',1,3,3,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('0450614084','Trabajo',1,2,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('5483517283','Trabajo',1,5,6,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('2064587693','Hogar',6,7,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('9426176636','Hogar',1,8,4,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('1306694640','Hogar',1,2,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('5825426356','Hogar',1,1,7,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('3684272745','Trabajo',3,2,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('0338446563','Trabajo',2,6,4,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('5511981551','Trabajo',2,4,1,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('5657299013','Trabajo',4,7,2,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('3257481726','Trabajo',1,9,6,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('7504861461','Otro',6,2,6,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('0745030611','Trabajo',4,10,2,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('3653868265','Otro',3,1,6,'NULL');
+INSERT INTO DireccionesPersona(Cedula,Tipo,IdDistrito,IdCanton,IdProvincia,Detalle) VALUES('0556742382','Otro',1,9,4,'NULL');
 
 
 -- PERSONAS JURÍDICAS: 10
@@ -782,26 +824,26 @@ INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,Id
 
 
 -- EMPLEADOS: 18 (10 comunes, 7 gerentes, 1 superadmin)
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('7151944124','Cocinero',916321.68,2,'2017-12-26');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('8652091730','Mesero',797511.80,5,'2016-06-16');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('7666106828','Cajero',565656.66,7,'2017-07-14');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('7821711937','Mesero',609706.25,6,'2017-07-31');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('8572548065','Cocinero',107928.80,1,'2017-06-15');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('2277441121','Mesero',503472.97,3,'2015-04-08');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('3599958456','Repartidor',820656.41,4,'2014-02-19');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('6555791824','Mesero',504377.81,2,'2017-01-07');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('5984812230','TI',529065.62,4,'2017-05-10');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('0946330861','Cocinero',634564.43,3,'2016-09-08');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('7151944124','Cocinero',916321.68,2,'2017-12-26');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('8652091730','Mesero',797511.80,5,'2016-06-16');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('7666106828','Cajero',565656.66,7,'2017-07-14');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('7821711937','Mesero',609706.25,6,'2017-07-31');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('8572548065','Cocinero',107928.80,1,'2017-06-15');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('2277441121','Mesero',503472.97,3,'2015-04-08');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('3599958456','Repartidor',820656.41,4,'2014-02-19');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('6555791824','Mesero',504377.81,2,'2017-01-07');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('5984812230','TI',529065.62,4,'2017-05-10');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('0946330861','Cocinero',634564.43,3,'2016-09-08');
+								
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('7504861461','Gerente',286014.36,1,'2016-12-14');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('0745030611','Gerente',890301.72,2,'2016-08-08');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('3653868265','Gerente',943315.22,3,'2014-06-16');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('0556742382','Gerente',306997.33,4,'2017-06-09');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('5657299013','Gerente',694562.84,5,'2018-02-25');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('3257481726','Gerente',332288.23,6,'2017-02-26');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('1748482408','Gerente',492505.35,7,'2017-01-26');
 
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('7504861461','Gerente',286014.36,1,'2016-12-14');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('0745030611','Gerente',890301.72,2,'2016-08-08');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('3653868265','Gerente',943315.22,3,'2014-06-16');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('0556742382','Gerente',306997.33,4,'2017-06-09');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('5657299013','Gerente',694562.84,5,'2018-02-25');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('3257481726','Gerente',332288.23,6,'2017-02-26');
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('1748482408','Gerente',492505.35,7,'2017-01-26');
-
-INSERT INTO Empleado(Cedula,Tipo,Salario,IdSucursal,FechaInicio) VALUES('5511981551','Administrador',492345.35,7,'2017-01-26');
+INSERT INTO Empleado(Cedula,TipoE,Salario,IdSucursal,FechaInicio) VALUES('5511981551','Administrador',492345.35,7,'2017-01-26');
 
 
 -- SUCURSALES (gerentes)
@@ -814,21 +856,322 @@ UPDATE Sucursal SET IdGerente = '3257481726',FechaInicio = '2017-02-26' WHERE Id
 UPDATE Sucursal SET IdGerente = '1748482408',FechaInicio = '2017-01-26' WHERE IdSucursal = 7;
 
 
+-- TELEFONOS_SUCURSAL
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('1','569462125349285');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('1','442808171488220');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('2','312615420723922');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('2','664596546240540');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('3','461088748377672');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('3','438826023383174');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('4','903524063950847');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('4','418711171402558');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('5','446697049049285');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('5','558415227099455');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('6','185012093241901');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('6','309719107668963');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('7','603043019503793');
+INSERT INTO TelefonoSucursal(IdSucursal,Telefono) VALUES('7','745836749654948');
+
+
 -- USUARIOS
 -- superadmin, admin123
 insert into Usuario(nombre, contrasena, salt, IdEmpleado, IdTipoUsuario) values ('superadmin','FKnGfURFVmUGaAgZXrvzELZdw2temjyYdHMOeM93paU=','mXrseSUtDvGZQqvAhhYllw==','5511981551', 1)
-
 -- gerente1, gr123 
 insert into Usuario(nombre, contrasena, salt, IdEmpleado, IdTipoUsuario) values ('gerente1','0EeGci+Vcvrkv+4D0u4nWjlvP5k8AtSRH5A/biLUXgA=','X6+Fa7J7eHH8qY2TTQFMLA==','7504861461', 2)
-
 -- cajero1, cj123
 insert into Usuario(nombre, contrasena, salt, IdEmpleado, IdTipoUsuario) values ('cajero1','jPLVVxDzBp/Wp217yBQS7itdtGkrurnwfBwep1Kfz+E=','3J8GCBr8/IbxviLuWTcxfQ==','7666106828',3)
-
 -- asistente1, as123
 insert into Usuario(nombre, contrasena, salt, IdEmpleado, IdTipoUsuario) values ('asistente1','TZlgZr7O+wgdTwUM8n3nULSNV4WkAQfLb+LnyY2TSN8=','PgwKhGN6WMsQPQSpRjZbug==','5984812230',4)
-
 -- mesero1, ms123
 insert into Usuario(nombre, contrasena, salt, IdEmpleado, IdTipoUsuario) values ('mesero1','F19pgCTwJ1qmlmQ/rxX+dhas0EpYqGoTUPdYbthbxok=','8VS4ew/rg86eePRze8vfGA==','7821711937',5)
-
 -- repartidor1, rep123
 insert into Usuario(nombre, contrasena, salt, IdEmpleado, IdTipoUsuario) values ('repartidor1','/oDEIHF3Sjz/dcX/Gc5Q2v+j1f+c6kbYD4DNpxI7aio=','tVCBpmdFNA69hhJBzdU6Gg==','3599958456',6)
+
+
+-- INGREDIENTE
+insert into Ingrediente(IdIngrediente, nombre) values (1, 'arroz');
+insert into Ingrediente(IdIngrediente, nombre) values (2, 'frijol');
+insert into Ingrediente(IdIngrediente, nombre) values (3, 'res');
+insert into Ingrediente(IdIngrediente, nombre) values (4, 'pescado');
+insert into Ingrediente(IdIngrediente, nombre) values (5, 'pollo');
+insert into Ingrediente(IdIngrediente, nombre) values (6, 'lechuga');
+
+
+-- PLATO
+insert into Plato(IdPlato, nombre, descripcion, precio) values (2, 'Casado de pescado', 'Suculento pescado empanizado, servido con arroz, frijoles y ensalada.', 3000);
+insert into Plato(IdPlato, nombre, descripcion, precio) values (1, 'Casado de res', 'Es un casado con res que más quiere trae ensalada y todo', 2500);
+insert into Plato(IdPlato, nombre, descripcion, precio) values (3, 'Casado de pescado', 'El nombre lo dice todo que más necesita',3500);
+
+
+-- PLATO_INGREDIENTES
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (1, 1, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (1, 2, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (1, 4, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (1, 6, 1);
+
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (2, 1, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (2, 2, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (2, 3, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (2, 6, 1);
+
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (3, 1, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (3, 2, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (3, 5, 1);
+insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (3, 6, 1);
+
+
+-- CLIENTES
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('2176175826','1');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('5149791839','0');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('9441467565','0');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('0171759163','1');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('0450614084','0');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('5483517283','0');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('2064587693','0');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('9426176636','0');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('1306694640','0');
+INSERT INTO Cliente(Cedula,Frecuente) VALUES('5825426356','0');
+
+
+-- FACTURA
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(1,'2017-05-29',5000.00,'2176175826','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(2,'2016-08-27',5000.00,'2176175826','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(3,'2016-12-06',6000.00,'2176175826','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(4,'2017-01-09',6500.00,'2176175826','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(5,'2017-02-23',5000.00,'2176175826','Tarjeta Debito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(6,'2017-05-01',5000.00,'5149791839','Tarjeta Debito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(7,'2016-06-22',5000.00,'5149791839','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(8,'2017-04-30',5000.00,'5149791839','Tarjeta Debito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(9,'2016-10-12',5000.00,'5149791839','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(10,'2016-12-11',5000.00,'5149791839','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(11,'2017-01-23',5000.00,'9441467565','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(12,'2017-02-09',5000.00,'9441467565','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(13,'2016-12-15',5000.00,'9441467565','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(14,'2017-02-11',5000.00,'9441467565','Tarjeta Debito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(15,'2016-07-11',5000.00,'9441467565','Cheque');													
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(16,'2016-10-17',5000.00,'0171759163','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(17,'2016-08-21',5000.00,'0171759163','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(18,'2017-01-29',5000.00,'0171759163','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(19,'2017-01-31',5000.00,'0171759163','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(20,'2016-10-10',5000.00,'0171759163','Tarjeta Debito');									
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(21,'2016-08-04',5000.00,'0450614084','Tarjeta Debito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(22,'2016-10-01',5000.00,'0450614084','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(23,'2016-12-13',5000.00,'0450614084','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(24,'2017-05-23',5000.00,'0450614084','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(25,'2017-01-24',5000.00,'0450614084','Efectivo');						
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(26,'2016-12-23',5000.00,'5483517283','Tarjeta Debito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(27,'2016-12-15',5000.00,'5483517283','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(28,'2016-11-26',5000.00,'5483517283','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(29,'2017-02-20',5000.00,'5483517283','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(30,'2017-03-11',5000.00,'5483517283','Efectivo');					
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(31,'2017-05-20',5000.00,'2064587693','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(32,'2017-01-21',5000.00,'2064587693','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(33,'2016-12-23',5000.00,'2064587693','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(34,'2016-12-25',5000.00,'2064587693','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(35,'2016-09-20',5000.00,'2064587693','Tarjeta Credito');																				
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(36,'2016-10-25',5000.00,'9426176636','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(37,'2017-01-24',5000.00,'9426176636','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(38,'2016-07-08',5000.00,'9426176636','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(39,'2016-08-18',5000.00,'9426176636','Tarjeta Debito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(40,'2016-08-13',5000.00,'9426176636','Tarjeta Credito');																	
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(41,'2016-10-21',5000.00,'1306694640','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(42,'2017-03-20',5000.00,'1306694640','Cheque');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(43,'2016-08-20',5000.00,'1306694640','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(44,'2017-02-10',5000.00,'1306694640','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(45,'2016-11-12',5000.00,'1306694640','Tarjeta Credito');																			
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(46,'2017-01-23',5000.00,'5825426356','Tarjeta Credito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(47,'2016-11-03',5000.00,'5825426356','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(48,'2017-05-10',5000.00,'5825426356','Efectivo');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(49,'2017-04-30',5000.00,'5825426356','Tarjeta Debito');
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(50,'2017-02-14',5000.00,'5825426356','Cheque');
+
+
+-- PLATOS_FACTURA
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('1','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('2','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('3','2','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('4','2','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('4','3','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('5','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('6','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('7','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('8','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('9','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('10','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('11','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('12','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('13','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('14','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('15','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('16','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('17','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('18','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('19','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('20','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('21','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('22','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('23','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('24','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('25','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('26','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('27','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('28','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('29','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('30','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('31','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('32','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('33','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('34','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('35','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('36','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('37','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('38','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('39','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('40','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('41','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('42','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('43','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('44','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('45','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('46','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('47','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('48','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('49','1','2');
+INSERT INTO Platos_Factura(IdFactura,IdPlato,Cantidad) VALUES('50','1','2');
+
+
+-- MESA_FACTURA
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(1,'4');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(2,'1');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(3,'4');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(4,'6');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(7,'1');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(8,'3');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(9,'1');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(10,'5');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(13,'2');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(14,'2');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(15,'5');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(16,'1');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(18,'4');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(20,'5');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(21,'3');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(22,'3');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(26,'6');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(27,'4');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(28,'2');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(29,'2');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(30,'5');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(31,'2');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(42,'2');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(43,'5');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(44,'6');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(45,'4');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(46,'5');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(47,'1');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(48,'4');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(49,'1');
+INSERT INTO Mesa_Factura(IdFactura,NumeroMesa) VALUES(50,'6');
+
+
+-- EMPLEADOS_FACTURA
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('1','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('1','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('2','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('2','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('3','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('3','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('4','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('4','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('5','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('5','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('6','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('6','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('7','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('7','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('8','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('8','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('9','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('9','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('10','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('10','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('11','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('11','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('12','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('12','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('13','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('13','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('14','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('14','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('15','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('15','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('16','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('16','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('17','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('17','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('18','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('18','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('19','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('19','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('20','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('20','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('21','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('21','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('22','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('22','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('23','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('23','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('24','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('24','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('25','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('25','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('26','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('26','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('27','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('27','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('28','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('28','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('29','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('29','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('30','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('30','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('31','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('31','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('32','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('32','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('33','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('33','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('34','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('34','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('35','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('35','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('36','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('36','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('37','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('37','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('38','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('38','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('39','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('39','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('40','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('40','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('41','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('41','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('42','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('42','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('43','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('43','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('44','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('44','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('45','3599958456');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('45','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('46','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('46','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('47','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('47','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('48','7151944124');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('48','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('49','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('49','7666106828');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('50','8652091730');
+INSERT INTO Empleados_Factura(IdFactura,CedulaEmpleado) VALUES('50','7151944124');

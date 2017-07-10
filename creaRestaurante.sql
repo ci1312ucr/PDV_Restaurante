@@ -1,89 +1,97 @@
-alter table Usuario drop constraint FK01_Usuario_TipoUsuario;
-alter table Usuario drop constraint FK02_Usuario_Empleado;
+-- Elimina las tablas existentes
+IF OBJECT_ID('TelefonoSucursal', 'U') IS NOT NULL 
+  DROP TABLE TelefonoSucursal; 
 
-alter table PersonaJuridica drop constraint FK01_PerJuridica_Persona;
+IF OBJECT_ID('Inventario_Ingredientes', 'U') IS NOT NULL 
+  DROP TABLE Inventario_Ingredientes; 
 
-alter table PersonaFisica drop constraint FK01_PerFisica_Persona;
+IF OBJECT_ID('Plato_Ingredientes', 'U') IS NOT NULL 
+  DROP TABLE Plato_Ingredientes; 
 
-alter table Distrito drop constraint FK01_Distrito_PrvncCntn;
+IF OBJECT_ID('Platos_Factura', 'U') IS NOT NULL 
+  DROP TABLE Platos_Factura; 
 
-alter table Canton drop constraint FK01_Canton_Provincia;
+IF OBJECT_ID('Mesa_Factura', 'U') IS NOT NULL 
+  DROP TABLE Mesa_Factura; 
 
-alter table TelefonosPersona drop constraint FK01_TelsPersona_Persona;
+IF OBJECT_ID('Empleados_Factura', 'U') IS NOT NULL 
+  DROP TABLE Empleados_Factura; 
 
-alter table CorreosPersona drop constraint FK01_CorreosPersona_Persona;
+IF OBJECT_ID('OrdenCompra_Ingrediente', 'U') IS NOT NULL 
+  DROP TABLE OrdenCompra_Ingrediente; 
 
-alter table DireccionesPersona drop constraint FK01_DirsPersona_Persona;
-alter table DireccionesPersona drop constraint FK02_DirsPersona_Distrito;
+IF OBJECT_ID('TelefonosPersona', 'U') IS NOT NULL 
+  DROP TABLE TelefonosPersona; 
 
-alter table Empleado drop constraint FK01_Empleado_PerFisica;
-alter table Empleado drop constraint FK02_Empleado_Sucursal;
+IF OBJECT_ID('CorreosPersona', 'U') IS NOT NULL 
+  DROP TABLE CorreosPersona; 
 
-alter table Cliente drop constraint FK01_Cliente_Persona;
+IF OBJECT_ID('DireccionesPersona', 'U') IS NOT NULL 
+  DROP TABLE DireccionesPersona; 
 
-alter table Proveedor drop constraint FK01_Proveedor_Persona;
+IF OBJECT_ID('Usuario', 'U') IS NOT NULL 
+  DROP TABLE Usuario; 
 
-alter table Sucursal drop constraint FK01_Sucursal_Distrito;
-alter table Sucursal drop constraint FK02_Sucursal_Empleado
+IF OBJECT_ID('TipoUsuario', 'U') IS NOT NULL 
+  DROP TABLE TipoUsuario; 
 
-alter table TelefonoSucursal drop constraint FK01_TelSucursal_Sucursal;
+IF OBJECT_ID('Inventario', 'U') IS NOT NULL 
+  DROP TABLE Inventario; 
 
-alter table Inventario drop constraint FK01_Inventario_Sucursal;
+IF OBJECT_ID('Plato', 'U') IS NOT NULL 
+  DROP TABLE Plato; 
 
-alter table Inventario_Ingredientes drop constraint FK01_InvenIngredientes_Inventario;
-alter table Inventario_Ingredientes drop constraint FK02_InvenIngredientes_Ingrediente;
+IF OBJECT_ID('Ingrediente', 'U') IS NOT NULL 
+  DROP TABLE Ingrediente; 
 
-alter table Plato_Ingredientes drop constraint FK01_PlatoIngredientes_Plato;
-alter table Plato_Ingredientes drop constraint FK02_PlatoIngredientes_Ingrediente;
+IF OBJECT_ID('Factura', 'U') IS NOT NULL 
+  DROP TABLE Factura; 
 
-alter table Factura drop constraint FK01_Factura_Cliente;
+IF OBJECT_ID('OrdenCompra', 'U') IS NOT NULL 
+  DROP TABLE OrdenCompra; 
 
-alter table Platos_Factura drop constraint FK01_PlatosFactura_Factura;
-alter table Platos_Factura drop constraint FK02_PlatosFactura_Plato;
+IF OBJECT_ID('Cliente', 'U') IS NOT NULL 
+  DROP TABLE Cliente; 
 
-alter table Mesa_Factura drop constraint FK01_MesaFactura_Factura;
+IF OBJECT_ID('Proveedor', 'U') IS NOT NULL 
+  DROP TABLE Proveedor; 
 
-alter table Empleados_Factura drop constraint FK01_EmpleadosFactura_Factura;
-alter table Empleados_Factura drop constraint FK02_EmpleadosFactura_Empleados;
+IF OBJECT_ID('PersonaJuridica', 'U') IS NOT NULL 
+  DROP TABLE PersonaJuridica; 
 
-alter table OrdenCompra drop constraint FK01_OrdenCompra_Empleado;
-alter table OrdenCompra drop constraint FK02_OrdenCompra_Proveedor;
+IF OBJECT_ID('PersonaFisica', 'U') IS NOT NULL 
+  ALTER TABLE PersonaFisica DROP CONSTRAINT FK01_PerFisica_Persona;
 
-alter table OrdenCompra_Ingrediente drop constraint FK01_OrdnCompraIngrediente_OrdenCompra;
-alter table OrdenCompra_Ingrediente drop constraint FK02_OrdnCompraIngrediente_Ingrediente;
+IF OBJECT_ID('Persona', 'U') IS NOT NULL 
+  DROP TABLE Persona; 
 
+IF OBJECT_ID('Empleado', 'U') IS NOT NULL BEGIN
+  ALTER TABLE Empleado DROP CONSTRAINT FK01_Empleado_PerFisica;
+  ALTER TABLE Empleado DROP CONSTRAINT FK02_Empleado_Sucursal;
+END
 
-drop table Empleado;
-drop table Usuario;
-drop table TipoUsuario;
-drop table TelefonosPersona;
-drop table DireccionesPersona;
-drop table Distrito;
-drop table Canton;
-drop table Provincia;
-drop table CorreosPersona;
-drop table Cliente;
-drop table Proveedor;
-drop table TelefonoSucursal;
-drop table Sucursal;
-drop table Inventario;
-drop table Plato;
-drop table Ingrediente;
-drop table Inventario_Ingredientes;
-drop table Plato_Ingredientes;
-drop table Factura;
-drop table Platos_Factura;
-drop table Mesa_Factura;
-drop table Empleados_Factura;
-drop table OrdenCompra;
-drop table OrdenCompra_Ingrediente;
-drop table PersonaJuridica;
-drop table PersonaFisica;
-drop table Persona;
+IF OBJECT_ID('PersonaFisica', 'U') IS NOT NULL 
+  DROP TABLE PersonaFisica; 
 
+IF OBJECT_ID('Sucursal', 'U') IS NOT NULL 
+  DROP TABLE Sucursal; 
 
+IF OBJECT_ID('Empleado', 'U') IS NOT NULL 
+  DROP TABLE Empleado; 
+
+IF OBJECT_ID('Distrito', 'U') IS NOT NULL 
+  DROP TABLE Distrito; 
+
+IF OBJECT_ID('Canton', 'U') IS NOT NULL 
+  DROP TABLE Canton; 
+
+IF OBJECT_ID('Provincia', 'U') IS NOT NULL 
+  DROP TABLE Provincia; 
+
+-- Crea las tablas
 CREATE TABLE Persona (
 	Cedula varchar(10) NOT NULL,
+	TipoP char(1),
 	CONSTRAINT PK_Persona PRIMARY KEY (Cedula)
 )
 
@@ -154,14 +162,14 @@ CREATE TABLE DireccionesPersona (
 	IdCanton int NOT NULL,
 	IdProvincia int NOT NULL,
 	Detalle varchar(100) NULL,
-	CONSTRAINT PK_DireccionesPersona PRIMARY KEY (Cedula, Tipo, IdProvincia, IdCanton, IdDistrito),
+	CONSTRAINT PK_DireccionesPersona PRIMARY KEY (Cedula, Tipo),
 	CONSTRAINT FK01_DirsPersona_Persona FOREIGN KEY (Cedula) REFERENCES Persona(Cedula),
 	CONSTRAINT FK02_DirsPersona_Distrito FOREIGN KEY (IdProvincia, IdCanton, IdDistrito) REFERENCES Distrito(IdProvincia, IdCanton, IdDistrito)
 )
 
 CREATE TABLE Empleado(
 	Cedula varchar(10) NOT NULL,
-	Tipo varchar(15) NOT NULL,
+	TipoE varchar(15) NOT NULL,
 	Salario numeric(18,2) NOT NULL,
 	IdSucursal int NOT NULL,
 	FechaInicio date NOT NULL
@@ -276,6 +284,7 @@ CREATE TABLE Factura (
 CREATE TABLE Platos_Factura (
 	IdFactura int NOT NULL,
 	IdPlato int NOT NULL,
+	Cantidad int NOT NULL,
 	CONSTRAINT PK_PlatosFactura PRIMARY KEY (IdFactura, IdPlato),
 	CONSTRAINT FK01_PlatosFactura_Factura FOREIGN KEY (IdFactura) REFERENCES Factura(IdFactura),
 	CONSTRAINT FK02_PlatosFactura_Plato FOREIGN KEY (IdPlato) REFERENCES Plato(IdPlato)
