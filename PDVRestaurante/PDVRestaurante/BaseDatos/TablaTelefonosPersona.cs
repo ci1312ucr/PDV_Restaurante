@@ -21,12 +21,12 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "";
+            return "Cedula,Tipo,Numero";
         }
 
         private static string LlavePrincipal()
         {
-            return "";
+            return "Cedula|Tipo";
         }
     }
 }

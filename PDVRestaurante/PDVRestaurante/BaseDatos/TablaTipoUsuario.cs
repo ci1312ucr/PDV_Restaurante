@@ -23,12 +23,12 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "";
+            return "IdTipoUsuario,Nombre";
         }
 
         private static string LlavePrincipal()
         {
-            return "";
+            return "IdTipoUsuario";
         }
 
         public static bool InsertarTipoUsuario(int tipoUsuarioId, string nombre)
