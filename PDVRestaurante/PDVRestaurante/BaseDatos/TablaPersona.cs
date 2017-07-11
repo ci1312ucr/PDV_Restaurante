@@ -23,12 +23,12 @@ namespace PDVRestaurante.Objetos
 
         private static string Columnas()
         {
-            return "";
+            return "Cedula,TipoP";
         }
 
         private static string LlavePrincipal()
         {
-            return "";
+            return "Cedula";
         }
 
         public static bool InsertarPersona(string cedula, char tipo)

@@ -21,12 +21,12 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "";
+            return "IdPlato,IdIngrediente,Cantidad";
         }
 
         private static string LlavePrincipal()
         {
-            return "";
+            return "IdPlato|IdIngrediente";
         }
     }
 }
