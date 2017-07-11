@@ -18,6 +18,26 @@ namespace PDVRestaurante.Pantallas.Consultas
             InitializeComponent();
         }
 
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonModificar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void buttonCrear_Click(object sender, EventArgs e)
         {
             var crearUsuarioForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearUsuario");
@@ -32,6 +52,11 @@ namespace PDVRestaurante.Pantallas.Consultas
             {
                 crearUsuarioForm.Show();
             }
+        }
+
+        private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonCerrar_Click(object sender, EventArgs e)

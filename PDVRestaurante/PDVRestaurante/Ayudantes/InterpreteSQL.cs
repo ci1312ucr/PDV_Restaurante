@@ -94,7 +94,7 @@ namespace PDVRestaurante.Ayudantes
                         using (var command = new SqlCommand())
                         {
                             command.Connection = conn;
-                            command.CommandText = "SELECT " + columnas + " FROM " + tabla;
+                            command.CommandText = "SELECT " + columnas.Replace('|',',') + " FROM " + tabla;
                             if (columnasFiltro != null && valoresFiltro != null)
                             {
                                 command.CommandText += " WHERE ";

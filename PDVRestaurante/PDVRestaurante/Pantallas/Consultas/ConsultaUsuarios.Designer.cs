@@ -50,6 +50,7 @@
             this.comboBoxOrdenar.Name = "comboBoxOrdenar";
             this.comboBoxOrdenar.Size = new System.Drawing.Size(261, 21);
             this.comboBoxOrdenar.TabIndex = 24;
+            this.comboBoxOrdenar.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrdenar_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -84,6 +85,7 @@
             this.buttonCerrar.TabIndex = 21;
             this.buttonCerrar.Text = "X";
             this.buttonCerrar.UseVisualStyleBackColor = true;
+            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
             // buttonLimpiarFiltro
             // 
@@ -93,6 +95,7 @@
             this.buttonLimpiarFiltro.TabIndex = 20;
             this.buttonLimpiarFiltro.Text = "Limpiar Filtro";
             this.buttonLimpiarFiltro.UseVisualStyleBackColor = true;
+            this.buttonLimpiarFiltro.Click += new System.EventHandler(this.buttonLimpiarFiltro_Click);
             // 
             // buttonCrear
             // 
@@ -112,6 +115,7 @@
             this.buttonEliminar.TabIndex = 14;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // buttonBuscar
             // 
@@ -121,6 +125,7 @@
             this.buttonBuscar.TabIndex = 18;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // buttonModificar
             // 
@@ -130,6 +135,7 @@
             this.buttonModificar.TabIndex = 13;
             this.buttonModificar.Text = "Modificar";
             this.buttonModificar.UseVisualStyleBackColor = true;
+            this.buttonModificar.Click += new System.EventHandler(this.buttonModificar_Click);
             // 
             // comboBoxBuscar
             // 

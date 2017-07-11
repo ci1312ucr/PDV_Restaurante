@@ -9,7 +9,7 @@ namespace PDVRestaurante.Objetos
     public class Usuario
     {
         public string Nombre { get; set; }
-        public string Constrasena { get; set; }
+        public string Contrasena { get; set; }
         public string IdEmpleado { get; set; }
         public string Salt { get; set; }
         public int IdTipoUsuario { get; set; }
