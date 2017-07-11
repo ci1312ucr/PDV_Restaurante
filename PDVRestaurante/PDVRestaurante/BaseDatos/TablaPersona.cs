@@ -6,10 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using PDVRestaurante.Constantes;
+using PDVRestaurante.Ayudantes;
 
 namespace PDVRestaurante.Objetos
 {
-    public static class PersonaDB
+    public static class TablaPersona
     {
         private static string ConnectionString()
         {
@@ -23,7 +25,7 @@ namespace PDVRestaurante.Objetos
 
         private static string Columnas()
         {
-            return "Cedula,TipoP";
+            return "Cedula|TipoP";
         }
 
         private static string LlavePrincipal()
@@ -31,20 +33,20 @@ namespace PDVRestaurante.Objetos
             return "Cedula";
         }
 
-        public static bool InsertarPersona(string cedula, char tipo)
+        public static bool InsertarPersona(params object[] parametros)
         {
-            using (var conn = new SqlConnection(ConnectionString()))
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
-                conn.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "INSERT INTO Persona (Cedula, TipoP) VALUES (@cedula, @tipo)";
-                    command.Parameters.AddWithValue("@cedula", cedula);
-                    command.Parameters.AddWithValue("@tipo", tipo);
-                    command.ExecuteNonQuery();
-                }
-                conn.Close();
+                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
+            }
+            return true;
+        }
+
+        public static bool ModificarPersona(string cedula, params object[] parametros)
+        {
+            if (parametros.Count() == Columnas().Split('|').Count())
+            {
+                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), cedula, parametros);
             }
             return true;
         }
@@ -52,54 +54,25 @@ namespace PDVRestaurante.Objetos
         public static Persona ObtenerPersona(string cedula)
         {
             Persona persona = null;
-            using (var conn = new SqlConnection(ConnectionString()))
+            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), "Cedula", cedula, CriterioSQL.IgualA);
+
+            if (dataSet.Tables.Count > 0)
             {
-                conn.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "SELECT Cedula, TipoP FROM Persona WHERE Cedula = @cedula";
-                    command.Parameters.AddWithValue("@cedula", cedula);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            persona = new Persona();
-                            persona.Cedula = reader["Cedula"].ToString();
-                            persona.TipoP = reader["TipoP"].ToString()[0];
-                        }
-                    }
-                }
-                conn.Close();
+                persona = Convertidor.DataSetAObjecto<Persona>(dataSet).FirstOrDefault();
             }
             return persona;
         }
 
-        public static List<Persona> ObtenerPersonas()
+        public static List<Persona> ObtenerPersonas(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var personas = new List<Persona>();
-            using (var conn = new SqlConnection(ConnectionString()))
+            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+
+            if (dataSet.Tables.Count > 0)
             {
-                conn.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "SELECT Cedula, TipoP FROM Persona";
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var persona = new Persona();
-                            persona.Cedula = reader["Cedula"].ToString();
-                            persona.TipoP = reader["TipoP"].ToString()[0];
-                            personas.Add(persona);
-                        }
-                    }
-                }
-                conn.Close();
+                personas = Convertidor.DataSetAObjecto<Persona>(dataSet);
             }
             return personas;
         }
-
     }
 }

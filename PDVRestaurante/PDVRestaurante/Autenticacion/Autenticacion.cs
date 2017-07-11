@@ -18,7 +18,7 @@ namespace PDVRestaurante.Autenticacion
             {
                 var salt = Convert.FromBase64String(usuario.Salt);
                 var contrasenaEncriptada = Ayudantes.Encriptador.Encriptar(contrasena, salt);
-                if (contrasenaEncriptada != usuario.Constrasena)
+                if (contrasenaEncriptada != usuario.Contrasena)
                 {
                     usuario = null;
                 }

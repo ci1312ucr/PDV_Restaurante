@@ -20,7 +20,7 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Usuarios
             InitializeComponent();
             comboBoxCedula.DataSource = TablaEmpleado.ObtenerEmpleados();
             comboBoxCedula.DisplayMember = "Cedula";
-            comboBoxTipoUsuario.DataSource = TablaTipoUsuario.ObtenerTipoUsuarios();
+            comboBoxTipoUsuario.DataSource = TablaTipoUsuario.ObtenerTiposUsuarios();
             comboBoxTipoUsuario.DisplayMember = "Nombre";
         }
 
@@ -32,7 +32,14 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Usuarios
                 var tipoUsuario = (TipoUsuario)comboBoxTipoUsuario.SelectedItem;
                 var salt = Ayudantes.Encriptador.CrearSalt();
                 var contrasena = Ayudantes.Encriptador.Encriptar(Ayudantes.Encriptador.ComoTextoSeguro(textBoxContrasena.Text), salt);
-                TablaUsuario.InsertarUsuario(textBoxNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), empleado.Cedula, tipoUsuario.IdTipoUsuario);
+                if(TablaUsuario.InsertarUsuario(textBoxNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), empleado.Cedula, tipoUsuario.IdTipoUsuario))
+                {
+                    MessageBox.Show("Se agregó el nuevo usuario exitosamente", "Nuevo usuario creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+                } else
+                {
+                    throw new Exception("Error insertando el usuario en la base de datos");
+                }
             } catch (Exception ex)
             {
                 ManejoExcepciones.LogearExcepcion(ex);

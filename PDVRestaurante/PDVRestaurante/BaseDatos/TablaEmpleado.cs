@@ -31,11 +31,11 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "Cedula,TipoE,Salario,IdSucursal,FechaInicio";
+            return "Cedula|TipoE|Salario|IdSucursal|FechaInicio";
         }
         private static string ColumnasEmpleadoPersona()
         {
-            return "CodPerFisica,Nombre1,Nombre2,Apellido1,Apellido2,Sexo,EstadoCivil,FechaNacimiento,TipoE,Salario,e.IdSucursal,Detalle,e.FechaInicio";
+            return "Cedula|Nombre1|Nombre2|Apellido1|Apellido2|Sexo|EstadoCivil|FechaNacimiento|TipoE|Salario|e.IdSucursal|Detalle as NombreSucursal|e.FechaInicio";
         }
 
         private static string LlavePrincipal()
@@ -45,7 +45,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool InsertarEmpleado(params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
             }
@@ -54,7 +54,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool ModificarEmpleado(string cedula, params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), cedula, parametros);
             }
@@ -68,29 +68,7 @@ namespace PDVRestaurante.BaseDatos
 
             if (dataSet.Tables.Count > 0)
             {
-                try
-                {
-                    var dataRow = dataSet.Tables[0].Rows[0];
-                    empleado = new Empleado();
-                    empleado.Cedula = dataRow["CodPerFisica"].ToString();
-                    empleado.Nombre1 = dataRow["Nombre1"].ToString();
-                    empleado.Nombre2 = dataRow["Nombre2"] == DBNull.Value ? "" : dataRow["Nombre2"].ToString();
-                    empleado.Apellido1 = dataRow["Apellido1"].ToString();
-                    empleado.Apellido2 = dataRow["Apellido2"] == DBNull.Value ? "" : dataRow["Apellido2"].ToString();
-                    empleado.Sexo = dataRow["Sexo"].ToString()[0];
-                    empleado.EstadoCivil = dataRow["EstadoCivil"] == DBNull.Value ? "" : dataRow["EstadoCivil"].ToString();
-                    empleado.FechaNacimiento = (DateTime)dataRow["FechaNacimiento"];
-                    empleado.TipoE = dataRow["TipoE"].ToString();
-                    empleado.Salario = (decimal)dataRow["Salario"];
-                    empleado.IdSucursal = (int)dataRow["IdSucursal"];
-                    empleado.NombreSucursal = dataRow["Detalle"] == DBNull.Value ? "" : dataRow["Detalle"].ToString();
-                    empleado.FechaInicio = (DateTime)dataRow["FechaInicio"];
-                    empleado.TipoP = 'F';
-                }
-                catch (Exception ex)
-                {
-                    ManejoExcepciones.LogearExcepcion(ex);
-                }
+                empleado = Convertidor.DataSetAObjecto<Empleado>(dataSet).FirstOrDefault();
             }
             return empleado;
         }
@@ -102,32 +80,7 @@ namespace PDVRestaurante.BaseDatos
 
             if (dataSet.Tables.Count > 0)
             {
-                try
-                {
-                    foreach (DataRow row in dataSet.Tables[0].Rows)
-                    {
-                        var empleado = new Empleado();
-                        empleado.Cedula = row["CodPerFisica"].ToString();
-                        empleado.Nombre1 = row["Nombre1"].ToString();
-                        empleado.Nombre2 = row["Nombre2"] == DBNull.Value ? "" : row["Nombre2"].ToString();
-                        empleado.Apellido1 = row["Apellido1"].ToString();
-                        empleado.Apellido2 = row["Apellido2"] == DBNull.Value ? "" : row["Apellido2"].ToString();
-                        empleado.Sexo = row["Sexo"].ToString()[0];
-                        empleado.EstadoCivil = row["EstadoCivil"] == DBNull.Value ? "" : row["EstadoCivil"].ToString();
-                        empleado.FechaNacimiento = (DateTime)row["FechaNacimiento"];
-                        empleado.TipoE = row["TipoE"].ToString();
-                        empleado.Salario = (decimal)row["Salario"];
-                        empleado.IdSucursal = (int)row["IdSucursal"];
-                        empleado.NombreSucursal = row["Detalle"] == DBNull.Value ? "" : row["Detalle"].ToString();
-                        empleado.FechaInicio = (DateTime)row["FechaInicio"];
-                        empleado.TipoP = 'F';
-                        empleados.Add(empleado);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ManejoExcepciones.LogearExcepcion(ex);
-                }
+                empleados = Convertidor.DataSetAObjecto<Empleado>(dataSet);
             }
             return empleados;
         }

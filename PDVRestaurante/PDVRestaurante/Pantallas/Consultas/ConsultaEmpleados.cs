@@ -168,7 +168,14 @@ namespace PDVRestaurante.Pantallas.Consultas
                 var row = "";
                 foreach (var columna in _columnas)
                 {
-                    row += empleado.GetType().GetProperty(columna.Name).GetValue(empleado).ToString() + ",";
+                    if (columna.Name.Contains("Fecha"))
+                    {
+                        var valor = (DateTime)empleado.GetType().GetProperty(columna.Name).GetValue(empleado);
+                        row += valor.ToString("ddMMyyyy") + ",";
+                    } else
+                    {
+                        row += empleado.GetType().GetProperty(columna.Name).GetValue(empleado).ToString() + ",";
+                    }
                 }
                 row = row.TrimEnd(',');
                 newListView.Add(new ListViewItem(row.Split(',')));

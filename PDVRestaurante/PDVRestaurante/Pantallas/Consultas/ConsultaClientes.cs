@@ -1,4 +1,5 @@
-﻿using PDVRestaurante.BaseDatos;
+﻿using PDVRestaurante.Ayudantes;
+using PDVRestaurante.BaseDatos;
 using PDVRestaurante.Objetos;
 using System;
 using System.Collections.Generic;
@@ -14,52 +15,129 @@ namespace PDVRestaurante.Pantallas.Consultas
 {
     public partial class ConsultaClientes : Form
     {
+        private List<Propiedad> _columnas;
+        private List<ClienteFisico> _clientes;
+        private string _ordenActual = "Cedula";
+
+
         public ConsultaClientes()
         {
             InitializeComponent();
+            
+            //buttonBuscarCliente.Enabled = false;
+            InicializaListView();
 
-            //Carga el Grid con la lista de todos los empleados
-            dataGridConsultaClientes.DataSource = TablaCliente.ObtenerClientesFisicos();
-            dataGridConsultaClientes.ClearSelection();
+            //Carga la lista de todos los clientes            
+            CargarListView(TablaCliente.ObtenerClientesFisicos());
 
             //Carga la lista de posibles filtros para búsqueda
-            List<DataGridViewColumn> columnasFiltro = new List<DataGridViewColumn>();
-            foreach (DataGridViewColumn c in dataGridConsultaClientes.Columns)
-            {
-                if (c.Visible == true)
-                {
-                    columnasFiltro.Add(c);
-                }
-            }
-            comboBoxBuscarCliente.DataSource = columnasFiltro;
-            comboBoxBuscarCliente.DisplayMember = "HeaderText";
+            comboBoxBuscar.Items.AddRange(_columnas.ToArray());
+            comboBoxBuscar.DisplayMember = "DisplayName";
 
-            buttonBuscarCliente.Enabled = false;
+            //Carga la lista de posibles filtros para ordenar
+            comboBoxOrdenar.Items.AddRange(_columnas.ToArray());
+            comboBoxOrdenar.DisplayMember = "DisplayName";
+
+            buttonBuscar.Enabled = false;
         }
 
-        private void buttonReiniciarConsultaCliente_Click(object sender, EventArgs e)
+        private void listViewClientes_Ajuste(object sender, EventArgs e)
         {
-            dataGridConsultaClientes.DataSource = TablaCliente.ObtenerClientesFisicos();
+            listViewClientes.AjustarColumnas();
+        }
+
+        private void comboBoxBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonLimpiarFiltro_Click(object sender, EventArgs e)
         {
-            //Limpia el filtro de búsqueda y carga el Grid de nuevo con todos los empleados
-            comboBoxBuscarCliente.ResetText();
-            textBoxBuscarCliente.Clear();
-            dataGridConsultaClientes.DataSource = TablaCliente.ObtenerClientesFisicos();
-            dataGridConsultaClientes.ClearSelection();
+
         }
 
-        private void textBoxBuscarCliente_TextChanged(object sender, EventArgs e)
+        private void buttonModificar_Click(object sender, EventArgs e)
         {
-            //Para realizar una búsqueda por filtro tiene que haber algo escrito en el campo del valor del filtro
-            buttonBuscarCliente.Enabled = textBoxBuscarCliente.Text.Length > 0;
+
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCrear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
+
+
+        #region Funciones
+        private void InicializaListView()
+        {
+            listViewClientes.DoubleBuffer();
+            var properties = typeof(ClienteFisico).GetProperties().
+                                  Select(p => new Propiedad
+                                  {
+                                      Name = p.Name,
+                                      ValueType = p.PropertyType,
+                                      DisplayName = p.CustomAttributes.First().NamedArguments.Where(n => n.MemberName == "Name").Select(n => n.TypedValue.Value).First().ToString(),
+                                      Order = (int)p.CustomAttributes.First().NamedArguments.Where(n => n.MemberName == "Order").Select(n => n.TypedValue.Value).First()
+                                  }).ToList();
+            _columnas = properties.Where(p => p.Order > 0).OrderBy(p => p.Order).ToList();
+            foreach (var columna in _columnas)
+            {
+                listViewClientes.Columns.Add(columna.DisplayName);
+            }
+        }
+
+        private void CargarListView(List<ClienteFisico> clientes)
+        {
+            _clientes = clientes.OrderBy(e => e.GetType().GetProperty(_ordenActual).GetValue(e)).ToList();
+            var newListView = new List<ListViewItem>();
+            foreach (ClienteFisico cliente in _clientes)
+            {
+                var row = "";
+                foreach (var columna in _columnas)
+                {
+                    if (columna.Name.Contains("Fecha"))
+                    {
+                        var valor = (DateTime)cliente.GetType().GetProperty(columna.Name).GetValue(cliente);
+                        row += valor.ToString("ddMMyyyy") + ",";
+                    }
+                    else
+                    {
+                        row += cliente.GetType().GetProperty(columna.Name).GetValue(cliente).ToString() + ",";
+                    }
+                }
+                row = row.TrimEnd(',');
+                newListView.Add(new ListViewItem(row.Split(',')));
+            }
+            listViewClientes.Items.Clear();
+            listViewClientes.Items.AddRange(newListView.ToArray());
+            listViewClientes.View = View.Details;
+            listViewClientes.AjustarColumnas();
+        }
+        #endregion
     }
 }

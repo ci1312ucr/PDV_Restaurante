@@ -1,4 +1,6 @@
-﻿using PDVRestaurante.Objetos;
+﻿using PDVRestaurante.Ayudantes;
+using PDVRestaurante.Constantes;
+using PDVRestaurante.Objetos;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,7 +26,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "Nombre,Contrasena,Salt,IdEmpleado,IdTipoUsuario";
+            return "Nombre|Contrasena|Salt|IdEmpleado|IdTipoUsuario";
         }
 
         private static string LlavePrincipal()
@@ -32,78 +34,44 @@ namespace PDVRestaurante.BaseDatos
             return "Nombre";
         }
 
-        public static bool InsertarUsuario(string nombre, string contrasena, string salt, string cedula, int IdTipoUsuario)
+        public static bool InsertarUsuario(params object[] parametros)
         {
-            using (var conn = new SqlConnection(ConnectionString()))
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
-                conn.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "INSERT INTO Usuario (Nombre, Contrasena, Salt, IdEmpleado, IdTipoUsuario) VALUES (@nombre, @contrasena, @salt, @IdEmpleado, @IdTipoUsuario)";
-                    command.Parameters.AddWithValue("@nombre", nombre);
-                    command.Parameters.AddWithValue("@contrasena", contrasena);
-                    command.Parameters.AddWithValue("@salt", salt);
-                    command.Parameters.AddWithValue("@IdEmpleado", cedula);
-                    command.Parameters.AddWithValue("@IdTipoUsuario", IdTipoUsuario);
-                    command.ExecuteNonQuery();
-                }
-                conn.Close();
+                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
             }
             return true;
         }
+
+        public static bool ModificarUsuario(string nombre, params object[] parametros)
+        {
+            if (parametros.Count() == Columnas().Split('|').Count())
+            {
+                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), nombre, parametros);
+            }
+            return true;
+        }
+
         public static Usuario ObtenerUsuario(string nombre)
         {
             Usuario usuario = null;
-            using (var conn = new SqlConnection(ConnectionString()))
+            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), "Nombre", "'" + nombre + "'", CriterioSQL.IgualA);
+
+            if (dataSet.Tables.Count > 0)
             {
-                conn.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "SELECT Nombre, Contrasena, Salt, IdEmpleado, IdTipoUsuario FROM Usuario WHERE Nombre = @nombre";
-                    command.Parameters.AddWithValue("@nombre", nombre);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            usuario = new Usuario();
-                            usuario.Nombre = reader["Nombre"].ToString();
-                            usuario.Constrasena = reader["Contrasena"].ToString();
-                            usuario.Salt = reader["Salt"].ToString();
-                            usuario.IdEmpleado = reader["IdEmpleado"].ToString();
-                            usuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
-                        }
-                    }
-                }
-                conn.Close();
+                usuario = Convertidor.DataSetAObjecto<Usuario>(dataSet).FirstOrDefault();
             }
             return usuario;
         }
 
-        public static List<Usuario> ObtenerUsuarios()
+        public static List<Usuario> ObtenerUsuarios(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var usuarios = new List<Usuario>();
-            using (var conn = new SqlConnection(ConnectionString()))
+            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+
+            if (dataSet.Tables.Count > 0)
             {
-                conn.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "SELECT Nombre, IdEmpleado, IdTipoUsuario FROM Usuario";
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var usuario = new Usuario();
-                            usuario.Nombre = reader["Nombre"].ToString();
-                            usuario.IdEmpleado = reader["IdEmpleado"].ToString();
-                            usuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
-                            usuarios.Add(usuario);
-                        }
-                    }
-                }
-                conn.Close();
+                usuarios = Convertidor.DataSetAObjecto<Usuario>(dataSet);
             }
             return usuarios;
         }

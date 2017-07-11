@@ -1,4 +1,6 @@
-﻿using PDVRestaurante.Objetos;
+﻿using PDVRestaurante.Ayudantes;
+using PDVRestaurante.Constantes;
+using PDVRestaurante.Objetos;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,7 +25,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "IdTipoUsuario,Nombre";
+            return "IdTipoUsuario|Nombre";
         }
 
         private static string LlavePrincipal()
@@ -31,71 +33,44 @@ namespace PDVRestaurante.BaseDatos
             return "IdTipoUsuario";
         }
 
-        public static bool InsertarTipoUsuario(int tipoUsuarioId, string nombre)
+        public static bool InsertarTipoUsuario(params object[] parametros)
         {
-            using (var conn = new SqlConnection(ConnectionString()))
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "INSERT INTO TipoUsuario (TipoUsuarioId, Nombre) VALUES (@IdtipoUsuario, @nombre)";
-                    command.Parameters.AddWithValue("@tipoUsuarioId", tipoUsuarioId);
-                    command.Parameters.AddWithValue("@nombre", nombre);
-                    conn.Open();
-                    command.ExecuteNonQuery();
-                    conn.Close();
-                }
+                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
             }
             return true;
         }
-        public static TipoUsuario ObtenerTipoUsuario(int tipoUsuarioId)
+
+        public static bool ModificarTipoUsuario(string idTipoUsuario, params object[] parametros)
+        {
+            if (parametros.Count() == Columnas().Split('|').Count())
+            {
+                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), idTipoUsuario, parametros);
+            }
+            return true;
+        }
+
+        public static TipoUsuario ObtenerTipoUsuario(int idTipoUsuario)
         {
             TipoUsuario tipoUsuario = null;
-            using (var conn = new SqlConnection(ConnectionString()))
+            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), "IdTipoUsuario", idTipoUsuario.ToString(), CriterioSQL.IgualA);
+
+            if (dataSet.Tables.Count > 0)
             {
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "SELECT IdTipoUsuario, Nombre FROM TipoUsuario WHERE IdtipoUsuario = @IdtipoUsuario";
-                    command.Parameters.AddWithValue("@tipoUsuarioId", tipoUsuarioId);
-                    conn.Open();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            tipoUsuario = new TipoUsuario();
-                            tipoUsuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
-                            tipoUsuario.Nombre = reader["Nombre"].ToString();
-                        }
-                    }
-                    conn.Close();
-                }
+                tipoUsuario = Convertidor.DataSetAObjecto<TipoUsuario>(dataSet).FirstOrDefault();
             }
             return tipoUsuario;
         }
 
-        public static List<TipoUsuario> ObtenerTipoUsuarios()
+        public static List<TipoUsuario> ObtenerTiposUsuarios(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var tipoUsuarioLista = new List<TipoUsuario>();
-            using (var conn = new SqlConnection(ConnectionString()))
+            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+
+            if (dataSet.Tables.Count > 0)
             {
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = conn;
-                    command.CommandText = "SELECT IdTipoUsuario, Nombre FROM TipoUsuario";
-                    conn.Open();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var tipoUsuario = new TipoUsuario();
-                            tipoUsuario.IdTipoUsuario = Convert.ToInt32(reader["IdTipoUsuario"]);
-                            tipoUsuario.Nombre = reader["Nombre"].ToString();
-                            tipoUsuarioLista.Add(tipoUsuario);
-                        }
-                    }
-                    conn.Close();
-                }
+                tipoUsuarioLista = Convertidor.DataSetAObjecto<TipoUsuario>(dataSet);
             }
             return tipoUsuarioLista;
         }

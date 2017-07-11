@@ -22,7 +22,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "Cedula,Tipo,Correo";
+            return "Cedula|Tipo|Correo";
         }
 
         private static string LlavePrincipal()
@@ -32,7 +32,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool InsertarCorreo(params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
             }
@@ -41,7 +41,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool ModificarCorreo(string cedula, params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), cedula, parametros);
             }

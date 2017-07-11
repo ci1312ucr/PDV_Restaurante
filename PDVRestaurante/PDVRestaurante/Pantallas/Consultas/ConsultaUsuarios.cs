@@ -1,4 +1,7 @@
-﻿using PDVRestaurante.Pantallas.Mantenimiento.Usuarios;
+﻿using PDVRestaurante.Ayudantes;
+using PDVRestaurante.BaseDatos;
+using PDVRestaurante.Objetos;
+using PDVRestaurante.Pantallas.Mantenimiento.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +16,53 @@ namespace PDVRestaurante.Pantallas.Consultas
 {
     public partial class ConsultaUsuarios : Form
     {
+        private List<Propiedad> _columnas;
+        private List<Usuario> _usuarios;
+        private string _ordenActual = "Nombre";
+
         public ConsultaUsuarios()
         {
             InitializeComponent();
+
+            InicializaListView();
+
+            //Carga la lista de todos los usuarios            
+            CargarListView(TablaUsuario.ObtenerUsuarios());
+
+            //Carga la lista de posibles filtros para búsqueda
+            comboBoxBuscar.Items.AddRange(_columnas.ToArray());
+            comboBoxBuscar.DisplayMember = "DisplayName";
+
+            //Carga la lista de posibles filtros para ordenar
+            comboBoxOrdenar.Items.AddRange(_columnas.ToArray());
+            comboBoxOrdenar.DisplayMember = "DisplayName";
+
+            buttonBuscar.Enabled = false;
+        }
+
+        private void listViewUsuarios_Ajuste(object sender, EventArgs e)
+        {
+            listViewUsuarios.AjustarColumnas();
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonModificar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonCrear_Click(object sender, EventArgs e)
@@ -34,9 +81,63 @@ namespace PDVRestaurante.Pantallas.Consultas
             }
         }
 
+        private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void buttonCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
+
+
+        #region Funciones
+        private void InicializaListView()
+        {
+            listViewUsuarios.DoubleBuffer();
+            var properties = typeof(Usuario).GetProperties().
+                                  Select(p => new Propiedad
+                                  {
+                                      Name = p.Name,
+                                      ValueType = p.PropertyType,
+                                      DisplayName = p.CustomAttributes.First().NamedArguments.Where(n => n.MemberName == "Name").Select(n => n.TypedValue.Value).First().ToString(),
+                                      Order = (int)p.CustomAttributes.First().NamedArguments.Where(n => n.MemberName == "Order").Select(n => n.TypedValue.Value).First()
+                                  }).ToList();
+            _columnas = properties.Where(p => p.Order > 0).OrderBy(p => p.Order).ToList();
+            foreach (var columna in _columnas)
+            {
+                listViewUsuarios.Columns.Add(columna.DisplayName);
+            }
+        }
+
+        private void CargarListView(List<Usuario> usuarios)
+        {
+            _usuarios = usuarios.OrderBy(e => e.GetType().GetProperty(_ordenActual).GetValue(e)).ToList();
+            var newListView = new List<ListViewItem>();
+            foreach (Usuario usuario in _usuarios)
+            {
+                var row = "";
+                foreach (var columna in _columnas)
+                {
+                    if (columna.Name.Contains("Fecha"))
+                    {
+                        var valor = (DateTime)usuario.GetType().GetProperty(columna.Name).GetValue(usuario);
+                        row += valor.ToString("ddMMyyyy") + ",";
+                    }
+                    else
+                    {
+                        row += usuario.GetType().GetProperty(columna.Name).GetValue(usuario).ToString() + ",";
+                    }
+                }
+                row = row.TrimEnd(',');
+                newListView.Add(new ListViewItem(row.Split(',')));
+            }
+            listViewUsuarios.Items.Clear();
+            listViewUsuarios.Items.AddRange(newListView.ToArray());
+            listViewUsuarios.View = View.Details;
+            listViewUsuarios.AjustarColumnas();
+        }
+        #endregion
     }
 }

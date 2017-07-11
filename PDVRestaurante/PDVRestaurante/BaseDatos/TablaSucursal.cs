@@ -26,7 +26,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "IdSucursal,FechaApertura,IdDistrito,IdCanton,IdProvincia,IdGerente,FechaInicio,Detalle";
+            return "IdSucursal|FechaApertura|IdDistrito|IdCanton|IdProvincia|IdGerente|FechaInicio|Detalle";
         }
 
         private static string LlavePrincipal()
@@ -36,7 +36,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool InsertarSucursal(params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
             }
@@ -45,7 +45,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool ModificarSucursal(int idSucursal, params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), idSucursal.ToString(), parametros);
             }
@@ -59,54 +59,19 @@ namespace PDVRestaurante.BaseDatos
 
             if (dataSet.Tables.Count > 0)
             {
-                try
-                {
-                    var dataRow = dataSet.Tables[0].Rows[0];
-                    sucursal = new Sucursal();
-                    sucursal.IdSucursal = (int)dataRow["IdSucursal"];
-                    sucursal.FechaApertura = (DateTime)dataRow["FechaApertura"];
-                    sucursal.IdDistrito = (int)dataRow["IdDistrito"];
-                    sucursal.IdCanton = (int)dataRow["IdCanton"];
-                    sucursal.IdProvincia = (int)dataRow["IdProvincia"];
-                    sucursal.IdGerente = dataRow["IdGerente"] == DBNull.Value ? "" : dataRow["IdGerente"].ToString();
-                    sucursal.FechaInicio = dataRow["FechaInicio"] == DBNull.Value ? null : (DateTime?)dataRow["FechaInicio"];
-                    sucursal.Detalle = dataRow["Detalle"] == DBNull.Value ? "" : dataRow["Detalle"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    ManejoExcepciones.LogearExcepcion(ex);
-                }
+                sucursal = Convertidor.DataSetAObjecto<Sucursal>(dataSet).FirstOrDefault();
             }
             return sucursal;
         }
 
-        public static List<Sucursal> ObtenerSucursales()
+        public static List<Sucursal> ObtenerSucursales(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var sucursales = new List<Sucursal>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas());
+            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {
-                try
-                {
-                    foreach(DataRow r in dataSet.Tables[0].Rows)
-                    {
-                        var sucursal = new Sucursal();
-                        sucursal.IdSucursal = (int)r["IdSucursal"];
-                        sucursal.FechaApertura = (DateTime)r["FechaApertura"];
-                        sucursal.IdDistrito = (int)r["IdDistrito"];
-                        sucursal.IdCanton = (int)r["IdCanton"];
-                        sucursal.IdProvincia = (int)r["IdProvincia"];
-                        sucursal.IdGerente = r["IdGerente"] == DBNull.Value ? "" : r["IdGerente"].ToString();
-                        sucursal.FechaInicio = r["FechaInicio"] == DBNull.Value ? null : (DateTime?)r["FechaInicio"];
-                        sucursal.Detalle = r["Detalle"] == DBNull.Value ? "" : r["Detalle"].ToString();
-                        sucursales.Add(sucursal);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ManejoExcepciones.LogearExcepcion(ex);
-                }
+                sucursales = Convertidor.DataSetAObjecto<Sucursal>(dataSet);
             }
             return sucursales;
         }

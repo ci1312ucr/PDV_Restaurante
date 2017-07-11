@@ -20,7 +20,7 @@ namespace PDVRestaurante.Ayudantes
                     using (var command = new SqlCommand())
                     {
                         command.Connection = conn;
-                        command.CommandText = "INSERT INTO " + tabla + " (" + columnas + ")";
+                        command.CommandText = "INSERT INTO " + tabla + " (" + columnas.Replace("|",",") + ")";
                         command.CommandText += " VALUES (@" + columnas.Replace("|", ", @") + ")";
                         int i = 0;
                         foreach (var s in columnas.Split('|'))
@@ -94,7 +94,7 @@ namespace PDVRestaurante.Ayudantes
                         using (var command = new SqlCommand())
                         {
                             command.Connection = conn;
-                            command.CommandText = "SELECT " + columnas + " FROM " + tabla;
+                            command.CommandText = "SELECT " + columnas.Replace('|',',') + " FROM " + tabla;
                             if (columnasFiltro != null && valoresFiltro != null)
                             {
                                 command.CommandText += " WHERE ";
