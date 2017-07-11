@@ -31,11 +31,11 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "Cedula,TipoE,Salario,IdSucursal,FechaInicio";
+            return "Cedula|TipoE|Salario|IdSucursal|FechaInicio";
         }
         private static string ColumnasEmpleadoPersona()
         {
-            return "Cedula,Nombre1,Nombre2,Apellido1,Apellido2,Sexo,EstadoCivil,FechaNacimiento,TipoE,Salario,e.IdSucursal,Detalle as NombreSucursal,e.FechaInicio";
+            return "Cedula|Nombre1|Nombre2|Apellido1|Apellido2|Sexo|EstadoCivil|FechaNacimiento|TipoE|Salario|e.IdSucursal|Detalle as NombreSucursal|e.FechaInicio";
         }
 
         private static string LlavePrincipal()
@@ -45,7 +45,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool InsertarEmpleado(params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
             }
@@ -54,7 +54,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool ModificarEmpleado(string cedula, params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), cedula, parametros);
             }

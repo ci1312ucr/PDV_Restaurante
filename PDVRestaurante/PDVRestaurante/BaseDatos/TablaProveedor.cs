@@ -21,7 +21,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "Cedula,Descripcion";
+            return "Cedula|Descripcion";
         }
 
         private static string LlavePrincipal()

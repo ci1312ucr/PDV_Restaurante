@@ -74,6 +74,7 @@
             this.listViewUsuarios.TabIndex = 22;
             this.listViewUsuarios.UseCompatibleStateImageBehavior = false;
             this.listViewUsuarios.View = System.Windows.Forms.View.Details;
+            this.listViewUsuarios.Resize += new System.EventHandler(this.listViewUsuarios_Ajuste);
             // 
             // buttonCerrar
             // 

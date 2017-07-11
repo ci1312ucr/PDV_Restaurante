@@ -36,7 +36,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool InsertarUsuario(params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
             }
@@ -45,7 +45,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool ModificarUsuario(string nombre, params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split(',').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
                 InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), nombre, parametros);
             }

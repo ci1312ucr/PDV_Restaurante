@@ -21,7 +21,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "IdInventario,IdIngrediente,Existencias";
+            return "IdInventario|IdIngrediente|Existencias";
         }
 
         private static string LlavePrincipal()
