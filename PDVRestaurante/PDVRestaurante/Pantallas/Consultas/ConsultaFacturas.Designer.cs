@@ -30,7 +30,7 @@
         {
             this.comboBoxOrdenar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listViewClientes = new System.Windows.Forms.ListView();
+            this.listViewFacturas = new System.Windows.Forms.ListView();
             this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
             this.buttonCrear = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
@@ -38,7 +38,7 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.comboBoxBuscar = new System.Windows.Forms.ComboBox();
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
-            this.labelConsultaEmpleados = new System.Windows.Forms.Label();
+            this.labelConsultaFacturas = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxOrdenar
@@ -59,19 +59,18 @@
             this.label1.TabIndex = 34;
             this.label1.Text = "Ordernar por:";
             // 
-            // listViewClientes
+            // listViewFacturas
             // 
-            this.listViewClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listViewFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewClientes.FullRowSelect = true;
-            this.listViewClientes.Location = new System.Drawing.Point(12, 142);
-            this.listViewClientes.MultiSelect = false;
-            this.listViewClientes.Name = "listViewClientes";
-            this.listViewClientes.Size = new System.Drawing.Size(776, 346);
-            this.listViewClientes.TabIndex = 33;
-            this.listViewClientes.UseCompatibleStateImageBehavior = false;
-            this.listViewClientes.View = System.Windows.Forms.View.Details;
+            this.listViewFacturas.Location = new System.Drawing.Point(12, 142);
+            this.listViewFacturas.MultiSelect = false;
+            this.listViewFacturas.Name = "listViewFacturas";
+            this.listViewFacturas.Size = new System.Drawing.Size(776, 346);
+            this.listViewFacturas.TabIndex = 33;
+            this.listViewFacturas.UseCompatibleStateImageBehavior = false;
+            this.listViewFacturas.View = System.Windows.Forms.View.Details;
             // 
             // buttonLimpiarFiltro
             // 
@@ -134,14 +133,14 @@
             this.textBoxBuscar.Size = new System.Drawing.Size(262, 20);
             this.textBoxBuscar.TabIndex = 29;
             // 
-            // labelConsultaEmpleados
+            // labelConsultaFacturas
             // 
-            this.labelConsultaEmpleados.AutoSize = true;
-            this.labelConsultaEmpleados.Location = new System.Drawing.Point(12, 9);
-            this.labelConsultaEmpleados.Name = "labelConsultaEmpleados";
-            this.labelConsultaEmpleados.Size = new System.Drawing.Size(61, 13);
-            this.labelConsultaEmpleados.TabIndex = 27;
-            this.labelConsultaEmpleados.Text = "Buscar por:";
+            this.labelConsultaFacturas.AutoSize = true;
+            this.labelConsultaFacturas.Location = new System.Drawing.Point(12, 9);
+            this.labelConsultaFacturas.Name = "labelConsultaFacturas";
+            this.labelConsultaFacturas.Size = new System.Drawing.Size(61, 13);
+            this.labelConsultaFacturas.TabIndex = 27;
+            this.labelConsultaFacturas.Text = "Buscar por:";
             // 
             // ConsultaFacturas
             // 
@@ -152,7 +151,7 @@
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listViewClientes);
+            this.Controls.Add(this.listViewFacturas);
             this.Controls.Add(this.buttonLimpiarFiltro);
             this.Controls.Add(this.buttonCrear);
             this.Controls.Add(this.buttonEliminar);
@@ -160,7 +159,7 @@
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.comboBoxBuscar);
             this.Controls.Add(this.textBoxBuscar);
-            this.Controls.Add(this.labelConsultaEmpleados);
+            this.Controls.Add(this.labelConsultaFacturas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultaFacturas";
             this.Text = "ConsultaFacturas";
@@ -173,7 +172,7 @@
 
         private System.Windows.Forms.ComboBox comboBoxOrdenar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listViewClientes;
+        private System.Windows.Forms.ListView listViewFacturas;
         private System.Windows.Forms.Button buttonLimpiarFiltro;
         private System.Windows.Forms.Button buttonCrear;
         private System.Windows.Forms.Button buttonEliminar;
@@ -181,6 +180,6 @@
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.ComboBox comboBoxBuscar;
         private System.Windows.Forms.TextBox textBoxBuscar;
-        private System.Windows.Forms.Label labelConsultaEmpleados;
+        private System.Windows.Forms.Label labelConsultaFacturas;
     }
 }
