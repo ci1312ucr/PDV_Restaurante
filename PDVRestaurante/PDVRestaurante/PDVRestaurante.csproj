@@ -92,7 +92,7 @@
     <Compile Include="BaseDatos\TablaTelefonosPersona.cs" />
     <Compile Include="BaseDatos\TablaTelefonoSucursal.cs" />
     <Compile Include="BaseDatos\TablaTipoUsuario.cs" />
-    <Compile Include="BaseDatos\TablaUsuario.cs" />
+    <Compile Include="Constantes\TablaUsuario.cs" />
     <Compile Include="Constantes\CriterioSQL.cs" />
     <Compile Include="Constantes\TipoDeUsuario.cs" />
     <Compile Include="Objetos\Factura.cs" />
