@@ -186,5 +186,10 @@ namespace PDVRestaurante.Pantallas.Consultas
             listViewEmpleados.AjustarColumnas();
         }
         #endregion
+
+        private void comboBoxBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

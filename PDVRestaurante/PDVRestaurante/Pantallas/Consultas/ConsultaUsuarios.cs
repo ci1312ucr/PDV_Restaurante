@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using PDVRestaurante.Constantes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,17 +48,44 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
+            //Realiza una búsqueda de empleado(s) basado en el filtro seleccionado
+            var columna = (Propiedad)comboBoxBuscar.SelectedItem;
+            var valor = textBoxBuscar.Text;
 
+            //Define el criterio de comparación para enviar la consulta SQL adecuada
+            var criterio = CriterioSQL.IgualA;
+            if (columna.ValueType == typeof(string))
+            {
+                criterio = CriterioSQL.Contiene;
+                valor = "'%" + valor + "%'";
+            }
+            if (columna.ValueType == typeof(DateTime))
+            {
+                valor = "'" + valor + "'";
+            }
+
+            //Para el filtro de sucursal, debe hacer la búsqueda según el Id de Sucursal
+            if (columna.Name == "NombreSucursal")
+            {
+                criterio = CriterioSQL.IgualA;
+                columna.Name = "IdSucursal";
+                var sucursal = TablaSucursal.ObtenerSucursal("Detalle", valor);
+                valor = sucursal == null ? "NULL" : sucursal.IdSucursal.ToString();
+            }
+            CargarListView(TablaUsuario.ObtenerUsuarios(columna.Name, valor, criterio));
         }
 
         private void buttonLimpiarFiltro_Click(object sender, EventArgs e)
         {
-
+            //Limpia el filtro de búsqueda y carga el Grid de nuevo con todos los empleados
+            comboBoxBuscar.ResetText();
+            textBoxBuscar.Clear();
+            CargarListView(TablaUsuario.ObtenerUsuarios());
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-
+       
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -83,7 +111,9 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var columna = (Propiedad)comboBoxOrdenar.SelectedItem;
+            _ordenActual = columna.Name;
+            CargarListView(_usuarios);
         }
 
         private void buttonCerrar_Click(object sender, EventArgs e)
@@ -139,5 +169,11 @@ namespace PDVRestaurante.Pantallas.Consultas
             listViewUsuarios.AjustarColumnas();
         }
         #endregion
+
+        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            //Para realizar una búsqueda por filtro tiene que haber algo escrito en el campo del valor del filtro
+            buttonBuscar.Enabled = textBoxBuscar.Text.Length > 0;
+        }
     }
 }
