@@ -46,7 +46,6 @@
             this.textBoxDetalle.Name = "textBoxDetalle";
             this.textBoxDetalle.Size = new System.Drawing.Size(214, 20);
             this.textBoxDetalle.TabIndex = 0;
-            this.textBoxDetalle.TextChanged += new System.EventHandler(this.textBoxDetalle_TextChanged);
             // 
             // comboBoxDistrito
             // 
@@ -56,7 +55,6 @@
             this.comboBoxDistrito.Name = "comboBoxDistrito";
             this.comboBoxDistrito.Size = new System.Drawing.Size(214, 21);
             this.comboBoxDistrito.TabIndex = 1;
-            this.comboBoxDistrito.SelectedIndexChanged += new System.EventHandler(this.comboBoxDistrito_SelectedIndexChanged);
             // 
             // comboBoxCanton
             // 
@@ -152,7 +150,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CrearSucursal";
             this.Text = "CrearSucursal";
-            this.Load += new System.EventHandler(this.CrearSucursal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
