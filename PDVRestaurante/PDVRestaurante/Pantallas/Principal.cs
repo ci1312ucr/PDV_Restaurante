@@ -74,7 +74,7 @@ namespace PDVRestaurante
         private void ActivarMantenimiento()
         {
             var menuConsultas = this.MenuPrincipal.Items.Find("MenuConsultas", true).FirstOrDefault();
-            menuConsultas.Text = "Consultas / Mantinimiento";
+            menuConsultas.Text = "Consultas / Mantenimiento";
         }
 
         private void MostrarPantalla(string area, string nombrePantalla)
