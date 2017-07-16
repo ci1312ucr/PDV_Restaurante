@@ -96,6 +96,9 @@
     <Compile Include="Constantes\TablaUsuario.cs" />
     <Compile Include="Constantes\CriterioSQL.cs" />
     <Compile Include="Constantes\TipoDeUsuario.cs" />
+    <Compile Include="Objetos\Factura.cs" />
+    <Compile Include="Objetos\Ingrediente.cs" />
+    <Compile Include="Objetos\Plato.cs" />
     <Compile Include="Objetos\Canton.cs" />
     <Compile Include="Objetos\Distrito.cs" />
     <Compile Include="Objetos\Propiedad.cs" />
@@ -163,6 +166,12 @@
     <Compile Include="Pantallas\Mantenimiento\Sucursales\CrearSucursal.Designer.cs">
       <DependentUpon>CrearSucursal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Facturas\CrearFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Facturas\CrearFactura.Designer.cs">
+      <DependentUpon>CrearFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,9 +180,11 @@
     </Compile>
     <Compile Include="Pantallas\Principal.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Pantallas\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Pantallas\Restaurante\ControlRestaurante.cs">
       <SubType>Form</SubType>
@@ -208,11 +219,15 @@
     <EmbeddedResource Include="Pantallas\Mantenimiento\Sucursales\CrearSucursal.resx">
       <DependentUpon>CrearSucursal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mantenimiento\Facturas\CrearFactura.resx">
+      <DependentUpon>CrearFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Restaurante\ControlRestaurante.resx">
       <DependentUpon>ControlRestaurante.cs</DependentUpon>
