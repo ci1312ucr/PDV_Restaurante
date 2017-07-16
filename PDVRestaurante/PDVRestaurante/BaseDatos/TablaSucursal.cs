@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PDVRestaurante.BaseDatos
 {
@@ -84,6 +85,33 @@ namespace PDVRestaurante.BaseDatos
                 sucursales = Convertidor.DataSetAObjecto<Sucursal>(dataSet);
             }
             return sucursales;
+        }
+
+        public static int ObtenerIdSucursal()
+        {
+            int idSucursal = 0;
+            try
+            {
+                using (var conn = new SqlConnection(ConnectionString()))
+                {
+                    conn.Open();
+
+                        using (var command = new SqlCommand())
+                        {
+                            command.Connection = conn;
+                            command.CommandText = "select max(IdSucursal) from Sucursal";
+                            //MessageBox.Show(command.ExecuteScalar().ToString());
+                            idSucursal = (int)command.ExecuteScalar();
+                            idSucursal = idSucursal + 1;
+                        }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManejoExcepciones.LogearExcepcion(ex);
+            }
+            return idSucursal;
         }
     }
 }

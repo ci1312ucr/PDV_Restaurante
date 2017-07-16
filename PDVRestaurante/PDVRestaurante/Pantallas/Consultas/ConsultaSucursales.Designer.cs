@@ -51,6 +51,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Nueva Sucursal";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonLimpiarFiltro
             // 
@@ -121,9 +122,9 @@
             // 
             // listViewSucursales
             // 
-            this.listViewSucursales.Location = new System.Drawing.Point(25, 151);
+            this.listViewSucursales.Location = new System.Drawing.Point(1, 169);
             this.listViewSucursales.Name = "listViewSucursales";
-            this.listViewSucursales.Size = new System.Drawing.Size(771, 210);
+            this.listViewSucursales.Size = new System.Drawing.Size(795, 336);
             this.listViewSucursales.TabIndex = 8;
             this.listViewSucursales.UseCompatibleStateImageBehavior = false;
             this.listViewSucursales.SelectedIndexChanged += new System.EventHandler(this.listViewSucursales_SelectedIndexChanged);
@@ -170,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 364);
+            this.ClientSize = new System.Drawing.Size(800, 500);
             this.ControlBox = false;
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label3);

@@ -70,6 +70,7 @@
     <Compile Include="BaseDatos\TablaCliente.cs" />
     <Compile Include="BaseDatos\TablaCorreosPersona.cs" />
     <Compile Include="BaseDatos\TablaDireccionesPersona.cs" />
+    <Compile Include="BaseDatos\TablaDistrito.cs" />
     <Compile Include="BaseDatos\TablaEmpleado.cs" />
     <Compile Include="BaseDatos\TablaEmpleados_Factura.cs" />
     <Compile Include="BaseDatos\TablaFactura.cs" />
@@ -95,7 +96,10 @@
     <Compile Include="Constantes\TablaUsuario.cs" />
     <Compile Include="Constantes\CriterioSQL.cs" />
     <Compile Include="Constantes\TipoDeUsuario.cs" />
+    <Compile Include="Objetos\Canton.cs" />
+    <Compile Include="Objetos\Distrito.cs" />
     <Compile Include="Objetos\Propiedad.cs" />
+    <Compile Include="Objetos\Provincia.cs" />
     <Compile Include="Objetos\Sucursal.cs" />
     <Compile Include="Pantallas\Consultas\ConsultaClientes.cs">
       <SubType>Form</SubType>
@@ -153,6 +157,12 @@
     <Compile Include="Pantallas\Mantenimiento\Empleados\ModificarEmpleado.Designer.cs">
       <DependentUpon>ModificarEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Sucursales\CrearSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Sucursales\CrearSucursal.Designer.cs">
+      <DependentUpon>CrearSucursal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.resx">
       <DependentUpon>CrearEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mantenimiento\Sucursales\CrearSucursal.resx">
+      <DependentUpon>CrearSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>

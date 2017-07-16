@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PDVRestaurante.BaseDatos
 {
-    public static class TablaCanton
+    public static class TablaDistrito
     {
         private static string ConnectionString()
         {
@@ -18,34 +18,29 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Tabla()
         {
-            return "Canton";
+            return "Distrito";
         }
 
         private static string Columnas()
         {
-            return "IdProvincia|IdCanton|Descripcion";
+            return "IdProvincia|IdCanton|IdDistrito|Descripcion";
         }
 
         private static string LlavePrincipal()
         {
-            return "IdProvincia|IdCanton";
+            return "IdProvincia|IdCanton|IdDistrito";
         }
 
-        public static List<Canton> ObtenerCantones(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
+        public static List<Distrito> ObtenerDistritos(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
-            var canton = new List<Canton>();
+            var distritos = new List<Distrito>();
             var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {
-                canton = Convertidor.DataSetAObjecto<Canton>(dataSet);
+                distritos = Convertidor.DataSetAObjecto<Distrito>(dataSet);
             }
-            return canton;
-        }
-
-        internal static object ObtenerCantones(string v1, string v2, object igualA)
-        {
-            throw new NotImplementedException();
+            return distritos;
         }
     }
 }
