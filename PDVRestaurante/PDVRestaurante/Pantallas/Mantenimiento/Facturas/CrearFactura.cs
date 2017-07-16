@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PDVRestaurante.Pantallas.Mantenimiento.Usuarios
+namespace PDVRestaurante.Pantallas.Mantenimiento.Facturas
 {
     public partial class CrearFactura : Form
     {
@@ -21,35 +21,129 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Usuarios
             comboBoxCedula.DataSource = TablaCliente.ObtenerClientesFisicos();
             comboBoxCedula.DisplayMember = "Cedula";
 
-            dataGridPlatos.
+            comboBoxPlato.DataSource = TablaPlato.ObtenerPlatos();
+            comboBoxPlato.DisplayMember = "Nombre";
+
+            listViewPlatos.Columns.Add("Nombre");
+            listViewPlatos.Columns.Add("ID");
+            listViewPlatos.Columns.Add("Cantidad");
+            listViewPlatos.Columns.Add("Precio");
+            listViewPlatos.AjustarColumnas();
+        }
+
+        private bool InsertarPlatos(int idFac)
+        {
+            foreach (ListViewItem item in listViewPlatos.Items)
+            {
+                int idPlat = Int32.Parse(item.SubItems[1].Text);
+                int cantidad = Int32.Parse(item.SubItems[2].Text);
+                TablaPlatos_Factura.InsertarPlatos_Factura(idFac, idPlat, cantidad);
+            }
+            return true;
         }
 
         private void buttonCrear_Click(object sender, EventArgs e)
         {
             try
             {
-                var empleado = (Empleado)comboBoxCedula.SelectedItem;
-                var tipoUsuario = (TipoUsuario)comboBoxTipoUsuario.SelectedItem;
-                var salt = Ayudantes.Encriptador.CrearSalt();
-                var contrasena = Ayudantes.Encriptador.Encriptar(Ayudantes.Encriptador.ComoTextoSeguro(textBoxContrasena.Text), salt);
-                if(TablaUsuario.InsertarUsuario(textBoxNombre.Text.ToLower(), contrasena, Convert.ToBase64String(salt), empleado.Cedula, tipoUsuario.IdTipoUsuario))
+                int id = TablaFactura.ObtenerIdFactura();
+                if (comboBoxCedula.SelectedItem == null)
                 {
-                    MessageBox.Show("Se agregó el nuevo usuario exitosamente", "Nuevo usuario creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Seleccione una cédula de cliente.");
+                    return;
+                }
+                ClienteFisico cliente = (ClienteFisico)comboBoxCedula.SelectedItem;
+
+                if (comboBoxTipoPago.SelectedItem == null)
+                {
+                    MessageBox.Show("Seleccione un tipo de pago.");
+                    return;
+                }
+                string tipopago = (string)comboBoxTipoPago.SelectedItem;
+                int mesa = 0;
+                if(!int.TryParse(numericUpDownMesa.Value.ToString(), out mesa) || mesa==0)
+                {
+                    MessageBox.Show("Seleccione una mesa válida (distinta de 0).");
+                    return;
+                }
+                Decimal monto = 0;
+                if (!Decimal.TryParse(textBoxMonto.Text.Substring(1), out monto))
+                {
+                    MessageBox.Show("Imposible leer el monto.");
+                    return;
+                }
+
+                if(monto == 0)
+                {
+                    MessageBox.Show("Agregue platos por facturar.");
+                    return;
+                }
+
+                if (TablaFactura.InsertarFactura(id, DateTime.Now, monto, tipopago, cliente.Cedula) &&
+                    TablaMesa_Factura.InsertarMesa_Factura(id, mesa) &&
+                    InsertarPlatos(id))
+                {
+                    MessageBox.Show("Se generó la factura exitosamente", "Factura generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();
                 } else
                 {
-                    throw new Exception("Error insertando el usuario en la base de datos");
+                    throw new Exception("Error generando la factura.");
                 }
             } catch (Exception ex)
             {
                 ManejoExcepciones.LogearExcepcion(ex);
-                MessageBox.Show("Se produjo un error al tratar de crear el usuario", "Error al crear usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se produjo un error al tratar de generar la factura.", "Error al generar factura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void buttonAgregarPlato_Click(object sender, EventArgs e)
+        {
+            decimal monto;
+            int cantidad = 0;
+            if(comboBoxPlato.SelectedItem != null && int.TryParse(numericUpDownCantidad.Value.ToString(),out cantidad) && cantidad > 0){
+                Plato p = (Plato)comboBoxPlato.SelectedItem;
+                bool found = false;
+
+                if (Decimal.TryParse(textBoxMonto.Text.Substring(1), out monto))
+                {
+                    monto += p.Precio * cantidad;
+                    textBoxMonto.Text = "₡" + monto.ToString();
+                }
+
+                foreach (ListViewItem item in listViewPlatos.Items)
+                {
+                    if(item.SubItems[0].Text == p.Nombre)
+                    {
+                        found = true;
+                        cantidad += Int32.Parse(item.SubItems[2].Text);
+                        item.SubItems[2].Text = cantidad.ToString();
+                    }
+                }
+
+                if(!found)
+                {
+                    var newListView = new List<ListViewItem>();
+                    string row = p.Nombre + "," + p.IdPlato.ToString() + "," + cantidad.ToString() + "," + p.Precio.ToString();
+                    newListView.Add(new ListViewItem(row.Split(',')));
+                    listViewPlatos.Items.AddRange(newListView.ToArray());
+                    listViewPlatos.View = View.Details;
+                    listViewPlatos.AjustarColumnas();
+                }
+
+            } else
+            {
+                MessageBox.Show("Debe agregar por lo menos una existencia.");
+            }
+        }
+
+        private void listViewFacturas_Ajuste(object sender, EventArgs e)
+        {
+            listViewPlatos.AjustarColumnas();
         }
     }
 }

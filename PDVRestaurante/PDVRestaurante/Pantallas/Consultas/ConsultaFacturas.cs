@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PDVRestaurante.Pantallas.Mantenimiento.Facturas;
 
 namespace PDVRestaurante.Pantallas.Consultas
 {
@@ -142,5 +143,21 @@ namespace PDVRestaurante.Pantallas.Consultas
             listViewFacturas.AjustarColumnas();
         }
         #endregion
+
+        private void buttonCrear_Click(object sender, EventArgs e)
+        {
+            var crearFacturaForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearFactura");
+            if (crearFacturaForm == null)
+            {
+                var pantallaCrearFactura = new CrearFactura();
+                pantallaCrearFactura.MdiParent = this.ParentForm;
+                pantallaCrearFactura.Dock = DockStyle.Fill;
+                pantallaCrearFactura.Show();
+            }
+            else
+            {
+                crearFacturaForm.Show();
+            }
+        }
     }
 }

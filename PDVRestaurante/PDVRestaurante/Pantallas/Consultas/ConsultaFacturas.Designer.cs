@@ -91,6 +91,7 @@
             this.buttonCrear.TabIndex = 31;
             this.buttonCrear.Text = "Nueva Factura";
             this.buttonCrear.UseVisualStyleBackColor = true;
+            this.buttonCrear.Click += new System.EventHandler(this.buttonCrear_Click);
             // 
             // buttonBuscar
             // 
