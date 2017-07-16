@@ -28,7 +28,7 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Usuarios
         {
             try
             {
-                var empleado = (Empleado)comboBoxCedula.SelectedItem;
+                var empleado = (Cliente)comboBoxCedula.SelectedItem;
                 var tipoUsuario = (TipoUsuario)comboBoxTipoUsuario.SelectedItem;
                 var salt = Ayudantes.Encriptador.CrearSalt();
                 var contrasena = Ayudantes.Encriptador.Encriptar(Ayudantes.Encriptador.ComoTextoSeguro(textBoxContrasena.Text), salt);
