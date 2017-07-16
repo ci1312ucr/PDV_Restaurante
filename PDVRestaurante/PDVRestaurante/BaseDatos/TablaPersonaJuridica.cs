@@ -9,11 +9,6 @@ namespace PDVRestaurante.BaseDatos
 {
     public static class TablaPersonaJuridica
     {
-        private static string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
-        }
-
         private static string Tabla()
         {
             return "PersonaJuridica";

@@ -276,7 +276,8 @@ CREATE TABLE Factura (
 	Fecha date NOT NULL,
 	Monto numeric(18,2) NOT NULL,
 	TipoPago varchar(20) NOT NULL,
-	CedulaCliente varchar(10) NOT NULL
+	CedulaCliente varchar(10) NOT NULL,
+	Cancelada bit NOT NULL
 	CONSTRAINT PK_Factura PRIMARY KEY (IdFactura),
 	CONSTRAINT FK01_Factura_Cliente FOREIGN KEY (CedulaCliente) REFERENCES Cliente(Cedula)
 )

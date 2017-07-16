@@ -13,11 +13,6 @@ namespace PDVRestaurante.Objetos
 {
     public static class TablaPersona
     {
-        private static string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
-        }
-
         private static string Tabla()
         {
             return "Persona";
