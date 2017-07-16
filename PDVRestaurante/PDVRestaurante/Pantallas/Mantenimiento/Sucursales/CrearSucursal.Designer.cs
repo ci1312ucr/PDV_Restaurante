@@ -46,19 +46,19 @@
             this.textBoxDetalle.Name = "textBoxDetalle";
             this.textBoxDetalle.Size = new System.Drawing.Size(214, 20);
             this.textBoxDetalle.TabIndex = 0;
-            this.textBoxDetalle.TextChanged += new System.EventHandler(this.textBoxDetalle_TextChanged);
             // 
             // comboBoxDistrito
             // 
+            this.comboBoxDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDistrito.FormattingEnabled = true;
             this.comboBoxDistrito.Location = new System.Drawing.Point(119, 221);
             this.comboBoxDistrito.Name = "comboBoxDistrito";
             this.comboBoxDistrito.Size = new System.Drawing.Size(214, 21);
             this.comboBoxDistrito.TabIndex = 1;
-            this.comboBoxDistrito.SelectedIndexChanged += new System.EventHandler(this.comboBoxDistrito_SelectedIndexChanged);
             // 
             // comboBoxCanton
             // 
+            this.comboBoxCanton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCanton.FormattingEnabled = true;
             this.comboBoxCanton.Location = new System.Drawing.Point(119, 148);
             this.comboBoxCanton.Name = "comboBoxCanton";
@@ -68,6 +68,7 @@
             // 
             // comboBoxProvincia
             // 
+            this.comboBoxProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxProvincia.FormattingEnabled = true;
             this.comboBoxProvincia.Location = new System.Drawing.Point(119, 93);
             this.comboBoxProvincia.Name = "comboBoxProvincia";
@@ -149,7 +150,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CrearSucursal";
             this.Text = "CrearSucursal";
-            this.Load += new System.EventHandler(this.CrearSucursal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

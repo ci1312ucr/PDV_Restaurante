@@ -167,7 +167,7 @@ namespace PDVRestaurante.Pantallas.Consultas
                     if (columna.Name.Contains("Fecha"))
                     {
                         var valor = (DateTime)cliente.GetType().GetProperty(columna.Name).GetValue(cliente);
-                        row += valor.ToString("ddMMyyyy") + ",";
+                        row += valor.ToString("dd-MM-yyyy") + ",";
                     }
                     else
                     {

@@ -23,16 +23,6 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Sucursales
             comboBoxProvincia.DisplayMember = "Descripcion";
         }
 
-        private void CrearSucursal_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxDetalle_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBoxProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
             var provincia = (Provincia)comboBoxProvincia.SelectedItem;
@@ -48,11 +38,6 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Sucursales
             comboBoxDistrito.DisplayMember = "Descripcion";
         }
 
-        private void comboBoxDistrito_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
         private void buttonCrear_Click(object sender, EventArgs e)
         {
             try
@@ -61,7 +46,7 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Sucursales
                 var canton = (Canton)comboBoxCanton.SelectedItem;
                 var distrito = (Distrito)comboBoxDistrito.SelectedItem;
                 int idSucursal = TablaSucursal.ObtenerIdSucursal();
-                if (TablaSucursal.InsertarSucursal(idSucursal, DateTime.Today, distrito.IdDistrito, canton.IdCanton, provincia.IdProvincia, null, null, textBoxDetalle.Text.ToLower()))
+                if (TablaSucursal.InsertarSucursal(idSucursal, DateTime.Now, distrito.IdDistrito, canton.IdCanton, provincia.IdProvincia, textBoxDetalle.Text.ToLower()))
                 {
                     MessageBox.Show("Se agregó la nueva sucursal exitosamente", "Nueva sucursal creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();

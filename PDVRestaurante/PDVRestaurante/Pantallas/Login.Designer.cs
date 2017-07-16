@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.txtBoxUsuario = new System.Windows.Forms.TextBox();
             this.txtBoxContrasena = new System.Windows.Forms.TextBox();
             this.buttonIngresar = new System.Windows.Forms.Button();
@@ -128,6 +129,7 @@
             this.Controls.Add(this.buttonIngresar);
             this.Controls.Add(this.txtBoxContrasena);
             this.Controls.Add(this.txtBoxUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Text = "Autenticación Usuario";
             ((System.ComponentModel.ISupportInitialize)(this.errorAutenticacion)).EndInit();

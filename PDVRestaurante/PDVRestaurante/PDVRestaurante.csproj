@@ -93,11 +93,16 @@
     <Compile Include="BaseDatos\TablaTelefonosPersona.cs" />
     <Compile Include="BaseDatos\TablaTelefonoSucursal.cs" />
     <Compile Include="BaseDatos\TablaTipoUsuario.cs" />
-    <Compile Include="Constantes\TablaUsuario.cs" />
+    <Compile Include="BaseDatos\TablaUsuario.cs" />
     <Compile Include="Constantes\CriterioSQL.cs" />
     <Compile Include="Constantes\TipoDeUsuario.cs" />
+    <Compile Include="Objetos\Factura.cs" />
+    <Compile Include="Objetos\Ingrediente.cs" />
+    <Compile Include="Objetos\Mesa_Facturas.cs" />
+    <Compile Include="Objetos\Plato.cs" />
     <Compile Include="Objetos\Canton.cs" />
     <Compile Include="Objetos\Distrito.cs" />
+    <Compile Include="Objetos\Platos_Factura.cs" />
     <Compile Include="Objetos\Propiedad.cs" />
     <Compile Include="Objetos\Provincia.cs" />
     <Compile Include="Objetos\Sucursal.cs" />
@@ -163,6 +168,12 @@
     <Compile Include="Pantallas\Mantenimiento\Sucursales\CrearSucursal.Designer.cs">
       <DependentUpon>CrearSucursal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Facturas\CrearFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Facturas\CrearFactura.Designer.cs">
+      <DependentUpon>CrearFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,9 +182,11 @@
     </Compile>
     <Compile Include="Pantallas\Principal.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Pantallas\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Pantallas\Restaurante\ControlRestaurante.cs">
       <SubType>Form</SubType>
@@ -208,11 +221,15 @@
     <EmbeddedResource Include="Pantallas\Mantenimiento\Sucursales\CrearSucursal.resx">
       <DependentUpon>CrearSucursal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mantenimiento\Facturas\CrearFactura.resx">
+      <DependentUpon>CrearFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Mantenimiento\Usuarios\CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Restaurante\ControlRestaurante.resx">
       <DependentUpon>ControlRestaurante.cs</DependentUpon>
@@ -231,6 +248,7 @@
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.Empleado.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.Grid.EmpleadoGrid.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.PersonaFisica1.datasource" />
+    <None Include="Properties\DataSources\PDVRestaurante.Objetos.Plato1.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.TipoUsuario.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.Usuario.datasource" />
     <None Include="Properties\Settings.settings">
@@ -250,6 +268,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pantallas\Ayuda\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\cargaRestaurante.sql" />
+    <Content Include="Scripts\creaRestaurante.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

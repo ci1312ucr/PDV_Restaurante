@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.MenuRestaurante = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuControlRestaurante = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,6 +168,7 @@
             this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.MenuPrincipal);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MenuPrincipal;
             this.Margin = new System.Windows.Forms.Padding(4);

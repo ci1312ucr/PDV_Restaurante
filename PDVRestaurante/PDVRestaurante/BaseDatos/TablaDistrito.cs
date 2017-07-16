@@ -34,7 +34,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Distrito> ObtenerDistritos(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var distritos = new List<Distrito>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

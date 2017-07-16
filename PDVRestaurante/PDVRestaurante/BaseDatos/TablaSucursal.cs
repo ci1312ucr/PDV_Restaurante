@@ -30,6 +30,11 @@ namespace PDVRestaurante.BaseDatos
             return "IdSucursal|FechaApertura|IdDistrito|IdCanton|IdProvincia|IdGerente|FechaInicio|Detalle";
         }
 
+        private static string Columnas2()
+        {
+            return "IdSucursal|FechaApertura|IdDistrito|IdCanton|IdProvincia|Detalle";
+        }
+
         private static string LlavePrincipal()
         {
             return "IdSucursal";
@@ -47,9 +52,11 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool InsertarSucursal(params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split('|').Count())
+            MessageBox.Show("1");
+            if (parametros.Count() == Columnas2().Split('|').Count())
             {
-                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
+                MessageBox.Show("2");
+                InterpreteSQL.Insertar(Tabla(), Columnas2(), parametros);
             }
             return true;
         }
@@ -58,7 +65,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), idSucursal.ToString(), parametros);
+                InterpreteSQL.Modificar(Tabla(), Columnas(), LlavePrincipal(), idSucursal.ToString(), parametros);
             }
             return true;
         }
@@ -66,7 +73,7 @@ namespace PDVRestaurante.BaseDatos
         public static Sucursal ObtenerSucursal(string columnaBusqueda, string valorBusqueda)
         {
             Sucursal sucursal = null;
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnaBusqueda, valorBusqueda, CriterioSQL.IgualA);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnaBusqueda, valorBusqueda, CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -78,7 +85,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Sucursal> ObtenerSucursales(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var sucursales = new List<Sucursal>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), TablaSucursalDistritoProvinciaCantonGerente(), ColumnasSucursalDistritooProvinciaCantonGerente(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(TablaSucursalDistritoProvinciaCantonGerente(), ColumnasSucursalDistritooProvinciaCantonGerente(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -100,7 +107,6 @@ namespace PDVRestaurante.BaseDatos
                         {
                             command.Connection = conn;
                             command.CommandText = "select max(IdSucursal) from Sucursal";
-                            //MessageBox.Show(command.ExecuteScalar().ToString());
                             idSucursal = (int)command.ExecuteScalar();
                             idSucursal = idSucursal + 1;
                         }
