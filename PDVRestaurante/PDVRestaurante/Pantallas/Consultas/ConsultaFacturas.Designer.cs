@@ -33,11 +33,9 @@
             this.listViewFacturas = new System.Windows.Forms.ListView();
             this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
             this.buttonCrear = new System.Windows.Forms.Button();
-            this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonBuscar = new System.Windows.Forms.Button();
-            this.buttonModificar = new System.Windows.Forms.Button();
             this.comboBoxBuscar = new System.Windows.Forms.ComboBox();
-            this.textBoxBuscar = new System.Windows.Forms.TextBox();
+            this.textBuscar = new System.Windows.Forms.TextBox();
             this.labelConsultaFacturas = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -49,6 +47,7 @@
             this.comboBoxOrdenar.Name = "comboBoxOrdenar";
             this.comboBoxOrdenar.Size = new System.Drawing.Size(261, 21);
             this.comboBoxOrdenar.TabIndex = 35;
+            this.comboBoxOrdenar.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrdenar_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -64,6 +63,7 @@
             this.listViewFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewFacturas.FullRowSelect = true;
             this.listViewFacturas.Location = new System.Drawing.Point(12, 142);
             this.listViewFacturas.MultiSelect = false;
             this.listViewFacturas.Name = "listViewFacturas";
@@ -71,6 +71,7 @@
             this.listViewFacturas.TabIndex = 33;
             this.listViewFacturas.UseCompatibleStateImageBehavior = false;
             this.listViewFacturas.View = System.Windows.Forms.View.Details;
+            this.listViewFacturas.Resize += new System.EventHandler(this.listViewFacturas_Ajuste);
             // 
             // buttonLimpiarFiltro
             // 
@@ -80,24 +81,16 @@
             this.buttonLimpiarFiltro.TabIndex = 32;
             this.buttonLimpiarFiltro.Text = "Limpiar Filtro";
             this.buttonLimpiarFiltro.UseVisualStyleBackColor = true;
+            this.buttonLimpiarFiltro.Click += new System.EventHandler(this.buttonLimpiarFiltro_Click);
             // 
             // buttonCrear
             // 
-            this.buttonCrear.Location = new System.Drawing.Point(635, 25);
+            this.buttonCrear.Location = new System.Drawing.Point(569, 25);
             this.buttonCrear.Name = "buttonCrear";
             this.buttonCrear.Size = new System.Drawing.Size(96, 35);
             this.buttonCrear.TabIndex = 31;
             this.buttonCrear.Text = "Nueva Factura";
             this.buttonCrear.UseVisualStyleBackColor = true;
-            // 
-            // buttonEliminar
-            // 
-            this.buttonEliminar.Location = new System.Drawing.Point(522, 25);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(96, 35);
-            this.buttonEliminar.TabIndex = 26;
-            this.buttonEliminar.Text = "Eliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = true;
             // 
             // buttonBuscar
             // 
@@ -107,15 +100,7 @@
             this.buttonBuscar.TabIndex = 30;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = true;
-            // 
-            // buttonModificar
-            // 
-            this.buttonModificar.Location = new System.Drawing.Point(405, 25);
-            this.buttonModificar.Name = "buttonModificar";
-            this.buttonModificar.Size = new System.Drawing.Size(96, 35);
-            this.buttonModificar.TabIndex = 25;
-            this.buttonModificar.Text = "Modificar";
-            this.buttonModificar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // comboBoxBuscar
             // 
@@ -126,12 +111,13 @@
             this.comboBoxBuscar.Size = new System.Drawing.Size(261, 21);
             this.comboBoxBuscar.TabIndex = 28;
             // 
-            // textBoxBuscar
+            // textBuscar
             // 
-            this.textBoxBuscar.Location = new System.Drawing.Point(78, 40);
-            this.textBoxBuscar.Name = "textBoxBuscar";
-            this.textBoxBuscar.Size = new System.Drawing.Size(262, 20);
-            this.textBoxBuscar.TabIndex = 29;
+            this.textBuscar.Location = new System.Drawing.Point(78, 40);
+            this.textBuscar.Name = "textBuscar";
+            this.textBuscar.Size = new System.Drawing.Size(262, 20);
+            this.textBuscar.TabIndex = 29;
+            this.textBuscar.TextChanged += new System.EventHandler(this.textBuscar_TextChanged);
             // 
             // labelConsultaFacturas
             // 
@@ -154,15 +140,17 @@
             this.Controls.Add(this.listViewFacturas);
             this.Controls.Add(this.buttonLimpiarFiltro);
             this.Controls.Add(this.buttonCrear);
-            this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonBuscar);
-            this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.comboBoxBuscar);
-            this.Controls.Add(this.textBoxBuscar);
+            this.Controls.Add(this.textBuscar);
             this.Controls.Add(this.labelConsultaFacturas);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ConsultaFacturas";
             this.Text = "ConsultaFacturas";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,11 +163,9 @@
         private System.Windows.Forms.ListView listViewFacturas;
         private System.Windows.Forms.Button buttonLimpiarFiltro;
         private System.Windows.Forms.Button buttonCrear;
-        private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonBuscar;
-        private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.ComboBox comboBoxBuscar;
-        private System.Windows.Forms.TextBox textBoxBuscar;
+        private System.Windows.Forms.TextBox textBuscar;
         private System.Windows.Forms.Label labelConsultaFacturas;
     }
 }

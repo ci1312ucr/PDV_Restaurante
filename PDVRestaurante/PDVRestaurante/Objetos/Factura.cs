@@ -18,15 +18,10 @@ namespace PDVRestaurante.Objetos
         [Display(Name = "Fecha", Order = 2)]
         public DateTime Fecha { get; set; }
 
-        [Display(Name = "Monto", Order = 3)]
-        public int Monto { get; set; }
+        [Display(Name = "Monto", Order = 4)]
+        public decimal Monto { get; set; }
 
-        [Display(Name = "Tipo de Pago", Order = 4)]
+        [Display(Name = "Tipo de Pago", Order = 3)]
         public string TipoPago { get; set; }
-
-        [Display(Name = "Mesa", Order = 5)]
-        public int Mesa { get; set; }
-
-
     }
 }

@@ -18,7 +18,7 @@ namespace PDVRestaurante.Pantallas.Consultas
     {
         private List<Propiedad> _columnas;
         private List<Factura> _facturas;
-        private string _ordenActual = "IdIngrediente";
+        private string _ordenActual = "IdFactura";
 
         public ConsultaFacturas()
         {
@@ -38,6 +38,61 @@ namespace PDVRestaurante.Pantallas.Consultas
             comboBoxOrdenar.DisplayMember = "DisplayName";
 
             buttonBuscar.Enabled = false;
+        }
+
+        private void textBuscar_TextChanged(object sender, EventArgs e)
+        {
+            //Para realizar una búsqueda por filtro tiene que haber algo escrito en el campo del valor del filtro
+            buttonBuscar.Enabled = textBuscar.Text.Length > 0;
+        }
+
+        private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var columna = (Propiedad)comboBoxOrdenar.SelectedItem;
+            _ordenActual = columna.Name;
+            CargarListView(_facturas);
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            //Realiza una búsqueda de empleado(s) basado en el filtro seleccionado
+            var columna = (Propiedad)comboBoxBuscar.SelectedItem;
+            var valor = textBuscar.Text;
+
+            //Define el criterio de comparación para enviar la consulta SQL adecuada
+            var criterio = CriterioSQL.IgualA;
+            if (columna.ValueType == typeof(string))
+            {
+                criterio = CriterioSQL.Contiene;
+                valor = "'%" + valor + "%'";
+            }
+            if (columna.ValueType == typeof(DateTime))
+            {
+                valor = "'" + valor + "'";
+            }
+
+            /*Para el filtro de sucursal, debe hacer la búsqueda según el Id de Sucursal
+            if (columna.Name == "NombreSucursal")
+            {
+                criterio = CriterioSQL.IgualA;
+                columna.Name = "IdSucursal";
+                var sucursal = TablaSucursal.ObtenerSucursal("Detalle", valor);
+                valor = sucursal == null ? "NULL" : sucursal.IdSucursal.ToString();
+            }*/
+            CargarListView(TablaFactura.ObtenerFacturas(columna.Name, valor, criterio));
+        }
+
+        private void buttonLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            //Limpia el filtro de búsqueda y carga el Grid de nuevo con todos los empleados
+            comboBoxBuscar.ResetText();
+            textBuscar.Clear();
+            CargarListView(TablaFactura.ObtenerFacturas());
+        }
+
+        private void listViewFacturas_Ajuste(object sender, EventArgs e)
+        {
+            listViewFacturas.AjustarColumnas();
         }
 
         #region Funciones

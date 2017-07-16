@@ -31,7 +31,6 @@
             this.comboBoxOrdenar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listViewUsuarios = new System.Windows.Forms.ListView();
-            this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
             this.buttonCrear = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
@@ -75,18 +74,6 @@
             this.listViewUsuarios.UseCompatibleStateImageBehavior = false;
             this.listViewUsuarios.View = System.Windows.Forms.View.Details;
             this.listViewUsuarios.Resize += new System.EventHandler(this.listViewUsuarios_Ajuste);
-            // 
-            // buttonCerrar
-            // 
-            this.buttonCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCerrar.Location = new System.Drawing.Point(774, 0);
-            this.buttonCerrar.Name = "buttonCerrar";
-            this.buttonCerrar.Size = new System.Drawing.Size(26, 21);
-            this.buttonCerrar.TabIndex = 21;
-            this.buttonCerrar.Text = "X";
-            this.buttonCerrar.UseVisualStyleBackColor = true;
-            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
             // buttonLimpiarFiltro
             // 
@@ -169,11 +156,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
-            this.ControlBox = false;
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewUsuarios);
-            this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonLimpiarFiltro);
             this.Controls.Add(this.buttonCrear);
             this.Controls.Add(this.buttonEliminar);
@@ -182,6 +167,7 @@
             this.Controls.Add(this.comboBoxBuscar);
             this.Controls.Add(this.textBoxBuscar);
             this.Controls.Add(this.labelConsultaEmpleados);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultaUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -196,7 +182,6 @@
         private System.Windows.Forms.ComboBox comboBoxOrdenar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listViewUsuarios;
-        private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonLimpiarFiltro;
         private System.Windows.Forms.Button buttonCrear;
         private System.Windows.Forms.Button buttonEliminar;
