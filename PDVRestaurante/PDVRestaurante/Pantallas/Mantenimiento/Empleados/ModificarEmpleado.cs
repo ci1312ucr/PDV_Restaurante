@@ -15,7 +15,7 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Empleados
     public partial class ModificarEmpleado : Form
     {
         PersonaFisica _personaFisica;
-        Empleado _empleado;
+        Cliente _empleado;
 
         public ModificarEmpleado(string cedulaEmpleado)
         {

@@ -45,7 +45,7 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Empleados
 
             try
             {
-                var empleado = (Empleado)comboBoxCedula.SelectedItem;
+                var empleado = (Cliente)comboBoxCedula.SelectedItem;
                 var sucursal = (Sucursal)comboBoxSucursal.SelectedItem;
                 if (TablaEmpleado.InsertarEmpleado(empleado.Cedula,textBoxTipoE.Text,Convert.ToDecimal(textBoxSalario.Text),sucursal.IdSucursal,DateTime.Now))
                 {

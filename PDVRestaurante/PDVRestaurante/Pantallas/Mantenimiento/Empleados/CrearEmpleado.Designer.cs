@@ -181,7 +181,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxCedula);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CrearEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CrearEmpleado";
