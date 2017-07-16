@@ -13,9 +13,9 @@ namespace PDVRestaurante.Objetos
         public int IdPlato { get; set; }
         [Display(Name = "Nombre", Order = 1)]
         public string Nombre { get; set; }
-        [Display(Name = "Descripción", Order = 3)]
+        [Display(Name = "Descripción", Order = 2)]
         public string Descripcion { get; set; }
-        [Display(Name = "Precio", Order = 4)]
-        public double Precio { get; set; }
+        [Display(Name = "Precio", Order = 3)]
+        public decimal Precio { get; set; }
     }
 }
