@@ -3,6 +3,7 @@ using PDVRestaurante.BaseDatos;
 using PDVRestaurante.Objetos;
 using System;
 using System.Collections.Generic;
+using PDVRestaurante.Pantallas.Mantenimiento.Sucursales;
 using System.ComponentModel;
 using PDVRestaurante.Constantes;
 using System.Data;
@@ -48,9 +49,9 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //Modificar Sucursal
         {
-
+     
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -175,6 +176,22 @@ namespace PDVRestaurante.Pantallas.Consultas
         private void button6_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e) //Crear Sucursal
+        {
+            var crearSucursalForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearSucursal");
+            if (crearSucursalForm == null)
+            {
+                var pantallaCrearEmpleado = new CrearSucursal();
+                pantallaCrearEmpleado.MdiParent = this.ParentForm;
+                pantallaCrearEmpleado.Dock = DockStyle.Fill;
+                pantallaCrearEmpleado.Show();
+            }
+            else
+            {
+                crearSucursalForm.Show();
+            }
         }
     }
 }

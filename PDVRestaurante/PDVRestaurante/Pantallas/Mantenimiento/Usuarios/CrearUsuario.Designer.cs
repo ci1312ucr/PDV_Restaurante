@@ -50,6 +50,7 @@
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(253, 22);
             this.textBoxNombre.TabIndex = 0;
+            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
             // 
             // textBoxContrasena
             // 
