@@ -30,6 +30,11 @@ namespace PDVRestaurante.BaseDatos
             return "IdSucursal|FechaApertura|IdDistrito|IdCanton|IdProvincia|IdGerente|FechaInicio|Detalle";
         }
 
+        private static string Columnas2()
+        {
+            return "IdSucursal|FechaApertura|IdDistrito|IdCanton|IdProvincia|Detalle";
+        }
+
         private static string LlavePrincipal()
         {
             return "IdSucursal";
@@ -47,9 +52,11 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool InsertarSucursal(params object[] parametros)
         {
-            if (parametros.Count() == Columnas().Split('|').Count())
+            MessageBox.Show("1");
+            if (parametros.Count() == Columnas2().Split('|').Count())
             {
-                InterpreteSQL.Insertar(Tabla(), Columnas(), parametros);
+                MessageBox.Show("2");
+                InterpreteSQL.Insertar(Tabla(), Columnas2(), parametros);
             }
             return true;
         }
@@ -100,7 +107,6 @@ namespace PDVRestaurante.BaseDatos
                         {
                             command.Connection = conn;
                             command.CommandText = "select max(IdSucursal) from Sucursal";
-                            //MessageBox.Show(command.ExecuteScalar().ToString());
                             idSucursal = (int)command.ExecuteScalar();
                             idSucursal = idSucursal + 1;
                         }
