@@ -98,9 +98,11 @@
     <Compile Include="Constantes\TipoDeUsuario.cs" />
     <Compile Include="Objetos\Factura.cs" />
     <Compile Include="Objetos\Ingrediente.cs" />
+    <Compile Include="Objetos\Mesa_Facturas.cs" />
     <Compile Include="Objetos\Plato.cs" />
     <Compile Include="Objetos\Canton.cs" />
     <Compile Include="Objetos\Distrito.cs" />
+    <Compile Include="Objetos\Platos_Factura.cs" />
     <Compile Include="Objetos\Propiedad.cs" />
     <Compile Include="Objetos\Provincia.cs" />
     <Compile Include="Objetos\Sucursal.cs" />
@@ -246,6 +248,7 @@
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.Empleado.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.Grid.EmpleadoGrid.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.PersonaFisica1.datasource" />
+    <None Include="Properties\DataSources\PDVRestaurante.Objetos.Plato1.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.TipoUsuario.datasource" />
     <None Include="Properties\DataSources\PDVRestaurante.Objetos.Usuario.datasource" />
     <None Include="Properties\Settings.settings">
@@ -265,10 +268,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pantallas\Ayuda\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\cargaRestaurante.sql" />
-    <Content Include="Scripts\creaRestaurante.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

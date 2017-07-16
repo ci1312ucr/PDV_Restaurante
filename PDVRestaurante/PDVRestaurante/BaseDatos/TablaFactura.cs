@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PDVRestaurante.Ayudantes;
 using PDVRestaurante.Constantes;
 using PDVRestaurante.Objetos;
+using System.Data.SqlClient;
 
 namespace PDVRestaurante.BaseDatos
 {
@@ -82,6 +83,32 @@ namespace PDVRestaurante.BaseDatos
                 facturas = Convertidor.DataSetAObjecto<Factura>(dataSet);
             }
             return facturas;
+        }
+
+        public static int ObtenerIdFactura()
+        {
+            int idFactura = 0;
+            try
+            {
+                using (var conn = new SqlConnection(ConnectionString()))
+                {
+                    conn.Open();
+
+                    using (var command = new SqlCommand())
+                    {
+                        command.Connection = conn;
+                        command.CommandText = "select max(IdFactura) from Factura";
+                        idFactura = (int)command.ExecuteScalar();
+                        idFactura = idFactura + 1;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManejoExcepciones.LogearExcepcion(ex);
+            }
+            return idFactura;
         }
     }
 }
