@@ -32,6 +32,12 @@ namespace PDVRestaurante.Pantallas.Consultas
             //Carga la lista de posibles filtros para búsqueda
             comboBoxBuscar.Items.AddRange(_columnas.ToArray());
             comboBoxBuscar.DisplayMember = "DisplayName";
+
+            //Carga la lista de posibles filtros para ordenar
+            comboBoxOrdenar.Items.AddRange(_columnas.ToArray());
+            comboBoxOrdenar.DisplayMember = "DisplayName";
+
+            buttonBuscar.Enabled = false;
         }
 
         #region Funciones
