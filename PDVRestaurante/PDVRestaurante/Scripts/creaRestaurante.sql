@@ -1,4 +1,25 @@
 -- Elimina las tablas existentes
+IF OBJECT_ID('AuditEmpleado', 'U') IS NOT NULL 
+   DROP TABLE AuditEmpleado; 
+
+IF OBJECT_ID('AuditPersona', 'U') IS NOT NULL 
+   DROP TABLE AuditPersona; 
+
+IF OBJECT_ID('AuditUsuario', 'U') IS NOT NULL 
+  DROP TABLE AuditUsuario; 
+
+IF OBJECT_ID('AuditSucursal', 'U') IS NOT NULL 
+  DROP TABLE AuditSucursal; 
+
+IF OBJECT_ID('AuditCliente', 'U') IS NOT NULL 
+  DROP TABLE AuditCliente; 
+
+IF OBJECT_ID('AuditFactura', 'U') IS NOT NULL 
+  DROP TABLE AuditFactura; 
+
+IF OBJECT_ID('AuditInventario', 'U') IS NOT NULL 
+  DROP TABLE AuditInventario; 
+
 IF OBJECT_ID('TelefonoSucursal', 'U') IS NOT NULL 
   DROP TABLE TelefonoSucursal; 
 
@@ -324,3 +345,351 @@ CREATE TABLE OrdenCompra_Ingrediente (
 	CONSTRAINT FK01_OrdnCompraIngrediente_OrdenCompra FOREIGN KEY (IdCompra) REFERENCES OrdenCompra(IdCompra),
 	CONSTRAINT FK02_OrdnCompraIngrediente_Ingrediente FOREIGN KEY (IdIngrediente) REFERENCES Ingrediente(IdIngrediente)
 )
+
+
+-- TRIGGERS
+-- USUARIO
+
+CREATE TABLE AuditUsuario(
+	Usuario		varchar(100),
+	Fecha		date,
+	Tipo		char(1),
+	NewUsuario  varchar(100),
+	OldUsuario  varchar(100)
+)
+
+IF EXISTS(SELECT OBJECT_ID FROM sys.triggers WHERE name = 'AuditaUsuario')
+	DROP TRIGGER dbo.AuditaUsuario
+GO
+CREATE TRIGGER dbo.AuditaUsuario
+	ON Usuario
+	AFTER UPDATE, DELETE, INSERT
+	AS
+
+IF EXISTS(SELECT * FROM INSERTED) AND EXISTS(SELECT * FROM DELETED) BEGIN
+-- UPDATE
+	DECLARE @vNew	varchar(20),
+			@vOld	varchar(20);
+	
+	SET  @vNew = (SELECT Nombre FROM inserted);
+	SET  @vOld = (SELECT Nombre FROM deleted);
+	
+	INSERT INTO AuditUsuario(Usuario, Fecha, Tipo, NewUsuario, OldUsuario)
+	SELECT SYSTEM_USER, GETDATE(), 'U', @vNew, @vOld;
+
+END ELSE IF EXISTS(SELECT * FROM DELETED) BEGIN
+-- DELETE
+	SET  @vOld = (SELECT Nombre FROM deleted);
+	INSERT INTO AuditUsuario(Usuario, Fecha, Tipo, OldUsuario)
+	SELECT SYSTEM_USER, GETDATE(), 'D', @vOld
+END ELSE BEGIN
+-- INSERT
+	SET  @vNew = (SELECT Nombre FROM inserted);
+	INSERT INTO AuditUsuario(Usuario, Fecha, Tipo, NewUsuario)
+	SELECT SYSTEM_USER, GETDATE(), 'I', @vNew
+END
+go
+-- FACTURA
+CREATE TABLE AuditFactura(
+	Usuario			varchar(100),
+	Fecha			date,
+	Tipo			char(1),
+	NewTipoPago		varchar(20),
+	OldTipoPago		varchar(20),
+	NewCliente		varchar(10),
+	OldCliente		varchar(10),
+	NewMonto		numeric(18,2),
+	OldMonto		numeric(18,2),
+	NewFecha		date,
+	OldFecha		date
+)
+
+IF EXISTS(SELECT OBJECT_ID FROM sys.triggers WHERE name = 'AuditaFactura')
+	DROP TRIGGER dbo.AuditaFactura
+GO
+
+CREATE TRIGGER dbo.AuditaFactura
+	ON Factura
+	AFTER UPDATE, DELETE, INSERT
+	AS
+
+IF EXISTS(SELECT * FROM INSERTED) AND EXISTS(SELECT * FROM DELETED) BEGIN
+-- UPDATE
+	DECLARE @vNewTipoPago	varchar(20),
+			@vOldTipoPago	varchar(20),
+			@vNewCliente	varchar(10),
+			@vOldCliente	varchar(10),
+			@vNewMonto		numeric(18,2),
+			@vOldMonto		numeric(18,2),
+			@vNewFecha		date,
+			@vOldFecha		date
+	
+	SET  @vNewTipoPago = (SELECT TipoPago FROM inserted);
+	SET  @vNewCliente = (SELECT CedulaCliente FROM inserted);
+	SET  @vNewMonto = (SELECT Monto FROM inserted);
+	SET  @vNewFecha = (SELECT Fecha FROM inserted);
+	SET  @vOldTipoPago = (SELECT TipoPago FROM deleted);
+	SET  @vOldCliente = (SELECT CedulaCliente FROM deleted);
+	SET  @vOldMonto = (SELECT Monto FROM deleted);
+	SET  @vOldFecha = (SELECT Fecha FROM deleted);
+
+	
+	INSERT INTO AuditFactura(Usuario, Fecha, Tipo, NewTipoPago, OldTipoPago, NewCliente, OldCliente, NewMonto, OldMonto, NewFecha, OldFecha)
+	SELECT SYSTEM_USER, GETDATE(), 'U', @vNewTipoPago, @vOldTipoPago, @vNewCliente, @vOldCliente, @vNewMonto, @vOldMonto, @vNewFecha, @vOldFecha
+
+END ELSE IF EXISTS(SELECT * FROM DELETED) BEGIN
+-- DELETE
+	SET  @vOldTipoPago = (SELECT TipoPago FROM deleted);
+	SET  @vOldCliente = (SELECT CedulaCliente FROM deleted);
+	SET  @vOldMonto = (SELECT Monto FROM deleted);
+	SET  @vOldFecha = (SELECT Fecha FROM deleted);
+	INSERT INTO AuditFactura(Usuario, Fecha, Tipo, OldTipoPago, OldCliente,OldMonto, OldFecha)
+	SELECT SYSTEM_USER, GETDATE(), 'D',  @vOldTipoPago,@vOldCliente, @vOldMonto, @vOldFecha
+END ELSE BEGIN
+-- INSERT
+	SET  @vNewTipoPago = (SELECT TipoPago FROM inserted);
+	SET  @vNewCliente = (SELECT CedulaCliente FROM inserted);
+	SET  @vNewMonto = (SELECT Monto FROM inserted);
+	SET  @vNewFecha = (SELECT Fecha FROM inserted);
+	INSERT INTO AuditFactura(Usuario, Fecha, Tipo, NewTipoPago, NewCliente, NewMonto, NewFecha)
+	SELECT SYSTEM_USER, GETDATE(), 'I', @vNewTipoPago, @vNewCliente, @vNewMonto, @vNewFecha
+END
+GO
+
+-- CLIENTE
+CREATE TABLE AuditCliente(
+	Usuario			varchar(100),
+	Fecha			date,
+	Tipo			char(1),
+	NewFrecuente	bit,
+	OldFrecuente	bit,
+)
+
+IF EXISTS(SELECT OBJECT_ID FROM sys.triggers WHERE name = 'AuditaCliente')
+	DROP TRIGGER dbo.AuditaCliente
+GO
+
+CREATE TRIGGER dbo.AuditaCliente
+	ON Cliente
+	AFTER UPDATE, DELETE, INSERT
+	AS
+
+IF EXISTS(SELECT * FROM INSERTED) AND EXISTS(SELECT * FROM DELETED) BEGIN
+-- UPDATE
+	DECLARE @vOldFrecuente	bit,
+			@vNewFrecuente	bit;
+	
+	SET  @vNewFrecuente = (SELECT frecuente FROM inserted);
+	SET  @vOldFrecuente = (SELECT frecuente FROM deleted);
+	
+	INSERT INTO AuditCliente(Usuario, Fecha, Tipo, OldFrecuente, NewFrecuente)
+	SELECT SYSTEM_USER, GETDATE(), 'U', @vOldFrecuente, @vNewFrecuente
+
+END ELSE IF EXISTS(SELECT * FROM DELETED) BEGIN
+-- DELETE
+	SET  @vOldFrecuente = (SELECT frecuente FROM deleted);
+	INSERT INTO AuditCliente(Usuario, Fecha, Tipo, OldFrecuente)
+	SELECT SYSTEM_USER, GETDATE(), 'D', @vOldFrecuente
+END ELSE BEGIN
+-- INSERT
+	SET  @vNewFrecuente = (SELECT frecuente FROM inserted);
+	INSERT INTO AuditCliente(Usuario, Fecha, Tipo, NewFrecuente)
+	SELECT SYSTEM_USER, GETDATE(), 'I', @vNewFrecuente
+END
+GO
+
+-- Inventario
+CREATE TABLE AuditInventario(
+	Usuario			varchar(100),
+	Fecha			date,
+	Tipo			char(1),
+	NewFecha		date,
+	OldFecha		date
+)
+
+IF EXISTS(SELECT OBJECT_ID FROM sys.triggers WHERE name = 'AuditaInventario')
+	DROP TRIGGER dbo.AuditaInventario
+GO
+
+CREATE TRIGGER dbo.AuditaInventario
+	ON Inventario
+	AFTER UPDATE, DELETE, INSERT
+	AS
+
+IF EXISTS(SELECT * FROM INSERTED) AND EXISTS(SELECT * FROM DELETED) BEGIN
+-- UPDATE
+	DECLARE @vNewFecha		date,
+			@vOldFecha		date
+
+	SET  @vNewFecha = (SELECT fecha FROM inserted);
+	SET  @vOldFecha = (SELECT fecha FROM deleted);
+
+	INSERT INTO AuditInventario(Usuario, Fecha, Tipo, NewFecha, OldFecha)
+	SELECT SYSTEM_USER, GETDATE(), 'U', @vNewFecha, @vOldFecha
+
+END ELSE IF EXISTS(SELECT * FROM DELETED) BEGIN
+-- DELETE
+	SET  @vOldFecha = (SELECT fecha FROM deleted);
+	INSERT INTO AuditInventario(Usuario, Fecha, Tipo, OldFecha)
+	SELECT SYSTEM_USER, GETDATE(), 'D', @vOldFecha
+END ELSE BEGIN
+-- INSERT
+	SET  @vNewFecha = (SELECT fecha FROM inserted);
+	INSERT INTO AuditInventario(Usuario, Fecha, Tipo, NewFecha)
+	SELECT SYSTEM_USER, GETDATE(), 'I', @vNewFecha
+END
+GO
+
+-- Empleado
+CREATE TABLE AuditEmpleado(
+	Usuario			varchar(100),
+	Fecha			date,
+	Tipo			char(1),
+	OldSalario		numeric(18,2),
+	OldTipoE		varchar(15),
+	OldSucursal		int,
+	NewSalario		numeric(18,2),
+	NewTipoE		varchar(15),
+	NewSucursal		int
+)
+
+IF EXISTS(SELECT OBJECT_ID FROM sys.triggers WHERE name = 'AuditaEmpleado')
+	DROP TRIGGER dbo.AuditaEmpleado
+GO
+
+CREATE TRIGGER dbo.AuditaEmpleado
+	ON Empleado
+	AFTER UPDATE, DELETE, INSERT
+	AS
+
+IF EXISTS(SELECT * FROM INSERTED) AND EXISTS(SELECT * FROM DELETED) BEGIN
+-- UPDATE
+	DECLARE @vOldSalario	numeric(18,2),
+			@vOldTipoE		varchar(15),
+			@vOldSucursal	int,
+			@vNewSalario	numeric(18,2),
+			@vNewTipoE		varchar(15),
+			@vNewSucursal	int;
+
+	SET @vOldSalario	= (select Salario from deleted)
+	SET @vOldTipoE		= (select TipoE from deleted)
+	SET @vOldSucursal	= (select IdSucursal from deleted)
+	SET @vNewSalario	= (select Salario from inserted)
+	SET @vNewTipoE		= (select TipoE from inserted)
+	SET @vNewSucursal	= (select IdSucursal from inserted)
+
+	INSERT INTO AuditEmpleado(Usuario, Fecha, Tipo, OldSalario, OldTipoE,OldSucursal,NewSalario,NewTipoE,NewSucursal)
+	SELECT SYSTEM_USER, GETDATE(), 'U', @vOldSalario, @vOldTipoE, @vOldSucursal, @vNewSalario, @vNewTipoE, @vNewSucursal 
+
+END ELSE IF EXISTS(SELECT * FROM DELETED) BEGIN
+-- DELETE
+	SET @vOldSalario	= (select Salario from deleted)
+	SET @vOldTipoE		= (select TipoE from deleted)
+	SET @vOldSucursal	= (select IdSucursal from deleted)
+	INSERT INTO AuditEmpleado(Usuario, Fecha, Tipo, OldSalario, OldTipoE,OldSucursal)
+	SELECT SYSTEM_USER, GETDATE(), 'D', @vOldSalario, @vOldTipoE, @vOldSucursal
+END ELSE BEGIN
+-- INSERT
+	SET @vNewSalario	= (select Salario from inserted)
+	SET @vNewTipoE		= (select TipoE from inserted)
+	SET @vNewSucursal	= (select IdSucursal from inserted)
+	INSERT INTO AuditEmpleado(Usuario, Fecha, Tipo, NewSalario,NewTipoE,NewSucursal)
+	SELECT SYSTEM_USER, GETDATE(), 'I', @vNewSalario, @vNewTipoE, @vNewSucursal 
+END
+GO
+
+
+-- SUCURSAL
+
+CREATE TABLE AuditSucursal(
+	Usuario		varchar(100),
+	Fecha		date,
+	Tipo		char(1),
+	NewDetalle  varchar(100),
+	OldDetalle  varchar(100),
+	NewGerente varchar(10),
+	OldGerente varchar(10)
+)
+
+IF EXISTS(SELECT OBJECT_ID FROM sys.triggers WHERE name = 'AuditaSucursal')
+	DROP TRIGGER dbo.AuditaSucursal
+GO
+
+CREATE TRIGGER dbo.AuditaSucursal
+	ON Sucursal
+	AFTER UPDATE, DELETE, INSERT
+	AS
+
+IF EXISTS(SELECT * FROM INSERTED) AND EXISTS(SELECT * FROM DELETED) BEGIN
+-- UPDATE
+	DECLARE @vNewDetalle	varchar(100),
+			@vOldDetalle	varchar(100),
+			@vNewGerente	varchar(10),
+			@vOldGerente	varchar(10);
+	
+	SET  @vNewDetalle = (SELECT detalle FROM inserted);
+	SET  @vOldDetalle = (SELECT detalle FROM deleted);
+	SET  @vNewGerente = (SELECT idgerente FROM inserted);
+	SET  @vOldGerente = (SELECT idgerente FROM deleted);
+	
+	INSERT INTO AuditSucursal(Usuario, Fecha, Tipo, NewDetalle, OldDetalle)
+	SELECT SYSTEM_USER, GETDATE(), 'U', @vNewDetalle, @vOldDetalle;
+
+END ELSE IF EXISTS(SELECT * FROM DELETED) BEGIN
+-- DELETE
+	SET  @vOldDetalle = (SELECT detalle FROM deleted);
+	SET  @vOldGerente = (SELECT idgerente FROM deleted);
+	INSERT INTO AuditSucursal( Usuario,     Fecha,     Tipo, OldDetalle,   OldGerente)
+	SELECT                     SYSTEM_USER, GETDATE(), 'D',  @vOldDetalle, @vOldGerente
+END ELSE BEGIN
+-- INSERT
+	SET  @vNewDetalle = (SELECT detalle FROM inserted);
+	SET  @vNewGerente = (SELECT idgerente FROM inserted);
+	INSERT INTO AuditSucursal(Usuario, Fecha, Tipo, NewDetalle, NewGerente)
+	SELECT SYSTEM_USER, GETDATE(), 'I', @vNewDetalle, @vNewGerente
+END
+GO
+
+
+-- PERSONA
+
+CREATE TABLE AuditPersona(
+	Usuario		varchar(100),
+	Fecha		date,
+	Tipo		char(1),
+	NewTipoP  char(1),
+	OldTipoP  char(1),
+)
+
+IF EXISTS(SELECT OBJECT_ID FROM sys.triggers WHERE name = 'AuditaPersona')
+	DROP TRIGGER dbo.AuditaPersona
+GO
+
+CREATE TRIGGER dbo.AuditaPersona
+	ON Persona
+	AFTER UPDATE, DELETE, INSERT
+	AS
+
+IF EXISTS(SELECT * FROM INSERTED) AND EXISTS(SELECT * FROM DELETED) BEGIN
+-- UPDATE
+	DECLARE @vNewTipoP	char(1),
+			@vOldTipoP	char(1);
+	
+	SET  @vNewTipoP = (SELECT TipoP FROM inserted);
+	SET  @vOldTipoP = (SELECT TipoP FROM deleted);
+	
+	INSERT INTO AuditPersona(Usuario, Fecha, Tipo, NewTipoP, OldTipoP)
+	SELECT SYSTEM_USER, GETDATE(), 'U', @vNewTipoP, @vOldTipoP;
+
+END ELSE IF EXISTS(SELECT * FROM DELETED) BEGIN
+-- DELETE
+	SET  @vOldTipoP = (SELECT TipoP FROM deleted);
+	INSERT INTO AuditPersona( Usuario,     Fecha,     Tipo, OldTipoP)
+	SELECT SYSTEM_USER, GETDATE(), 'D',  @vOldTipoP
+END ELSE BEGIN
+-- INSERT
+	SET  @vNewTipoP = (SELECT TipoP FROM inserted);
+	INSERT INTO AuditPersona(Usuario, Fecha, Tipo, NewTipoP)
+	SELECT SYSTEM_USER, GETDATE(), 'I', @vNewTipoP
+END
+GO
