@@ -47,7 +47,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
+                InterpreteSQL.Insertar(Tabla(), Columnas(), parametros);
             }
             return true;
         }
@@ -56,7 +56,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), cedula, parametros);
+                InterpreteSQL.Modificar(Tabla(), Columnas(), LlavePrincipal(), cedula, parametros);
             }
             return true;
         }
@@ -64,7 +64,7 @@ namespace PDVRestaurante.BaseDatos
         public static Empleado ObtenerEmpleado(string cedula)
         {
             Empleado empleado = null;
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), TablaEmpleadoPersona(), ColumnasEmpleadoPersona(), "p.CodPerFisica", cedula, CriterioSQL.IgualA);
+            var dataSet = InterpreteSQL.Obtener(TablaEmpleadoPersona(), ColumnasEmpleadoPersona(), "p.CodPerFisica", cedula, CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -76,7 +76,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Empleado> ObtenerEmpleados(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var empleados = new List<Empleado>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), TablaEmpleadoPersona(), ColumnasEmpleadoPersona(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(TablaEmpleadoPersona(), ColumnasEmpleadoPersona(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

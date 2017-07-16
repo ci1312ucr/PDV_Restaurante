@@ -5,13 +5,15 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace PDVRestaurante.Ayudantes
 {
     public static class InterpreteSQL
     {
-        public static bool Insertar(string connectionString, string tabla, string columnas, params object[] parametros)
+        public static bool Insertar(string tabla, string columnas, params object[] parametros)
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
             try
             {
                 using (var conn = new SqlConnection(connectionString))
@@ -40,8 +42,9 @@ namespace PDVRestaurante.Ayudantes
             }
         }
 
-        public static bool Modificar(string connectionString, string tabla, string columnas, string nombreLlavesPrincipales, string valorLlavesPrincipales, params object[] parametros)
+        public static bool Modificar(string tabla, string columnas, string nombreLlavesPrincipales, string valorLlavesPrincipales, params object[] parametros)
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
             try
             {
                 using (var conn = new SqlConnection(connectionString))
@@ -80,9 +83,10 @@ namespace PDVRestaurante.Ayudantes
             }            
         }
 
-        public static DataSet Obtener(string connectionString, string tabla, string columnas, string columnasFiltro = null,
+        public static DataSet Obtener(string tabla, string columnas, string columnasFiltro = null,
                                       string valoresFiltro = null, string criteriosFiltro = null, string concatenadoresFiltro = "AND")
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
             var returnDS = new DataSet();
             try
             {

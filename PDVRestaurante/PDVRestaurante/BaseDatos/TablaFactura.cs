@@ -22,9 +22,19 @@ namespace PDVRestaurante.BaseDatos
             return "Factura";
         }
 
+        private static string TablaFacturaEmpleado()
+        {
+            return "Factura f INNER JOIN PersonaFisica e ON f.CedulaCliente = e.CodPerFisica";
+        }
+
         private static string Columnas()
         {
             return "IdFactura|Fecha|Monto|TipoPago|CedulaCliente";
+        }
+
+        private static string ColumnasFacturaEmpleado()
+        {
+            return "f.IdFactura|f.Fecha|f.Monto|f.TipoPago|f.CedulaCliente|e.Nombre1 + ' ' + e.Apellido1 AS Cliente";
         }
 
         private static string LlavePrincipal()
@@ -36,7 +46,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
+                InterpreteSQL.Insertar(Tabla(), Columnas(), parametros);
             }
             return true;
         }
@@ -45,7 +55,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), id.ToString(), parametros);
+                InterpreteSQL.Modificar(Tabla(), Columnas(), LlavePrincipal(), id.ToString(), parametros);
             }
             return true;
         }
@@ -53,7 +63,7 @@ namespace PDVRestaurante.BaseDatos
         public static Factura ObtenerFactura(int id)
         {
             Factura factura = null;
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), "c.IdFactura", id.ToString(), CriterioSQL.IgualA);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), "c.IdFactura", id.ToString(), CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -65,7 +75,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Factura> ObtenerFacturas(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var facturas = new List<Factura>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(TablaFacturaEmpleado(), ColumnasFacturaEmpleado(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

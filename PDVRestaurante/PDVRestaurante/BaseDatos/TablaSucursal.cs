@@ -49,7 +49,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
+                InterpreteSQL.Insertar(Tabla(), Columnas(), parametros);
             }
             return true;
         }
@@ -58,7 +58,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), idSucursal.ToString(), parametros);
+                InterpreteSQL.Modificar(Tabla(), Columnas(), LlavePrincipal(), idSucursal.ToString(), parametros);
             }
             return true;
         }
@@ -66,7 +66,7 @@ namespace PDVRestaurante.BaseDatos
         public static Sucursal ObtenerSucursal(string columnaBusqueda, string valorBusqueda)
         {
             Sucursal sucursal = null;
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnaBusqueda, valorBusqueda, CriterioSQL.IgualA);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnaBusqueda, valorBusqueda, CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -78,7 +78,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Sucursal> ObtenerSucursales(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var sucursales = new List<Sucursal>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), TablaSucursalDistritoProvinciaCantonGerente(), ColumnasSucursalDistritooProvinciaCantonGerente(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(TablaSucursalDistritoProvinciaCantonGerente(), ColumnasSucursalDistritooProvinciaCantonGerente(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

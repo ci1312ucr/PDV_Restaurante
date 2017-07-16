@@ -37,7 +37,7 @@ namespace PDVRestaurante.Objetos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
+                InterpreteSQL.Insertar(Tabla(), Columnas(), parametros);
             }
             return true;
         }
@@ -46,7 +46,7 @@ namespace PDVRestaurante.Objetos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), cedula, parametros);
+                InterpreteSQL.Modificar(Tabla(), Columnas(), LlavePrincipal(), cedula, parametros);
             }
             return true;
         }
@@ -54,7 +54,7 @@ namespace PDVRestaurante.Objetos
         public static Persona ObtenerPersona(string cedula)
         {
             Persona persona = null;
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), "Cedula", cedula, CriterioSQL.IgualA);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), "Cedula", cedula, CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -66,7 +66,7 @@ namespace PDVRestaurante.Objetos
         public static List<Persona> ObtenerPersonas(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var personas = new List<Persona>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

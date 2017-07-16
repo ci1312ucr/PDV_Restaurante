@@ -36,7 +36,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Insertar(ConnectionString(), Tabla(), Columnas(), parametros);
+                InterpreteSQL.Insertar(Tabla(), Columnas(), parametros);
             }
             return true;
         }
@@ -45,7 +45,7 @@ namespace PDVRestaurante.BaseDatos
         {
             if (parametros.Count() == Columnas().Split('|').Count())
             {
-                InterpreteSQL.Modificar(ConnectionString(), Tabla(), Columnas(), LlavePrincipal(), id.ToString(), parametros);
+                InterpreteSQL.Modificar(Tabla(), Columnas(), LlavePrincipal(), id.ToString(), parametros);
             }
             return true;
         }
@@ -53,7 +53,7 @@ namespace PDVRestaurante.BaseDatos
         public static Plato ObtenerPlato(int id)
         {
             Plato plato = null;
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), "c.IdPlato", id.ToString(), CriterioSQL.IgualA);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), "c.IdPlato", id.ToString(), CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -65,7 +65,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Plato> ObtenerPlatos(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var platos = new List<Plato>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

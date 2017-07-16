@@ -35,7 +35,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Provincia> ObtenerProvincias(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var provincias = new List<Provincia>();
-            var dataSet = InterpreteSQL.Obtener(ConnectionString(), Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {
