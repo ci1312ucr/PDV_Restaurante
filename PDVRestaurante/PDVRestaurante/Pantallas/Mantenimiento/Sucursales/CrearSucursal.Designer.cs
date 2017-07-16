@@ -50,6 +50,7 @@
             // 
             // comboBoxDistrito
             // 
+            this.comboBoxDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDistrito.FormattingEnabled = true;
             this.comboBoxDistrito.Location = new System.Drawing.Point(119, 221);
             this.comboBoxDistrito.Name = "comboBoxDistrito";
@@ -59,6 +60,7 @@
             // 
             // comboBoxCanton
             // 
+            this.comboBoxCanton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCanton.FormattingEnabled = true;
             this.comboBoxCanton.Location = new System.Drawing.Point(119, 148);
             this.comboBoxCanton.Name = "comboBoxCanton";
@@ -68,6 +70,7 @@
             // 
             // comboBoxProvincia
             // 
+            this.comboBoxProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxProvincia.FormattingEnabled = true;
             this.comboBoxProvincia.Location = new System.Drawing.Point(119, 93);
             this.comboBoxProvincia.Name = "comboBoxProvincia";
