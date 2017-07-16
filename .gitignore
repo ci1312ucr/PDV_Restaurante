@@ -240,3 +240,12 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/PDVRestaurante/PDVRestaurante/Properties/DataSources/PDVRestaurante.Objetos.Plato.datasource
+/PDVRestaurante/PDVRestaurante/Properties/DataSources
+/PDVRestaurante/PDVRestaurante/Objetos/Plato.cs
+/PDVRestaurante/PDVRestaurante/Objetos/Ingrediente.cs
+/PDVRestaurante/PDVRestaurante/Objetos
+/PDVRestaurante/PDVRestaurante/BaseDatos/PlatoDB.cs
+/PDVRestaurante/PDVRestaurante/BaseDatos/IngredienteDB.cs
+/PDVRestaurante/PDVRestaurante/BaseDatos
+/PDVRestaurante/PDVRestaurante

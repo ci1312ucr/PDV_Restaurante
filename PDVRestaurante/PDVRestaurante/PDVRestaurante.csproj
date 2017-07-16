@@ -95,6 +95,9 @@
     <Compile Include="Constantes\TablaUsuario.cs" />
     <Compile Include="Constantes\CriterioSQL.cs" />
     <Compile Include="Constantes\TipoDeUsuario.cs" />
+    <Compile Include="Objetos\Factura.cs" />
+    <Compile Include="Objetos\Ingrediente.cs" />
+    <Compile Include="Objetos\Plato.cs" />
     <Compile Include="Objetos\Propiedad.cs" />
     <Compile Include="Objetos\Sucursal.cs" />
     <Compile Include="Pantallas\Consultas\ConsultaClientes.cs">
