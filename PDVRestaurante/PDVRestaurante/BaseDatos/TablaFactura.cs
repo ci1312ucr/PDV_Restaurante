@@ -13,11 +13,6 @@ namespace PDVRestaurante.BaseDatos
 {
     public static class TablaFactura
     {
-        private static string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
-        }
-
         private static string Tabla()
         {
             return "Factura";
@@ -36,6 +31,11 @@ namespace PDVRestaurante.BaseDatos
         private static string ColumnasFacturaEmpleado()
         {
             return "f.IdFactura|f.Fecha|f.Monto|f.TipoPago|f.CedulaCliente|e.Nombre1 + ' ' + e.Apellido1 AS Cliente";
+        }
+
+        private static string ColumnasFacturaSiguienteId()
+        {
+            return "max(IdFactura) + 1";
         }
 
         private static string LlavePrincipal()
@@ -87,28 +87,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static int ObtenerIdFactura()
         {
-            int idFactura = 0;
-            try
-            {
-                using (var conn = new SqlConnection(ConnectionString()))
-                {
-                    conn.Open();
-
-                    using (var command = new SqlCommand())
-                    {
-                        command.Connection = conn;
-                        command.CommandText = "select max(IdFactura) from Factura";
-                        idFactura = (int)command.ExecuteScalar();
-                        idFactura = idFactura + 1;
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ManejoExcepciones.LogearExcepcion(ex);
-            }
-            return idFactura;
+            return InterpreteSQL.ObtenerSiguienteId(Tabla(),LlavePrincipal());
         }
     }
 }

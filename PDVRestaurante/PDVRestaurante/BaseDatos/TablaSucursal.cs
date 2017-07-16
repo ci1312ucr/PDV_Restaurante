@@ -15,11 +15,6 @@ namespace PDVRestaurante.BaseDatos
 {
     public static class TablaSucursal
     {
-        private static string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
-        }
-
         private static string Tabla()
         {
             return "Sucursal";
@@ -96,28 +91,7 @@ namespace PDVRestaurante.BaseDatos
 
         public static int ObtenerIdSucursal()
         {
-            int idSucursal = 0;
-            try
-            {
-                using (var conn = new SqlConnection(ConnectionString()))
-                {
-                    conn.Open();
-
-                        using (var command = new SqlCommand())
-                        {
-                            command.Connection = conn;
-                            command.CommandText = "select max(IdSucursal) from Sucursal";
-                            idSucursal = (int)command.ExecuteScalar();
-                            idSucursal = idSucursal + 1;
-                        }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ManejoExcepciones.LogearExcepcion(ex);
-            }
-            return idSucursal;
+            return InterpreteSQL.ObtenerSiguienteId(Tabla(),LlavePrincipal());
         }
     }
 }

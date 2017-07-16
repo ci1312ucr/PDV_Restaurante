@@ -13,11 +13,6 @@ namespace PDVRestaurante.BaseDatos
 {
     public static class TablaPersonaFisica
     {
-        private static string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
-        }
-
         private static string Tabla()
         {
             return "PersonaFisica";

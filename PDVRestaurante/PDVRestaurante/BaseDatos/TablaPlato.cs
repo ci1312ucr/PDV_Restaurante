@@ -12,11 +12,6 @@ namespace PDVRestaurante.BaseDatos
 {
     public static class TablaPlato
     {
-        private static string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
-        }
-
         private static string Tabla()
         {
             return "Plato";

@@ -12,11 +12,6 @@ namespace PDVRestaurante.BaseDatos
 {
     public static class TablaMesa_Factura
     {
-        private static string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
-        }
-
         private static string Tabla()
         {
             return "Mesa_Factura";

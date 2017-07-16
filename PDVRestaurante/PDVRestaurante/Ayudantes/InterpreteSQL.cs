@@ -11,18 +11,22 @@ namespace PDVRestaurante.Ayudantes
 {
     public static class InterpreteSQL
     {
+        private static string ConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
+        }
+
         public static bool Insertar(string tabla, string columnas, params object[] parametros)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
             try
             {
-                using (var conn = new SqlConnection(connectionString))
+                using (var conn = new SqlConnection(ConnectionString()))
                 {
                     conn.Open();
                     using (var command = new SqlCommand())
                     {
                         command.Connection = conn;
-                        command.CommandText = "INSERT INTO " + tabla + " (" + columnas.Replace("|",",") + ")";
+                        command.CommandText = "INSERT INTO " + tabla + " (" + columnas.Replace("|", ",") + ")";
                         command.CommandText += " VALUES (@" + columnas.Replace("|", ", @") + ")";
                         int i = 0;
                         foreach (var s in columnas.Split('|'))
@@ -44,10 +48,9 @@ namespace PDVRestaurante.Ayudantes
 
         public static bool Modificar(string tabla, string columnas, string nombreLlavesPrincipales, string valorLlavesPrincipales, params object[] parametros)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
             try
             {
-                using (var conn = new SqlConnection(connectionString))
+                using (var conn = new SqlConnection(ConnectionString()))
                 {
                     conn.Open();
                     using (var command = new SqlCommand())
@@ -80,17 +83,16 @@ namespace PDVRestaurante.Ayudantes
             {
                 ManejoExcepciones.LogearExcepcion(ex);
                 return false;
-            }            
+            }
         }
 
         public static DataSet Obtener(string tabla, string columnas, string columnasFiltro = null,
                                       string valoresFiltro = null, string criteriosFiltro = null, string concatenadoresFiltro = "AND")
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["RestauranteConn"].ConnectionString;
             var returnDS = new DataSet();
             try
             {
-                using (var conn = new SqlConnection(connectionString))
+                using (var conn = new SqlConnection(ConnectionString()))
                 {
                     conn.Open();
                     using (var dataAdapter = new SqlDataAdapter())
@@ -98,7 +100,7 @@ namespace PDVRestaurante.Ayudantes
                         using (var command = new SqlCommand())
                         {
                             command.Connection = conn;
-                            command.CommandText = "SELECT " + columnas.Replace('|',',') + " FROM " + tabla;
+                            command.CommandText = "SELECT " + columnas.Replace('|', ',') + " FROM " + tabla;
                             if (columnasFiltro != null && valoresFiltro != null)
                             {
                                 command.CommandText += " WHERE ";
@@ -109,7 +111,7 @@ namespace PDVRestaurante.Ayudantes
                                 for (int j = 0; j < columnasFiltroArray.Count(); j++)
                                 {
                                     command.CommandText += columnasFiltroArray[j] + " " + criteriosFiltroArray[j] + " " + valoresFiltroArray[j];
-                                    command.CommandText += (j < columnasFiltroArray.Count() - 1) ? " " + concatenadoresFiltroArray[j] +  " " : "";
+                                    command.CommandText += (j < columnasFiltroArray.Count() - 1) ? " " + concatenadoresFiltroArray[j] + " " : "";
                                 }
                             }
                             dataAdapter.SelectCommand = command;
@@ -123,6 +125,29 @@ namespace PDVRestaurante.Ayudantes
                 ManejoExcepciones.LogearExcepcion(ex);
             }
             return returnDS;
+        }
+
+        public static int ObtenerSiguienteId(string tabla, string columna)
+        {
+            var returnVal = 0;
+            try
+            {
+                using (var conn = new SqlConnection(ConnectionString()))
+                {
+                    conn.Open();
+                    using (var command = new SqlCommand())
+                    {
+                        command.Connection = conn;
+                        command.CommandText = "SELECT max(" + columna + ")+1 FROM " + tabla;
+                        returnVal = (int)command.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ManejoExcepciones.LogearExcepcion(ex);
+            }
+            return returnVal;
         }
     }
 }
