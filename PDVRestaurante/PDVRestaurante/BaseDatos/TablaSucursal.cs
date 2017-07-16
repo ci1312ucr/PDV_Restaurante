@@ -89,6 +89,18 @@ namespace PDVRestaurante.BaseDatos
             return sucursales;
         }
 
+        public static List<Sucursal> ObtenerSucursalesN(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
+        {
+            var sucursales = new List<Sucursal>();
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+
+            if (dataSet.Tables.Count > 0)
+            {
+                sucursales = Convertidor.DataSetAObjecto<Sucursal>(dataSet);
+            }
+            return sucursales;
+        }
+
         public static int ObtenerIdSucursal()
         {
             return InterpreteSQL.ObtenerSiguienteId(Tabla(),LlavePrincipal());
