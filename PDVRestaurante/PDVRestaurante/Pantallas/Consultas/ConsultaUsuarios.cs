@@ -43,7 +43,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void listViewUsuarios_Ajuste(object sender, EventArgs e)
         {
-            listViewUsuarios.AjustarColumnas();
+            listView.AjustarColumnas();
         }
 
         private void buttonBuscar_Click(object sender, EventArgs e)
@@ -83,6 +83,12 @@ namespace PDVRestaurante.Pantallas.Consultas
             CargarListView(TablaUsuario.ObtenerUsuarios());
         }
 
+        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            //Para realizar una búsqueda por filtro tiene que haber algo escrito en el campo del valor del filtro
+            buttonBuscar.Enabled = textBoxBuscar.Text.Length > 0;
+        }
+
         private void buttonModificar_Click(object sender, EventArgs e)
         {
        
@@ -95,18 +101,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonCrear_Click(object sender, EventArgs e)
         {
-            var crearUsuarioForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearUsuario");
-            if (crearUsuarioForm == null)
-            {
-                var pantallaCrearUsuario = new CrearUsuario();
-                pantallaCrearUsuario.MdiParent = this.ParentForm;
-                pantallaCrearUsuario.Dock = DockStyle.Fill;
-                pantallaCrearUsuario.Show();
-            }
-            else
-            {
-                crearUsuarioForm.Show();
-            }
+            this.CambiarPantalla<CrearUsuario>("CrearUsuario");
         }
 
         private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,16 +111,11 @@ namespace PDVRestaurante.Pantallas.Consultas
             CargarListView(_usuarios);
         }
 
-        private void buttonCerrar_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
 
         #region Funciones
         private void InicializaListView()
         {
-            listViewUsuarios.DoubleBuffer();
+            listView.DoubleBuffer();
             var properties = typeof(Usuario).GetProperties().
                                   Select(p => new Propiedad
                                   {
@@ -137,7 +127,7 @@ namespace PDVRestaurante.Pantallas.Consultas
             _columnas = properties.Where(p => p.Order > 0).OrderBy(p => p.Order).ToList();
             foreach (var columna in _columnas)
             {
-                listViewUsuarios.Columns.Add(columna.DisplayName);
+                listView.Columns.Add(columna.DisplayName);
             }
         }
 
@@ -163,17 +153,11 @@ namespace PDVRestaurante.Pantallas.Consultas
                 row = row.TrimEnd(',');
                 newListView.Add(new ListViewItem(row.Split(',')));
             }
-            listViewUsuarios.Items.Clear();
-            listViewUsuarios.Items.AddRange(newListView.ToArray());
-            listViewUsuarios.View = View.Details;
-            listViewUsuarios.AjustarColumnas();
+            listView.Items.Clear();
+            listView.Items.AddRange(newListView.ToArray());
+            listView.View = View.Details;
+            listView.AjustarColumnas();
         }
         #endregion
-
-        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
-        {
-            //Para realizar una búsqueda por filtro tiene que haber algo escrito en el campo del valor del filtro
-            buttonBuscar.Enabled = textBoxBuscar.Text.Length > 0;
-        }
     }
 }

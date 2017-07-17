@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCrear = new System.Windows.Forms.Button();
             this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonModificar = new System.Windows.Forms.Button();
+            this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonBuscar = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxBuscar = new System.Windows.Forms.ComboBox();
             this.comboBoxOrdenar = new System.Windows.Forms.ComboBox();
             this.textBuscar = new System.Windows.Forms.TextBox();
-            this.listViewSucursales = new System.Windows.Forms.ListView();
+            this.listView = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonCrear
             // 
-            this.button1.Location = new System.Drawing.Point(635, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Nueva Sucursal";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCrear.Location = new System.Drawing.Point(635, 25);
+            this.buttonCrear.Name = "buttonCrear";
+            this.buttonCrear.Size = new System.Drawing.Size(96, 35);
+            this.buttonCrear.TabIndex = 0;
+            this.buttonCrear.Text = "Nueva Sucursal";
+            this.buttonCrear.UseVisualStyleBackColor = true;
+            this.buttonCrear.Click += new System.EventHandler(this.buttonCrear_Click);
             // 
             // buttonLimpiarFiltro
             // 
@@ -62,25 +62,23 @@
             this.buttonLimpiarFiltro.UseVisualStyleBackColor = true;
             this.buttonLimpiarFiltro.Click += new System.EventHandler(this.buttonLimpiarFiltro_Click);
             // 
-            // button3
+            // buttonModificar
             // 
-            this.button3.Location = new System.Drawing.Point(405, 25);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 35);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Modificar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonModificar.Location = new System.Drawing.Point(405, 25);
+            this.buttonModificar.Name = "buttonModificar";
+            this.buttonModificar.Size = new System.Drawing.Size(96, 35);
+            this.buttonModificar.TabIndex = 2;
+            this.buttonModificar.Text = "Modificar";
+            this.buttonModificar.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonEliminar
             // 
-            this.button4.Location = new System.Drawing.Point(522, 25);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 35);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Eliminar";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonEliminar.Location = new System.Drawing.Point(522, 25);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(96, 35);
+            this.buttonEliminar.TabIndex = 3;
+            this.buttonEliminar.Text = "Eliminar";
+            this.buttonEliminar.UseVisualStyleBackColor = true;
             // 
             // buttonBuscar
             // 
@@ -92,16 +90,15 @@
             this.buttonBuscar.UseVisualStyleBackColor = true;
             this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
-            // comboBox1
+            // comboBoxBuscar
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(79, 9);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(261, 21);
-            this.comboBox1.TabIndex = 28;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuscar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxBuscar.FormattingEnabled = true;
+            this.comboBoxBuscar.Location = new System.Drawing.Point(79, 9);
+            this.comboBoxBuscar.Name = "comboBoxBuscar";
+            this.comboBoxBuscar.Size = new System.Drawing.Size(261, 21);
+            this.comboBoxBuscar.TabIndex = 28;
             // 
             // comboBoxOrdenar
             // 
@@ -121,19 +118,18 @@
             this.textBuscar.TabIndex = 7;
             this.textBuscar.TextChanged += new System.EventHandler(this.textBuscar_TextChanged);
             // 
-            // listViewSucursales
+            // listView
             // 
-            this.listViewSucursales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewSucursales.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.listViewSucursales.Location = new System.Drawing.Point(12, 142);
-            this.listViewSucursales.Name = "listViewSucursales";
-            this.listViewSucursales.Size = new System.Drawing.Size(776, 346);
-            this.listViewSucursales.TabIndex = 8;
-            this.listViewSucursales.UseCompatibleStateImageBehavior = false;
-            this.listViewSucursales.View = System.Windows.Forms.View.Details;
-            this.listViewSucursales.SelectedIndexChanged += new System.EventHandler(this.listViewSucursales_SelectedIndexChanged);
+            this.listView.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.listView.Location = new System.Drawing.Point(12, 142);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(776, 346);
+            this.listView.TabIndex = 8;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
             // 
             // label1
             // 
@@ -142,7 +138,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 9;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -152,7 +147,6 @@
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Ordenar por:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -173,15 +167,15 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listViewSucursales);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.textBuscar);
             this.Controls.Add(this.comboBoxOrdenar);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxBuscar);
             this.Controls.Add(this.buttonBuscar);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.buttonEliminar);
+            this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonLimpiarFiltro);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCrear);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -189,7 +183,6 @@
             this.Name = "ConsultaSucursales";
             this.Text = "ConsultaSucursal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.ConsultaSucursales_Load);
             this.Resize += new System.EventHandler(this.listViewSucursales_Ajuste);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -198,15 +191,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCrear;
         private System.Windows.Forms.Button buttonLimpiarFiltro;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonModificar;
+        private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonBuscar;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxBuscar;
         private System.Windows.Forms.ComboBox comboBoxOrdenar;
         private System.Windows.Forms.TextBox textBuscar;
-        private System.Windows.Forms.ListView listViewSucursales;
+        private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

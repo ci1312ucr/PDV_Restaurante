@@ -41,6 +41,11 @@ namespace PDVRestaurante.Pantallas.Consultas
             buttonBuscar.Enabled = false;
         }
 
+        private void listViewFacturas_Ajuste(object sender, EventArgs e)
+        {
+            listViewFacturas.AjustarColumnas();
+        }
+
         private void textBuscar_TextChanged(object sender, EventArgs e)
         {
             //Para realizar una búsqueda por filtro tiene que haber algo escrito en el campo del valor del filtro
@@ -91,9 +96,9 @@ namespace PDVRestaurante.Pantallas.Consultas
             CargarListView(TablaFactura.ObtenerFacturas());
         }
 
-        private void listViewFacturas_Ajuste(object sender, EventArgs e)
+        private void buttonCrear_Click(object sender, EventArgs e)
         {
-            listViewFacturas.AjustarColumnas();
+            this.CambiarPantalla<CrearFactura>("CrearFactura");
         }
 
         #region Funciones
@@ -144,20 +149,5 @@ namespace PDVRestaurante.Pantallas.Consultas
         }
         #endregion
 
-        private void buttonCrear_Click(object sender, EventArgs e)
-        {
-            var crearFacturaForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearFactura");
-            if (crearFacturaForm == null)
-            {
-                var pantallaCrearFactura = new CrearFactura();
-                pantallaCrearFactura.MdiParent = this.ParentForm;
-                pantallaCrearFactura.Dock = DockStyle.Fill;
-                pantallaCrearFactura.Show();
-            }
-            else
-            {
-                crearFacturaForm.Show();
-            }
-        }
     }
 }

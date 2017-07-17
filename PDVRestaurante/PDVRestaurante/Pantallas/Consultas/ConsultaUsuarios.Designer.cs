@@ -30,7 +30,7 @@
         {
             this.comboBoxOrdenar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listViewUsuarios = new System.Windows.Forms.ListView();
+            this.listView = new System.Windows.Forms.ListView();
             this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
             this.buttonCrear = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
@@ -60,20 +60,20 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Ordernar por:";
             // 
-            // listViewUsuarios
+            // listView
             // 
-            this.listViewUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewUsuarios.FullRowSelect = true;
-            this.listViewUsuarios.Location = new System.Drawing.Point(12, 142);
-            this.listViewUsuarios.MultiSelect = false;
-            this.listViewUsuarios.Name = "listViewUsuarios";
-            this.listViewUsuarios.Size = new System.Drawing.Size(776, 346);
-            this.listViewUsuarios.TabIndex = 22;
-            this.listViewUsuarios.UseCompatibleStateImageBehavior = false;
-            this.listViewUsuarios.View = System.Windows.Forms.View.Details;
-            this.listViewUsuarios.Resize += new System.EventHandler(this.listViewUsuarios_Ajuste);
+            this.listView.FullRowSelect = true;
+            this.listView.Location = new System.Drawing.Point(12, 142);
+            this.listView.MultiSelect = false;
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(776, 346);
+            this.listView.TabIndex = 22;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.Resize += new System.EventHandler(this.listViewUsuarios_Ajuste);
             // 
             // buttonLimpiarFiltro
             // 
@@ -158,7 +158,7 @@
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listViewUsuarios);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.buttonLimpiarFiltro);
             this.Controls.Add(this.buttonCrear);
             this.Controls.Add(this.buttonEliminar);
@@ -181,7 +181,7 @@
 
         private System.Windows.Forms.ComboBox comboBoxOrdenar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listViewUsuarios;
+        private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.Button buttonLimpiarFiltro;
         private System.Windows.Forms.Button buttonCrear;
         private System.Windows.Forms.Button buttonEliminar;

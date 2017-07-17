@@ -25,14 +25,14 @@ namespace PDVRestaurante.Ayudantes
             }
         }
 
-        public static void CambiarPantalla<TipoPantalla>(this Form formActual, string nombreSiguienteForm)
+        public static void CambiarPantalla<TipoPantalla>(this Form formActual, string nombreSiguienteForm, params object[] args)
         {
             var siguienteForm = formActual.ParentForm.MdiChildren.ToList().Find(f => f.Name == nombreSiguienteForm);
             if (siguienteForm == null)
             {
                 var tipo = typeof(TipoPantalla);
                 var pantallaSiguiente = new Form();
-                pantallaSiguiente = (Form)Activator.CreateInstance(tipo);
+                pantallaSiguiente = (Form)Activator.CreateInstance(tipo, args);
                 pantallaSiguiente.MdiParent = formActual.ParentForm;
                 pantallaSiguiente.Dock = DockStyle.Fill;
                 pantallaSiguiente.StartPosition = FormStartPosition.CenterParent;

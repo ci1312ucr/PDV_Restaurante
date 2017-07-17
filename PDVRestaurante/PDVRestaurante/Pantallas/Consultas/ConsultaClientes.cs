@@ -48,11 +48,6 @@ namespace PDVRestaurante.Pantallas.Consultas
             listViewClientes.AjustarColumnas();
         }
 
-        private void comboBoxBuscar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBoxBuscar_TextChanged(object sender, EventArgs e)
         {
             //Para realizar una búsqueda por filtro tiene que haber algo escrito en el campo del valor del filtro
@@ -118,11 +113,6 @@ namespace PDVRestaurante.Pantallas.Consultas
             _ordenActual = columna.Name;
             CargarListView(_clientes);
 
-        }
-
-        private void buttonCerrar_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
         }
 
 
