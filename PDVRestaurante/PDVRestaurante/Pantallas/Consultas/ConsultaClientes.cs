@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using PDVRestaurante.Constantes;
-using PDVRestaurante.Pantallas.Mantenimiento.Clientes;
+//using PDVRestaurante.Pantallas.Mantenimiento.Clientes;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -109,18 +109,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonCrear_Click(object sender, EventArgs e)
         {
-            var crearClienteForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearCliente");
-            if (crearClienteForm == null)
-            {
-                var pantallaCrearCliente = new CrearCliente();
-                pantallaCrearCliente.MdiParent = this.ParentForm;
-                pantallaCrearCliente.Dock = DockStyle.Fill;
-                pantallaCrearCliente.Show();
-            }
-            else
-            {
-                crearClienteForm.Show();
-            }
+            //this.CambiarPantalla<CrearCliente>("CrearCliente");
         }
 
         private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)

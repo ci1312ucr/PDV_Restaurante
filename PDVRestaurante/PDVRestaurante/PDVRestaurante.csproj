@@ -156,12 +156,6 @@
     <Compile Include="Objetos\PersonaFisica.cs" />
     <Compile Include="Objetos\TipoUsuario.cs" />
     <Compile Include="Objetos\Usuario.cs" />
-    <Compile Include="Pantallas\Mantenimiento\Clientes\CrearCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Mantenimiento\Clientes\CrearCliente.Designer.cs">
-      <DependentUpon>CrearCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,9 +233,6 @@
       <DependentUpon>Login.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\Mantenimiento\Clientes\CrearCliente.resx">
-      <DependentUpon>CrearCliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.resx">
       <DependentUpon>CrearEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pantallas\Ayuda\" />
+    <Folder Include="Pantallas\Mantenimiento\Clientes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\cargaRestaurante.sql" />
