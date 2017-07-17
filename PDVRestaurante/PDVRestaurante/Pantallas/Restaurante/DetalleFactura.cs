@@ -124,15 +124,15 @@ namespace PDVRestaurante.Pantallas.Restaurante
                     if (columna.Name.Contains("Fecha"))
                     {
                         var valor = (DateTime)plato.GetType().GetProperty(columna.Name).GetValue(plato);
-                        row += valor.ToString("dd-MM-yyyy") + ",";
+                        row += valor.ToString("dd-MM-yyyy") + "|";
                     }
                     else
                     {
-                        row += plato.GetType().GetProperty(columna.Name).GetValue(plato).ToString() + ",";
+                        row += plato.GetType().GetProperty(columna.Name).GetValue(plato).ToString() + "|";
                     }
                 }
                 row = row.TrimEnd(',');
-                newListView.Add(new ListViewItem(row.Split(',')));
+                newListView.Add(new ListViewItem(row.Split('|')));
             }
             listView.Items.Clear();
             listView.Items.AddRange(newListView.ToArray());

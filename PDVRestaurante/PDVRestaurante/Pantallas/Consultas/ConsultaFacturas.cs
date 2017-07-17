@@ -132,15 +132,15 @@ namespace PDVRestaurante.Pantallas.Consultas
                     if (columna.Name.Contains("Fecha"))
                     {
                         var valor = (DateTime)factura.GetType().GetProperty(columna.Name).GetValue(factura);
-                        row += valor.ToString("dd-MM-yyyy") + ",";
+                        row += valor.ToString("dd-MM-yyyy") + "|";
                     }
                     else
                     {
-                        row += factura.GetType().GetProperty(columna.Name).GetValue(factura).ToString() + ",";
+                        row += factura.GetType().GetProperty(columna.Name).GetValue(factura).ToString() + "|";
                     }
                 }
                 row = row.TrimEnd(',');
-                newListView.Add(new ListViewItem(row.Split(',')));
+                newListView.Add(new ListViewItem(row.Split('|')));
             }
             listViewFacturas.Items.Clear();
             listViewFacturas.Items.AddRange(newListView.ToArray());

@@ -78,15 +78,15 @@ namespace PDVRestaurante.Pantallas.Restaurante
                     if (columna.Name.Contains("Fecha"))
                     {
                         var valor = (DateTime)factura.GetType().GetProperty(columna.Name).GetValue(factura);
-                        row += valor.ToString("dd-MM-yyyy") + ",";
+                        row += valor.ToString("dd-MM-yyyy") + "|";
                     }
                     else
                     {
-                        row += factura.GetType().GetProperty(columna.Name).GetValue(factura).ToString() + ",";
+                        row += factura.GetType().GetProperty(columna.Name).GetValue(factura).ToString() + "|";
                     }
                 }
                 row = row.TrimEnd(',');
-                newListView.Add(new ListViewItem(row.Split(',')));
+                newListView.Add(new ListViewItem(row.Split('|')));
             }
             listView.Items.Clear();
             listView.Items.AddRange(newListView.ToArray());

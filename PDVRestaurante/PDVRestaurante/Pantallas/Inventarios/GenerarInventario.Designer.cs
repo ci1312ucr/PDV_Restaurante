@@ -37,6 +37,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxIngrediente = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCantidad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,12 +132,26 @@
             this.label2.TabIndex = 39;
             this.label2.Text = "Cantidad:";
             // 
+            // buttonCancelar
+            // 
+            this.buttonCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelar.Location = new System.Drawing.Point(635, 73);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(117, 36);
+            this.buttonCancelar.TabIndex = 40;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
             // GenerarInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonAgregar);
             this.Controls.Add(this.numericUpDownCantidad);
@@ -169,5 +184,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxIngrediente;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }

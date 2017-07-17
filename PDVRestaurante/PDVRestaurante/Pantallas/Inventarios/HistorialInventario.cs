@@ -84,15 +84,15 @@ namespace PDVRestaurante.Pantallas.Inventarios
                     if (columna.Name.Contains("Fecha"))
                     {
                         var valor = (DateTime)inventario.GetType().GetProperty(columna.Name).GetValue(inventario);
-                        row += valor.ToString("dd-MM-yyyy") + ",";
+                        row += valor.ToString("dd-MM-yyyy") + "|";
                     }
                     else
                     {
-                        row += inventario.GetType().GetProperty(columna.Name).GetValue(inventario).ToString() + ",";
+                        row += inventario.GetType().GetProperty(columna.Name).GetValue(inventario).ToString() + "|";
                     }
                 }
                 row = row.TrimEnd(',');
-                newListView.Add(new ListViewItem(row.Split(',')));
+                newListView.Add(new ListViewItem(row.Split('|')));
             }
             listView.Items.Clear();
             listView.Items.AddRange(newListView.ToArray());
@@ -106,5 +106,10 @@ namespace PDVRestaurante.Pantallas.Inventarios
             CargarListView(inventarios);
         }
         #endregion
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
