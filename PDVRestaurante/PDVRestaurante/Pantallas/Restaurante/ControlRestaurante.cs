@@ -33,5 +33,10 @@ namespace PDVRestaurante.Pantallas.Restaurante
         {
             this.CambiarPantalla("Restaurante", "PagarMesaFactura");
         }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

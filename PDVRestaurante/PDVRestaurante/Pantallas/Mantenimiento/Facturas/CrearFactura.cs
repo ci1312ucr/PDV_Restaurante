@@ -136,8 +136,8 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Facturas
                 if(!found)
                 {
                     var newListView = new List<ListViewItem>();
-                    string row = p.Nombre + "," + p.IdPlato.ToString() + "," + cantidad.ToString() + "," + p.Precio.ToString();
-                    newListView.Add(new ListViewItem(row.Split(',')));
+                    string row = p.Nombre + "|" + p.IdPlato.ToString() + "|" + cantidad.ToString() + "|" + p.Precio.ToString();
+                    newListView.Add(new ListViewItem(row.Split('|')));
                     listViewPlatos.Items.AddRange(newListView.ToArray());
                     listViewPlatos.View = View.Details;
                     listViewPlatos.AjustarColumnas();

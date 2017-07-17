@@ -12,46 +12,52 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PDVRestaurante.Pantallas.Restaurante
+namespace PDVRestaurante.Pantallas.Inventarios
 {
-    public partial class PagarMesaFactura : Form
+    public partial class HistorialInventario : Form
     {
+        private Sucursal _sucursalActual;
         private List<Propiedad> _columnas;
-        private List<Mesa_Facturas> _facturas;
-        private string _ordenActual = "IdFactura";
+        private List<Inventario> _inventarios;
+        private string _ordenActual = "IdSucursal";
 
-        public PagarMesaFactura()
+        public HistorialInventario()
         {
             InitializeComponent();
             InicializaListView();
         }
 
-        private void textBuscar_TextChanged(object sender, EventArgs e)
+        private void HistorialInventario_Load(object sender, EventArgs e)
         {
-            buttonBuscar.Enabled = textBuscar.Text.Length > 0;
+            Principal principal = (Principal)this.ParentForm;
+            _sucursalActual = principal.SucursalActual();
+
+            comboBoxSucursales.DataSource = TablaSucursal.ObtenerSucursales();
+            comboBoxSucursales.DisplayMember = "Detalle";
+            comboBoxSucursales.ValueMember = "IdSucursal";
+            comboBoxSucursales.SelectedValue = _sucursalActual.IdSucursal;
+
+            CargarInventariosSucursalActual();
         }
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-            var facturas = TablaMesa_Factura.ObtenerMesa_Facturas("NumeroMesa|Cancelada", textBuscar.Text + "|0", CriterioSQL.IgualA + "|" + CriterioSQL.IgualA);
-            CargarListView(facturas);
+            _sucursalActual = TablaSucursal.ObtenerSucursal("IdSucursal", comboBoxSucursales.SelectedValue.ToString());
+            CargarInventariosSucursalActual();
         }
 
-        private void buttonVerDetalle_Click(object sender, EventArgs e)
+        private void buttonDetalleInventario_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla("Restaurante", "DetalleFactura", Convert.ToInt32(listView.SelectedItems[0].Text));
+            int idInventario = 0;
+            //this.CambiarPantalla("Inventarios", "DetalleInventario", idInventario);
         }
 
-        private void buttonPagar_Click(object sender, EventArgs e)
-        {
-            this.CambiarPantalla("Restaurante", "PagoFactura", Convert.ToInt32(listView.SelectedItems[0].Text));
-        }
 
         #region Funciones
         private void InicializaListView()
         {
             listView.DoubleBuffer();
-            var properties = typeof(Mesa_Facturas).GetProperties().
+            var properties = typeof(Inventario).GetProperties().
                                   Select(p => new Propiedad
                                   {
                                       Name = p.Name,
@@ -66,23 +72,23 @@ namespace PDVRestaurante.Pantallas.Restaurante
             }
         }
 
-        private void CargarListView(List<Mesa_Facturas> facturas)
+        private void CargarListView(List<Inventario> inventarios)
         {
-            _facturas = facturas.OrderBy(e => e.GetType().GetProperty(_ordenActual).GetValue(e)).ToList();
+            _inventarios = inventarios.OrderBy(e => e.GetType().GetProperty(_ordenActual).GetValue(e)).ToList();
             var newListView = new List<ListViewItem>();
-            foreach (Mesa_Facturas factura in _facturas)
+            foreach (Inventario inventario in _inventarios)
             {
                 var row = "";
                 foreach (var columna in _columnas)
                 {
                     if (columna.Name.Contains("Fecha"))
                     {
-                        var valor = (DateTime)factura.GetType().GetProperty(columna.Name).GetValue(factura);
+                        var valor = (DateTime)inventario.GetType().GetProperty(columna.Name).GetValue(inventario);
                         row += valor.ToString("dd-MM-yyyy") + "|";
                     }
                     else
                     {
-                        row += factura.GetType().GetProperty(columna.Name).GetValue(factura).ToString() + "|";
+                        row += inventario.GetType().GetProperty(columna.Name).GetValue(inventario).ToString() + "|";
                     }
                 }
                 row = row.TrimEnd(',');
@@ -92,6 +98,12 @@ namespace PDVRestaurante.Pantallas.Restaurante
             listView.Items.AddRange(newListView.ToArray());
             listView.View = View.Details;
             listView.AjustarColumnas();
+        }
+
+        private void CargarInventariosSucursalActual()
+        {
+            var inventarios = TablaInventario.ObtenerInventarios("i.IdSucursal", _sucursalActual.IdSucursal.ToString(), CriterioSQL.IgualA);
+            CargarListView(inventarios);
         }
         #endregion
 

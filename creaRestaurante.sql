@@ -234,7 +234,8 @@ CREATE TABLE TelefonoSucursal (
 CREATE TABLE Inventario (
 	IdInventario int NOT NULL,
 	Fecha date NOT NULL,
-	IdSucursal int NOT NULL
+	IdSucursal int NOT NULL,
+	TiempoReal bit NOT NULL,
 	CONSTRAINT PK_Inventario PRIMARY KEY (IdInventario),
 	CONSTRAINT FK01_Inventario_Sucursal FOREIGN KEY (IdSucursal) REFERENCES Sucursal(IdSucursal)
 )

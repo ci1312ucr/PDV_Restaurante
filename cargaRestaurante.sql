@@ -814,13 +814,13 @@ INSERT INTO PersonaFisica(CodPerFisica,Nombre1,Nombre2,Apellido1,Apellido2,Sexo,
 
 -- SUCURSALES: 7
 -- Se insertarán los gerentes después de insertar empleados
-INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(1,'2017-03-24',5,8,3,NULL,NULL,'Detalle');
-INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(2,'2013-03-21',3,8,4,NULL,NULL,'Detalle');
-INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(3,'2013-08-27',1,14,1,NULL,NULL,'Detalle');
-INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(4,'2013-08-23',1,10,3,NULL,NULL,'Detalle');
-INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(5,'2014-08-27',5,6,4,NULL,NULL,'Detalle');
-INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(6,'2013-07-31',2,1,3,NULL,NULL,'Detalle');
-INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(7,'2012-11-20',5,2,6,NULL,NULL,'Detalle');
+INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(1,'2017-03-24',5,8,3,NULL,NULL,'Suc Tronadora Guanac');
+INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(2,'2013-03-21',3,8,4,NULL,NULL,'En Patio De Agua del Guarco');
+INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(3,'2013-08-27',1,14,1,NULL,NULL,'Central San Vicente Moravia');
+INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(4,'2013-08-23',1,10,3,NULL,NULL,'San Antonio de Alajuelita');
+INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(5,'2014-08-27',5,6,4,NULL,NULL,'Bebedero, Cañas, GUA');
+INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(6,'2013-07-31',2,1,3,NULL,NULL,'Sucursal Carrizal (Alajuela)');
+INSERT INTO Sucursal(IdSucursal,FechaApertura,IdProvincia,IdCanton,IdDistrito,IdGerente,FechaInicio,Detalle) VALUES(7,'2012-11-20',5,2,6,NULL,NULL,'Sucursal Nosara, Guanacaste');
 
 
 -- EMPLEADOS: 18 (10 comunes, 7 gerentes, 1 superadmin)
@@ -934,56 +934,56 @@ INSERT INTO Cliente(Cedula,Frecuente) VALUES('5825426356','0');
 
 
 -- FACTURA
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(1,'2017-05-29',5000.00,'2176175826','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(2,'2016-08-27',5000.00,'2176175826','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(3,'2016-12-06',6000.00,'2176175826','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(4,'2017-01-09',6500.00,'2176175826','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(5,'2017-02-23',5000.00,'2176175826','Tarjeta Debito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(6,'2017-05-01',5000.00,'5149791839','Tarjeta Debito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(7,'2016-06-22',5000.00,'5149791839','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(8,'2017-04-30',5000.00,'5149791839','Tarjeta Debito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(9,'2016-10-12',5000.00,'5149791839','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(10,'2016-12-11',5000.00,'5149791839','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(11,'2017-01-23',5000.00,'9441467565','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(12,'2017-02-09',5000.00,'9441467565','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(13,'2016-12-15',5000.00,'9441467565','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(14,'2017-02-11',5000.00,'9441467565','Tarjeta Debito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(15,'2016-07-11',5000.00,'9441467565','Cheque',0);													
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(16,'2016-10-17',5000.00,'0171759163','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(17,'2016-08-21',5000.00,'0171759163','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(18,'2017-01-29',5000.00,'0171759163','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(19,'2017-01-31',5000.00,'0171759163','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(20,'2016-10-10',5000.00,'0171759163','Tarjeta Debito',0);									
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(21,'2016-08-04',5000.00,'0450614084','Tarjeta Debito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(22,'2016-10-01',5000.00,'0450614084','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(23,'2016-12-13',5000.00,'0450614084','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(24,'2017-05-23',5000.00,'0450614084','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(25,'2017-01-24',5000.00,'0450614084','Efectivo',0);						
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(26,'2016-12-23',5000.00,'5483517283','Tarjeta Debito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(27,'2016-12-15',5000.00,'5483517283','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(28,'2016-11-26',5000.00,'5483517283','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(29,'2017-02-20',5000.00,'5483517283','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(30,'2017-03-11',5000.00,'5483517283','Efectivo',0);					
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(31,'2017-05-20',5000.00,'2064587693','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(32,'2017-01-21',5000.00,'2064587693','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(33,'2016-12-23',5000.00,'2064587693','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(34,'2016-12-25',5000.00,'2064587693','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(35,'2016-09-20',5000.00,'2064587693','Tarjeta Credito',0);																				
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(36,'2016-10-25',5000.00,'9426176636','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(37,'2017-01-24',5000.00,'9426176636','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(38,'2016-07-08',5000.00,'9426176636','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(39,'2016-08-18',5000.00,'9426176636','Tarjeta Debito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(40,'2016-08-13',5000.00,'9426176636','Tarjeta Credito',0);																	
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(41,'2016-10-21',5000.00,'1306694640','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(42,'2017-03-20',5000.00,'1306694640','Cheque',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(43,'2016-08-20',5000.00,'1306694640','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(44,'2017-02-10',5000.00,'1306694640','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(45,'2016-11-12',5000.00,'1306694640','Tarjeta Credito',0);																			
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(46,'2017-01-23',5000.00,'5825426356','Tarjeta Credito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(47,'2016-11-03',5000.00,'5825426356','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(48,'2017-05-10',5000.00,'5825426356','Efectivo',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(49,'2017-04-30',5000.00,'5825426356','Tarjeta Debito',0);
-INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago) VALUES(50,'2017-02-14',5000.00,'5825426356','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(1,'2017-05-29',5000.00,'2176175826','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(2,'2016-08-27',5000.00,'2176175826','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(3,'2016-12-06',6000.00,'2176175826','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(4,'2017-01-09',6500.00,'2176175826','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(5,'2017-02-23',5000.00,'2176175826','Tarjeta Debito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(6,'2017-05-01',5000.00,'5149791839','Tarjeta Debito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(7,'2016-06-22',5000.00,'5149791839','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(8,'2017-04-30',5000.00,'5149791839','Tarjeta Debito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(9,'2016-10-12',5000.00,'5149791839','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(10,'2016-12-11',5000.00,'5149791839','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(11,'2017-01-23',5000.00,'9441467565','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(12,'2017-02-09',5000.00,'9441467565','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(13,'2016-12-15',5000.00,'9441467565','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(14,'2017-02-11',5000.00,'9441467565','Tarjeta Debito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(15,'2016-07-11',5000.00,'9441467565','Cheque',0);													
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(16,'2016-10-17',5000.00,'0171759163','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(17,'2016-08-21',5000.00,'0171759163','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(18,'2017-01-29',5000.00,'0171759163','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(19,'2017-01-31',5000.00,'0171759163','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(20,'2016-10-10',5000.00,'0171759163','Tarjeta Debito',0);									
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(21,'2016-08-04',5000.00,'0450614084','Tarjeta Debito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(22,'2016-10-01',5000.00,'0450614084','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(23,'2016-12-13',5000.00,'0450614084','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(24,'2017-05-23',5000.00,'0450614084','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(25,'2017-01-24',5000.00,'0450614084','Efectivo',0);						
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(26,'2016-12-23',5000.00,'5483517283','Tarjeta Debito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(27,'2016-12-15',5000.00,'5483517283','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(28,'2016-11-26',5000.00,'5483517283','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(29,'2017-02-20',5000.00,'5483517283','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(30,'2017-03-11',5000.00,'5483517283','Efectivo',0);					
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(31,'2017-05-20',5000.00,'2064587693','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(32,'2017-01-21',5000.00,'2064587693','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(33,'2016-12-23',5000.00,'2064587693','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(34,'2016-12-25',5000.00,'2064587693','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(35,'2016-09-20',5000.00,'2064587693','Tarjeta Credito',0);																				
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(36,'2016-10-25',5000.00,'9426176636','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(37,'2017-01-24',5000.00,'9426176636','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(38,'2016-07-08',5000.00,'9426176636','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(39,'2016-08-18',5000.00,'9426176636','Tarjeta Debito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(40,'2016-08-13',5000.00,'9426176636','Tarjeta Credito',0);																	
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(41,'2016-10-21',5000.00,'1306694640','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(42,'2017-03-20',5000.00,'1306694640','Cheque',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(43,'2016-08-20',5000.00,'1306694640','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(44,'2017-02-10',5000.00,'1306694640','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(45,'2016-11-12',5000.00,'1306694640','Tarjeta Credito',0);																			
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(46,'2017-01-23',5000.00,'5825426356','Tarjeta Credito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(47,'2016-11-03',5000.00,'5825426356','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(48,'2017-05-10',5000.00,'5825426356','Efectivo',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(49,'2017-04-30',5000.00,'5825426356','Tarjeta Debito',0);
+INSERT INTO Factura(IdFactura,Fecha,Monto,CedulaCliente,TipoPago,Cancelada) VALUES(50,'2017-02-14',5000.00,'5825426356','Cheque',0);
 
 
 -- PLATOS_FACTURA

@@ -39,12 +39,12 @@
             this.MenuConsultasSucursales = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuConsultasUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuInventario = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verHistorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCambiarUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSalirAplicacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.correrInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verHistorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             this.MenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.MenuPrincipal.Name = "MenuPrincipal";
             this.MenuPrincipal.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.MenuPrincipal.Size = new System.Drawing.Size(1184, 24);
+            this.MenuPrincipal.Size = new System.Drawing.Size(1184, 25);
             this.MenuPrincipal.TabIndex = 0;
             this.MenuPrincipal.Text = "menuStripPrincipal";
             // 
@@ -69,7 +69,7 @@
             this.MenuRestaurante.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuControlRestaurante});
             this.MenuRestaurante.Name = "MenuRestaurante";
-            this.MenuRestaurante.Size = new System.Drawing.Size(81, 18);
+            this.MenuRestaurante.Size = new System.Drawing.Size(81, 19);
             this.MenuRestaurante.Text = "Restaurante";
             // 
             // MenuControlRestaurante
@@ -88,7 +88,7 @@
             this.MenuConsultasSucursales,
             this.MenuConsultasUsuarios});
             this.MenuConsultas.Name = "MenuConsultas";
-            this.MenuConsultas.Size = new System.Drawing.Size(70, 18);
+            this.MenuConsultas.Size = new System.Drawing.Size(70, 19);
             this.MenuConsultas.Text = "Consultas";
             // 
             // MenuConsultasClientes
@@ -129,17 +129,30 @@
             // MenuInventario
             // 
             this.MenuInventario.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.correrInventarioToolStripMenuItem,
+            this.generarInventarioToolStripMenuItem,
             this.verHistorialToolStripMenuItem});
             this.MenuInventario.Name = "MenuInventario";
-            this.MenuInventario.Size = new System.Drawing.Size(71, 18);
+            this.MenuInventario.Size = new System.Drawing.Size(71, 19);
             this.MenuInventario.Text = "Inventario";
-            this.MenuInventario.Click += new System.EventHandler(this.MenuInventario_Click);
+            // 
+            // generarInventarioToolStripMenuItem
+            // 
+            this.generarInventarioToolStripMenuItem.Name = "generarInventarioToolStripMenuItem";
+            this.generarInventarioToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.generarInventarioToolStripMenuItem.Text = "Generar Inventario";
+            this.generarInventarioToolStripMenuItem.Click += new System.EventHandler(this.generarInventarioToolStripMenuItem_Click);
+            // 
+            // verHistorialToolStripMenuItem
+            // 
+            this.verHistorialToolStripMenuItem.Name = "verHistorialToolStripMenuItem";
+            this.verHistorialToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.verHistorialToolStripMenuItem.Text = "Ver Historial";
+            this.verHistorialToolStripMenuItem.Click += new System.EventHandler(this.verHistorialToolStripMenuItem_Click);
             // 
             // MenuAyuda
             // 
             this.MenuAyuda.Name = "MenuAyuda";
-            this.MenuAyuda.Size = new System.Drawing.Size(51, 18);
+            this.MenuAyuda.Size = new System.Drawing.Size(51, 19);
             this.MenuAyuda.Text = "Ayuda";
             this.MenuAyuda.Click += new System.EventHandler(this.MenuAyuda_Click);
             // 
@@ -149,7 +162,7 @@
             this.MenuCambiarUsuario,
             this.MenuSalirAplicacion});
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(41, 18);
+            this.MenuSalir.Size = new System.Drawing.Size(41, 19);
             this.MenuSalir.Text = "Salir";
             // 
             // MenuCambiarUsuario
@@ -165,18 +178,6 @@
             this.MenuSalirAplicacion.Size = new System.Drawing.Size(175, 22);
             this.MenuSalirAplicacion.Text = "Salir de aplicación";
             this.MenuSalirAplicacion.Click += new System.EventHandler(this.MenuSalirAplicacion_Click);
-            // 
-            // correrInventarioToolStripMenuItem
-            // 
-            this.correrInventarioToolStripMenuItem.Name = "correrInventarioToolStripMenuItem";
-            this.correrInventarioToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.correrInventarioToolStripMenuItem.Text = "Correr Inventario";
-            // 
-            // verHistorialToolStripMenuItem
-            // 
-            this.verHistorialToolStripMenuItem.Name = "verHistorialToolStripMenuItem";
-            this.verHistorialToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.verHistorialToolStripMenuItem.Text = "Ver Historial";
             // 
             // Principal
             // 
@@ -214,7 +215,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuConsultasSucursales;
         private System.Windows.Forms.ToolStripMenuItem MenuInventario;
         private System.Windows.Forms.ToolStripMenuItem MenuConsultasUsuarios;
-        private System.Windows.Forms.ToolStripMenuItem correrInventarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generarInventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verHistorialToolStripMenuItem;
     }
 }

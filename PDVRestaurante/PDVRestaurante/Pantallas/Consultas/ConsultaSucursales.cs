@@ -130,20 +130,25 @@ namespace PDVRestaurante.Pantallas.Consultas
                     if (columna.Name.Contains("Fecha"))
                     {
                         var valor = (DateTime)sucursal.GetType().GetProperty(columna.Name).GetValue(sucursal);
-                        row += valor.ToString("dd-MM-yyyy") + ",";
+                        row += valor.ToString("dd-MM-yyyy") + "|";
                     }
                     else
                     {
-                        row += sucursal.GetType().GetProperty(columna.Name).GetValue(sucursal).ToString() + ",";
+                        row += sucursal.GetType().GetProperty(columna.Name).GetValue(sucursal).ToString() + "|";
                     }
                 }
                 row = row.TrimEnd(',');
-                newListView.Add(new ListViewItem(row.Split(',')));
+                newListView.Add(new ListViewItem(row.Split('|')));
             }
             listView.Items.Clear();
             listView.Items.AddRange(newListView.ToArray());
             listView.View = View.Details;
             listView.AjustarColumnas();
+        }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

@@ -31,6 +31,7 @@
             this.buttonPagarFactura = new System.Windows.Forms.Button();
             this.buttonNuevaFactura = new System.Windows.Forms.Button();
             this.buttonDetalleFactura = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonPagarFactura
@@ -66,12 +67,24 @@
             this.buttonDetalleFactura.UseVisualStyleBackColor = true;
             this.buttonDetalleFactura.Click += new System.EventHandler(this.buttonDetalleFactura_Click);
             // 
+            // buttonCancelar
+            // 
+            this.buttonCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelar.Location = new System.Drawing.Point(305, 363);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(193, 84);
+            this.buttonCancelar.TabIndex = 3;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
             // ControlRestaurante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonDetalleFactura);
             this.Controls.Add(this.buttonNuevaFactura);
             this.Controls.Add(this.buttonPagarFactura);
@@ -89,5 +102,6 @@
         private System.Windows.Forms.Button buttonPagarFactura;
         private System.Windows.Forms.Button buttonNuevaFactura;
         private System.Windows.Forms.Button buttonDetalleFactura;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }

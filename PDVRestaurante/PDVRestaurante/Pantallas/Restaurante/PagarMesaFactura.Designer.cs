@@ -35,6 +35,7 @@
             this.listView = new System.Windows.Forms.ListView();
             this.buttonVerDetalle = new System.Windows.Forms.Button();
             this.buttonPagar = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -89,7 +90,7 @@
             // 
             // buttonVerDetalle
             // 
-            this.buttonVerDetalle.Location = new System.Drawing.Point(266, 119);
+            this.buttonVerDetalle.Location = new System.Drawing.Point(186, 119);
             this.buttonVerDetalle.Name = "buttonVerDetalle";
             this.buttonVerDetalle.Size = new System.Drawing.Size(142, 28);
             this.buttonVerDetalle.TabIndex = 40;
@@ -99,7 +100,7 @@
             // 
             // buttonPagar
             // 
-            this.buttonPagar.Location = new System.Drawing.Point(438, 119);
+            this.buttonPagar.Location = new System.Drawing.Point(366, 119);
             this.buttonPagar.Name = "buttonPagar";
             this.buttonPagar.Size = new System.Drawing.Size(142, 28);
             this.buttonPagar.TabIndex = 41;
@@ -107,11 +108,22 @@
             this.buttonPagar.UseVisualStyleBackColor = true;
             this.buttonPagar.Click += new System.EventHandler(this.buttonPagar_Click);
             // 
+            // buttonCancelar
+            // 
+            this.buttonCancelar.Location = new System.Drawing.Point(552, 119);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(143, 28);
+            this.buttonCancelar.TabIndex = 42;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
             // PagarMesaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonPagar);
             this.Controls.Add(this.buttonVerDetalle);
             this.Controls.Add(this.listView);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.Button buttonVerDetalle;
         private System.Windows.Forms.Button buttonPagar;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }

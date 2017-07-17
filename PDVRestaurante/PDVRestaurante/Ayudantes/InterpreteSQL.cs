@@ -139,7 +139,14 @@ namespace PDVRestaurante.Ayudantes
                     {
                         command.Connection = conn;
                         command.CommandText = "SELECT max(" + columna + ")+1 FROM " + tabla;
-                        returnVal = (int)command.ExecuteScalar();
+                        var tempVal = command.ExecuteScalar();
+                        if (tempVal == DBNull.Value)
+                        {
+                            returnVal = 1;
+                        } else
+                        {
+                            returnVal = (int)tempVal;
+                        }
                     }
                 }
             }

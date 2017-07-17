@@ -51,10 +51,5 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Usuarios
         {
             this.Dispose();
         }
-
-        private void textBoxNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

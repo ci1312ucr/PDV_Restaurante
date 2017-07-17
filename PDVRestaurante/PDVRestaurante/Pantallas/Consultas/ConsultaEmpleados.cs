@@ -139,14 +139,14 @@ namespace PDVRestaurante.Pantallas.Consultas
                     if (columna.Name.Contains("Fecha"))
                     {
                         var valor = (DateTime)empleado.GetType().GetProperty(columna.Name).GetValue(empleado);
-                        row += valor.ToString("dd-MM-yyyy") + ",";
+                        row += valor.ToString("dd-MM-yyyy") + "|";
                     } else
                     {
-                        row += empleado.GetType().GetProperty(columna.Name).GetValue(empleado).ToString() + ",";
+                        row += empleado.GetType().GetProperty(columna.Name).GetValue(empleado).ToString() + "|";
                     }
                 }
                 row = row.TrimEnd(',');
-                newListView.Add(new ListViewItem(row.Split(',')));
+                newListView.Add(new ListViewItem(row.Split('|')));
             }
             listView.Items.Clear();
             listView.Items.AddRange(newListView.ToArray());
@@ -154,5 +154,10 @@ namespace PDVRestaurante.Pantallas.Consultas
             listView.AjustarColumnas();
         }
         #endregion
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

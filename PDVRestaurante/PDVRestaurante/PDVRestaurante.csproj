@@ -103,6 +103,8 @@
     <Compile Include="Objetos\ClienteJuridico.cs" />
     <Compile Include="Objetos\Factura.cs" />
     <Compile Include="Objetos\Ingrediente.cs" />
+    <Compile Include="Objetos\Inventario.cs" />
+    <Compile Include="Objetos\InventarioIngrediente.cs" />
     <Compile Include="Objetos\Mesa_Facturas.cs" />
     <Compile Include="Objetos\PersonaJuridica.cs" />
     <Compile Include="Objetos\Plato.cs" />
@@ -148,16 +150,22 @@
     <Compile Include="Pantallas\Consultas\ConsultaSucursales.Designer.cs">
       <DependentUpon>ConsultaSucursales.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Inventario\CorrerInventario.cs">
+    <Compile Include="Pantallas\Inventarios\GenerarInventario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Inventario\CorrerInventario.Designer.cs">
-      <DependentUpon>CorrerInventario.cs</DependentUpon>
+    <Compile Include="Pantallas\Inventarios\GenerarInventario.Designer.cs">
+      <DependentUpon>GenerarInventario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Inventario\HistorialInventario.cs">
+    <Compile Include="Pantallas\Inventarios\DetalleInventario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Inventario\HistorialInventario.Designer.cs">
+    <Compile Include="Pantallas\Inventarios\DetalleInventario.Designer.cs">
+      <DependentUpon>DetalleInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Inventarios\HistorialInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Inventarios\HistorialInventario.Designer.cs">
       <DependentUpon>HistorialInventario.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Login.cs">
@@ -267,6 +275,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Consultas\ConsultaUsuarios.resx">
       <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Inventarios\GenerarInventario.resx">
+      <DependentUpon>GenerarInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Inventarios\DetalleInventario.resx">
+      <DependentUpon>DetalleInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Inventarios\HistorialInventario.resx">
+      <DependentUpon>HistorialInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

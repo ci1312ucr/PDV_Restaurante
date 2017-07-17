@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PDVRestaurante.Pantallas.Inventario
+namespace PDVRestaurante.Pantallas.Inventarios
 {
-    public partial class HistorialInventario : Form
+    public partial class DetalleInventario : Form
     {
-        public HistorialInventario()
+        public DetalleInventario()
         {
             InitializeComponent();
+        }
+
+        private void buttonImprimir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
