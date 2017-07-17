@@ -942,19 +942,19 @@ insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) va
 insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 3, 18);
 insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 6, 1);
 
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 6, 8);
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 2, 9);
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 3, 10);
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 11);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (3, 6, 8);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (3, 2, 9);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (3, 3, 10);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (3, 1, 11);
 
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 3, 8);
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 6, 10);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (4, 3, 8);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (4, 6, 10);
 
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 2);
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 2);
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 4);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (5, 1, 2);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (5, 1, 2);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (5, 1, 4);
 
-insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 50);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (8, 1, 50);
 
 
 -- CLIENTES
