@@ -920,6 +920,43 @@ insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (3, 5, 1
 insert into Plato_Ingredientes(IdPlato, IdIngrediente, Cantidad) values (3, 6, 1);
 
 
+-- INVENTARIO
+insert into Inventario(IdInventario, Fecha, IdSucursal, TiempoReal) values (1, '2016-12-14', 1, 0);
+insert into Inventario(IdInventario, Fecha, IdSucursal, TiempoReal) values (2, GETDATE(), 1, 1);
+insert into Inventario(IdInventario, Fecha, IdSucursal, TiempoReal) values (3, '2016-12-14', 2, 0);
+insert into Inventario(IdInventario, Fecha, IdSucursal, TiempoReal) values (4, '2016-12-14', 3, 0);
+insert into Inventario(IdInventario, Fecha, IdSucursal, TiempoReal) values (5, GETDATE(), 3, 1);
+insert into Inventario(IdInventario, Fecha, IdSucursal, TiempoReal) values (6, '2016-12-14', 4, 0);
+insert into Inventario(IdInventario, Fecha, IdSucursal, TiempoReal) values (7, '2016-12-14', 5, 0);
+insert into Inventario(IdInventario, Fecha, IdSucursal, TiempoReal) values (8, '2016-12-14', 6, 0);
+
+
+-- INVENTARIO_INGREDIENTES
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (1, 1, 1);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (1, 2, 15);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (1, 4, 26);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (1, 6, 4);
+
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 5);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 2, 41);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 3, 18);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 6, 1);
+
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 6, 8);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 2, 9);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 3, 10);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 11);
+
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 3, 8);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 6, 10);
+
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 2);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 2);
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 4);
+
+insert into Inventario_Ingredientes(IdInventario, IdIngrediente, Existencias) values (2, 1, 50);
+
+
 -- CLIENTES
 INSERT INTO Cliente(Cedula,Frecuente) VALUES('2176175826','1');
 INSERT INTO Cliente(Cedula,Frecuente) VALUES('5149791839','0');
