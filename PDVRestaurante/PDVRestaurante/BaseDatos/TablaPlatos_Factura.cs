@@ -18,9 +18,19 @@ namespace PDVRestaurante.BaseDatos
             return "Platos_Factura";
         }
 
+        private static string TablaPlatosEnFactura()
+        {
+            return "Platos_Factura pf INNER JOIN Plato p on p.IdPlato = pf.IdPlato";
+        }
+
         private static string Columnas()
         {
             return "IdFactura|IdPlato|Cantidad";
+        }
+
+        private static string ColumnasPlatosEnFactura()
+        {
+            return "IdFactura|p.IdPlato|Cantidad|Nombre|Precio";
         }
 
         private static string LlavePrincipal()
@@ -46,10 +56,10 @@ namespace PDVRestaurante.BaseDatos
             return true;
         }
 
-        public static List<Platos_Factura> ObtenerFacturas(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
+        public static List<Platos_Factura> ObtenerPlatos_Factura(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var facturas = new List<Platos_Factura>();
-            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(TablaPlatosEnFactura(), ColumnasPlatosEnFactura(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

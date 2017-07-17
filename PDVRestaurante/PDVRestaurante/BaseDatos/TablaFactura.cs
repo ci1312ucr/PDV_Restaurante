@@ -25,7 +25,7 @@ namespace PDVRestaurante.BaseDatos
 
         private static string Columnas()
         {
-            return "IdFactura|Fecha|Monto|TipoPago|CedulaCliente";
+            return "IdFactura|Fecha|Monto|TipoPago|CedulaCliente|Cancelada";
         }
 
         private static string ColumnasFacturaEmpleado()
@@ -64,7 +64,7 @@ namespace PDVRestaurante.BaseDatos
         public static Factura ObtenerFactura(int id)
         {
             Factura factura = null;
-            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), "c.IdFactura", id.ToString(), CriterioSQL.IgualA);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), "IdFactura", id.ToString(), CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {

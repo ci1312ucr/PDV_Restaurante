@@ -23,6 +23,11 @@ namespace PDVRestaurante.BaseDatos
             return "Cliente c INNER JOIN PersonaFisica p ON p.CodPerFisica = c.Cedula";
         }
 
+        private static string TablaClienteJuridico()
+        {
+            return "Cliente c INNER JOIN PersonaJuridica p ON p.CodPerJuridica = c.Cedula";
+        }
+
         private static string Columnas()
         {
             return "Cedula|Frecuente";
@@ -31,6 +36,11 @@ namespace PDVRestaurante.BaseDatos
         private static string ColumnasClienteFisico()
         {
             return "Cedula|Nombre1|Nombre2|Apellido1|Apellido2|Sexo|EstadoCivil|FechaNacimiento|Frecuente ";
+        }
+
+        private static string ColumnasClienteJuridico()
+        {
+            return "Cedula|Nombre|FechaApertura|Frecuente ";
         }
 
         private static string LlavePrincipal()
@@ -76,6 +86,30 @@ namespace PDVRestaurante.BaseDatos
             if (dataSet.Tables.Count > 0)
             {
                 clientes = Convertidor.DataSetAObjecto<ClienteFisico>(dataSet);
+            }
+            return clientes;
+        }
+
+        public static ClienteJuridico ObtenerClienteJuridico(string cedula)
+        {
+            ClienteJuridico cliente = null;
+            var dataSet = InterpreteSQL.Obtener(TablaClienteJuridico(), ColumnasClienteJuridico(), "c.Cedula", cedula, CriterioSQL.IgualA);
+
+            if (dataSet.Tables.Count > 0)
+            {
+                cliente = Convertidor.DataSetAObjecto<ClienteJuridico>(dataSet).FirstOrDefault();
+            }
+            return cliente;
+        }
+
+        public static List<ClienteJuridico> ObtenerClientesJuridicos(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
+        {
+            var clientes = new List<ClienteJuridico>();
+            var dataSet = InterpreteSQL.Obtener(TablaClienteJuridico(), ColumnasClienteJuridico(), columnasFiltro, valoresFiltro, criteriosFiltro);
+
+            if (dataSet.Tables.Count > 0)
+            {
+                clientes = Convertidor.DataSetAObjecto<ClienteJuridico>(dataSet);
             }
             return clientes;
         }

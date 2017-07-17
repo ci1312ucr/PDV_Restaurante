@@ -26,5 +26,8 @@ namespace PDVRestaurante.Objetos
 
         [Display(Name = "Tipo de Pago", Order = 4)]
         public string TipoPago { get; set; }
+
+        [Display(Name = "Cancelada", Order = 6)]
+        public bool Cancelada { get; set; }
     }
 }

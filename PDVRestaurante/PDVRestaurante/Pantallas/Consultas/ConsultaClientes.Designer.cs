@@ -159,6 +159,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.ControlBox = false;
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewClientes);
@@ -175,6 +176,7 @@
             this.Name = "ConsultaClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConsultaCliente";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

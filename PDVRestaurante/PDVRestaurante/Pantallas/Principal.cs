@@ -26,6 +26,12 @@ namespace PDVRestaurante
             ValidarMenu();
         }
 
+        public Sucursal SucursalActual()
+        {
+            var empleado = TablaEmpleado.ObtenerEmpleado(currentUser.IdEmpleado);
+            return TablaSucursal.ObtenerSucursal("IdSucursal", empleado.IdSucursal.ToString());
+        }
+
 
         //--------------------------------------------------------------------------------------------------------------------
         //Esta sección es específica para funciones que se necesiten para controlar aspectos propios de la pantalla principal
