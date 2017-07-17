@@ -133,7 +133,6 @@
             this.comboBoxBuscar.Name = "comboBoxBuscar";
             this.comboBoxBuscar.Size = new System.Drawing.Size(261, 21);
             this.comboBoxBuscar.TabIndex = 16;
-            this.comboBoxBuscar.SelectedIndexChanged += new System.EventHandler(this.comboBoxBuscar_SelectedIndexChanged);
             // 
             // textBoxBuscar
             // 

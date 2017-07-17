@@ -98,19 +98,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonModificarEmpleado_Click(object sender, EventArgs e)
         {
-            //this.CambiarPantalla<ModificarEmpleado>("ModificarEmpleado");
-            var modificarEmpleadoForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "ModificarEmpleado");
-            if (modificarEmpleadoForm == null)
-            {
-                var pantallaModificarEmpleado = new ModificarEmpleado(listViewEmpleados.SelectedItems[0].Text);
-                pantallaModificarEmpleado.MdiParent = this.ParentForm;
-                pantallaModificarEmpleado.Dock = DockStyle.Fill;
-                pantallaModificarEmpleado.Show();
-            }
-            else
-            {
-                modificarEmpleadoForm.Show();
-            }
+            this.CambiarPantalla<ModificarEmpleado>("ModificarEmpleado", listViewEmpleados.SelectedItems[0].Text);
         }
 
         private void buttonEliminarEmpleado_Click(object sender, EventArgs e)
@@ -121,11 +109,6 @@ namespace PDVRestaurante.Pantallas.Consultas
         private void buttonCrearEmpleado_Click(object sender, EventArgs e)
         {
             this.CambiarPantalla<CrearEmpleado>("CrearEmpleado");
-        }
-
-        private void buttonCerrar_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
         }
 
 

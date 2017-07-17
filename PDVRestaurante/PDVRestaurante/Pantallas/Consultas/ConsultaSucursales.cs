@@ -20,6 +20,7 @@ namespace PDVRestaurante.Pantallas.Consultas
         private List<Propiedad> _columnas;
         private List<Sucursal> _sucursales;
         private string _ordenActual = "IdSucursal";
+
         public ConsultaSucursales()
         {
             InitializeComponent();
@@ -29,44 +30,14 @@ namespace PDVRestaurante.Pantallas.Consultas
             CargarListView(TablaSucursal.ObtenerSucursales());
 
             //Carga la lista de posibles filtros para búsqueda
-            comboBox1.Items.AddRange(_columnas.ToArray());
-            comboBox1.DisplayMember = "DisplayName";
+            comboBoxBuscar.Items.AddRange(_columnas.ToArray());
+            comboBoxBuscar.DisplayMember = "DisplayName";
 
             //Carga la lista de posibles filtros para ordenar
             comboBoxOrdenar.Items.AddRange(_columnas.ToArray());
             comboBoxOrdenar.DisplayMember = "DisplayName";
 
             buttonBuscar.Enabled = false;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e) //Modificar Sucursal
-        {
-     
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ConsultaSucursales_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBuscar_TextChanged(object sender, EventArgs e)
@@ -85,7 +56,7 @@ namespace PDVRestaurante.Pantallas.Consultas
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             //Realiza una búsqueda de empleado(s) basado en el filtro seleccionado
-            var columna = (Propiedad)comboBox1.SelectedItem;
+            var columna = (Propiedad)comboBoxBuscar.SelectedItem;
             var valor = textBuscar.Text;
 
             //Define el criterio de comparación para enviar la consulta SQL adecuada
@@ -111,25 +82,27 @@ namespace PDVRestaurante.Pantallas.Consultas
             CargarListView(TablaSucursal.ObtenerSucursales(columna.Name, valor, criterio));
         }
 
-        private void listViewSucursales_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void listViewSucursales_Ajuste(object sender, EventArgs e)
         {
-            listViewSucursales.AjustarColumnas();
+            listView.AjustarColumnas();
         }
 
         private void buttonLimpiarFiltro_Click(object sender, EventArgs e)
         {
             //Limpia el filtro de búsqueda y carga el Grid de nuevo con todos los empleados
-            comboBox1.ResetText();
+            comboBoxBuscar.ResetText();
             textBuscar.Clear();
             CargarListView(TablaSucursal.ObtenerSucursales());
         }
+
+        private void buttonCrear_Click(object sender, EventArgs e)
+        {
+            this.CambiarPantalla<CrearSucursal>("CrearSucursal");
+        }
+
         private void InicializaListView()
         {
-            listViewSucursales.DoubleBuffer();
+            listView.DoubleBuffer();
             var properties = typeof(Sucursal).GetProperties().
                                   Select(p => new Propiedad
                                   {
@@ -141,7 +114,7 @@ namespace PDVRestaurante.Pantallas.Consultas
             _columnas = properties.Where(p => p.Order > 0).OrderBy(p => p.Order).ToList();
             foreach (var columna in _columnas)
             {
-                listViewSucursales.Columns.Add(columna.DisplayName);
+                listView.Columns.Add(columna.DisplayName);
             }
         }
 
@@ -167,31 +140,10 @@ namespace PDVRestaurante.Pantallas.Consultas
                 row = row.TrimEnd(',');
                 newListView.Add(new ListViewItem(row.Split(',')));
             }
-            listViewSucursales.Items.Clear();
-            listViewSucursales.Items.AddRange(newListView.ToArray());
-            listViewSucursales.View = View.Details;
-            listViewSucursales.AjustarColumnas();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void button1_Click(object sender, EventArgs e) //Crear Sucursal
-        {
-            var crearSucursalForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearSucursal");
-            if (crearSucursalForm == null)
-            {
-                var pantallaCrearEmpleado = new CrearSucursal();
-                pantallaCrearEmpleado.MdiParent = this.ParentForm;
-                pantallaCrearEmpleado.Dock = DockStyle.Fill;
-                pantallaCrearEmpleado.Show();
-            }
-            else
-            {
-                crearSucursalForm.Show();
-            }
+            listView.Items.Clear();
+            listView.Items.AddRange(newListView.ToArray());
+            listView.View = View.Details;
+            listView.AjustarColumnas();
         }
     }
 }
