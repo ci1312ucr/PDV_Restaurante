@@ -9,7 +9,7 @@ using PDVRestaurante.BaseDatos;
 
 namespace PDVRestaurante.Objetos
 {
-    public class Empleado : PersonaFisica
+    public class Cliente : PersonaFisica
     {
         [Display(Name = "Tipo de Empleado", Order = 6)]
         public string TipoE { get; set; }

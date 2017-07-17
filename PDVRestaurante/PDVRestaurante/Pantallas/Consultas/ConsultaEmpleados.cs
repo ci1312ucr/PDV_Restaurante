@@ -18,7 +18,7 @@ namespace PDVRestaurante.Pantallas.Consultas
     public partial class ConsultaEmpleados : Form
     {
         private List<Propiedad> _columnas;
-        private List<Empleado> _empleados;
+        private List<Cliente> _empleados;
         private string _ordenActual = "Cedula";
 
         public ConsultaEmpleados()
@@ -134,7 +134,7 @@ namespace PDVRestaurante.Pantallas.Consultas
         private void InicializaListView()
         {
             listViewEmpleados.DoubleBuffer();
-            var properties = typeof(Empleado).GetProperties().
+            var properties = typeof(Cliente).GetProperties().
                                   Select(p => new Propiedad
                                   {
                                       Name = p.Name,
@@ -149,11 +149,11 @@ namespace PDVRestaurante.Pantallas.Consultas
             }
         }
 
-        private void CargarListView(List<Empleado> empleados)
+        private void CargarListView(List<Cliente> empleados)
         {
             _empleados = empleados.OrderBy(e => e.GetType().GetProperty(_ordenActual).GetValue(e)).ToList();
             var newListView = new List<ListViewItem>();
-            foreach (Empleado empleado in _empleados)
+            foreach (Cliente empleado in _empleados)
             {
                 var row = "";
                 foreach (var columna in _columnas)

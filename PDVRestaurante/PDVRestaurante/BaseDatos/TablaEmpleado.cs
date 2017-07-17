@@ -56,26 +56,26 @@ namespace PDVRestaurante.BaseDatos
             return true;
         }
 
-        public static Empleado ObtenerEmpleado(string cedula)
+        public static Cliente ObtenerEmpleado(string cedula)
         {
-            Empleado empleado = null;
+            Cliente empleado = null;
             var dataSet = InterpreteSQL.Obtener(TablaEmpleadoPersona(), ColumnasEmpleadoPersona(), "p.CodPerFisica", cedula, CriterioSQL.IgualA);
 
             if (dataSet.Tables.Count > 0)
             {
-                empleado = Convertidor.DataSetAObjecto<Empleado>(dataSet).FirstOrDefault();
+                empleado = Convertidor.DataSetAObjecto<Cliente>(dataSet).FirstOrDefault();
             }
             return empleado;
         }
 
-        public static List<Empleado> ObtenerEmpleados(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
+        public static List<Cliente> ObtenerEmpleados(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
-            var empleados = new List<Empleado>();
+            var empleados = new List<Cliente>();
             var dataSet = InterpreteSQL.Obtener(TablaEmpleadoPersona(), ColumnasEmpleadoPersona(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {
-                empleados = Convertidor.DataSetAObjecto<Empleado>(dataSet);
+                empleados = Convertidor.DataSetAObjecto<Cliente>(dataSet);
             }
             return empleados;
         }
