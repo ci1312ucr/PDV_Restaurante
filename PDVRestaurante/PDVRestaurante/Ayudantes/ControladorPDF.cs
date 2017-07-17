@@ -22,6 +22,7 @@ namespace PDVRestaurante.Ayudantes
                 parrafo.Alignment = Element.ALIGN_CENTER;
                 documento.Add(parrafo);
                 documento.Close();
+                System.Diagnostics.Process.Start(nombreArchivo);
             }
             catch (Exception ex)
             {

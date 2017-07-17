@@ -12,24 +12,31 @@ using System.Windows.Forms;
 using PDVRestaurante.Constantes;
 using PDVRestaurante.Pantallas.Mantenimiento.Usuarios;
 using PDVRestaurante.Pantallas.Restaurante;
+using PDVRestaurante.Ayudantes;
+using PDVRestaurante.Pantallas.Ayuda;
 
 namespace PDVRestaurante
 {
     public partial class Principal : Form
     {
-        private Usuario currentUser;
+        private Usuario _usuarioActual;
+        private Sucursal _sucursalActual;
 
         public Principal(Usuario usuario)
         {
             InitializeComponent();
-            currentUser = usuario;
+            _usuarioActual = usuario;
             ValidarMenu();
         }
 
         public Sucursal SucursalActual()
         {
-            var empleado = TablaEmpleado.ObtenerEmpleado(currentUser.IdEmpleado);
-            return TablaSucursal.ObtenerSucursal("IdSucursal", empleado.IdSucursal.ToString());
+            if (_sucursalActual == null)
+            {
+                var empleado = TablaEmpleado.ObtenerEmpleado(_usuarioActual.IdEmpleado);
+                _sucursalActual = TablaSucursal.ObtenerSucursal("IdSucursal", empleado.IdSucursal.ToString());
+            }
+            return _sucursalActual;
         }
 
 
@@ -40,7 +47,7 @@ namespace PDVRestaurante
         private void ValidarMenu()
         {
             ActivaMenu(this.MenuPrincipal.Items);
-            switch (this.currentUser.IdTipoUsuario)
+            switch (this._usuarioActual.IdTipoUsuario)
             {
                 case (int)TipoDeUsuario.Superadmin:
                     ActivarMantenimiento();
@@ -83,31 +90,9 @@ namespace PDVRestaurante
             menuConsultas.Text = "Consultas / Mantenimiento";
         }
 
-        private void MostrarPantalla(string area, string nombrePantalla)
+        private void MostrarPantalla(string area, string nombrePantalla, params object[] args)
         {
-            var pantallaMostrar = this.MdiChildren.ToList().Find(f => f.Name == nombrePantalla);
-            if (pantallaMostrar == null)
-            {
-                var pantallaType = Type.GetType("PDVRestaurante.Pantallas." + area + "." + nombrePantalla);
-                if (pantallaType != null)
-                {
-                    try
-                    {
-                        var nuevaPantalla = (Form)Activator.CreateInstance(pantallaType);
-                        nuevaPantalla.MdiParent = this;
-                        nuevaPantalla.Dock = DockStyle.Fill;
-                        nuevaPantalla.Show();
-                    } catch (Exception ex)
-                    {
-                        MessageBox.Show("Se produjo un error al tratar de abrir la pantalla >> " + ex.Message, "Error al abrir pantalla", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                pantallaMostrar.Show();
-                pantallaMostrar.BringToFront();
-            }
+            this.CambiarPantalla(area, nombrePantalla, args);
         }
 
         #endregion
@@ -156,7 +141,8 @@ namespace PDVRestaurante
 
         private void MenuAyuda_Click(object sender, EventArgs e)
         {
-            MostrarPantalla("Ayuda", "");
+            var pantallaAyuda = new Ayuda();
+            pantallaAyuda.ShowDialog();
         }
 
         private void MenuCambiarUsuario_Click(object sender, EventArgs e)
@@ -170,7 +156,7 @@ namespace PDVRestaurante
             var login = new Login();
             if (login.ShowDialog() == DialogResult.OK)
             {
-                currentUser = login.usuario();
+                _usuarioActual = login.usuario();
                 ValidarMenu();
                 this.Show();
             }

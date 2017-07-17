@@ -43,6 +43,8 @@
             this.MenuSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCambiarUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSalirAplicacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.correrInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verHistorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,6 +128,9 @@
             // 
             // MenuInventario
             // 
+            this.MenuInventario.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.correrInventarioToolStripMenuItem,
+            this.verHistorialToolStripMenuItem});
             this.MenuInventario.Name = "MenuInventario";
             this.MenuInventario.Size = new System.Drawing.Size(71, 18);
             this.MenuInventario.Text = "Inventario";
@@ -160,6 +165,18 @@
             this.MenuSalirAplicacion.Size = new System.Drawing.Size(175, 22);
             this.MenuSalirAplicacion.Text = "Salir de aplicación";
             this.MenuSalirAplicacion.Click += new System.EventHandler(this.MenuSalirAplicacion_Click);
+            // 
+            // correrInventarioToolStripMenuItem
+            // 
+            this.correrInventarioToolStripMenuItem.Name = "correrInventarioToolStripMenuItem";
+            this.correrInventarioToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.correrInventarioToolStripMenuItem.Text = "Correr Inventario";
+            // 
+            // verHistorialToolStripMenuItem
+            // 
+            this.verHistorialToolStripMenuItem.Name = "verHistorialToolStripMenuItem";
+            this.verHistorialToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.verHistorialToolStripMenuItem.Text = "Ver Historial";
             // 
             // Principal
             // 
@@ -197,5 +214,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuConsultasSucursales;
         private System.Windows.Forms.ToolStripMenuItem MenuInventario;
         private System.Windows.Forms.ToolStripMenuItem MenuConsultasUsuarios;
+        private System.Windows.Forms.ToolStripMenuItem correrInventarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verHistorialToolStripMenuItem;
     }
 }

@@ -43,7 +43,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void listViewEmpleados_Ajuste(object sender, EventArgs e)
         {
-            listViewEmpleados.AjustarColumnas();
+            listView.AjustarColumnas();
         }
 
         private void buttonBuscarEmpleado_Click(object sender, EventArgs e)
@@ -98,17 +98,12 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonModificarEmpleado_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla<ModificarEmpleado>("ModificarEmpleado", listViewEmpleados.SelectedItems[0].Text);
-        }
-
-        private void buttonEliminarEmpleado_Click(object sender, EventArgs e)
-        {
-
+            this.CambiarPantalla("Mantenimiento.Empleados","ModificarEmpleado", listView.SelectedItems[0].Text);
         }
 
         private void buttonCrearEmpleado_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla<CrearEmpleado>("CrearEmpleado");
+            this.CambiarPantalla("Mantenimiento.Empleados","CrearEmpleado");
         }
 
 
@@ -116,7 +111,7 @@ namespace PDVRestaurante.Pantallas.Consultas
         #region Funciones
         private void InicializaListView()
         {
-            listViewEmpleados.DoubleBuffer();
+            listView.DoubleBuffer();
             var properties = typeof(Cliente).GetProperties().
                                   Select(p => new Propiedad
                                   {
@@ -128,7 +123,7 @@ namespace PDVRestaurante.Pantallas.Consultas
             _columnas = properties.Where(p => p.Order > 0).OrderBy(p => p.Order).ToList();
             foreach (var columna in _columnas)
             {
-                listViewEmpleados.Columns.Add(columna.DisplayName);
+                listView.Columns.Add(columna.DisplayName);
             }
         }
 
@@ -153,10 +148,10 @@ namespace PDVRestaurante.Pantallas.Consultas
                 row = row.TrimEnd(',');
                 newListView.Add(new ListViewItem(row.Split(',')));
             }
-            listViewEmpleados.Items.Clear();
-            listViewEmpleados.Items.AddRange(newListView.ToArray());
-            listViewEmpleados.View = View.Details;
-            listViewEmpleados.AjustarColumnas();
+            listView.Items.Clear();
+            listView.Items.AddRange(newListView.ToArray());
+            listView.View = View.Details;
+            listView.AjustarColumnas();
         }
         #endregion
     }

@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace PDVRestaurante.Pantallas.Restaurante
 {
-    public partial class ImprimirFactura : Form
+    public partial class DetalleFactura : Form
     {
         private string _ordenActual = "IdFactura";
         private List<Propiedad> _columnas;
@@ -22,7 +22,7 @@ namespace PDVRestaurante.Pantallas.Restaurante
         private Factura _factura;
         private string _nombreCliente = "";
 
-        public ImprimirFactura()
+        public DetalleFactura(int facturaId = 0)
         {
             InitializeComponent();
             InicializaListView();
@@ -30,6 +30,11 @@ namespace PDVRestaurante.Pantallas.Restaurante
             buttonBuscar.Enabled = false;
             _platos = new List<Platos_Factura>();
             _factura = new Factura();
+            if (facturaId > 0)
+            {
+                textBuscar.Text = facturaId.ToString();
+                BuscarDetalleFactura();
+            }
         }
 
         private void textBuscar_TextChanged(object sender, EventArgs e)
@@ -40,26 +45,7 @@ namespace PDVRestaurante.Pantallas.Restaurante
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-            _platos.Clear();
-            _factura = new Factura();
-            _nombreCliente = "";
-            int n;
-            if (int.TryParse(textBuscar.Text, out n)) {
-                _factura = TablaFactura.ObtenerFactura(n);
-                if (TablaPersona.ObtenerPersona(_factura.CedulaCliente).TipoP == "F")
-                {
-                    var cliente = TablaCliente.ObtenerClienteFisico(_factura.CedulaCliente);
-                    _nombreCliente = cliente.Nombre1 + " " + cliente.Apellido1;
-                }
-                else
-                {
-                    var cliente = TablaCliente.ObtenerClienteJuridico(_factura.CedulaCliente);
-                    _nombreCliente = cliente.Nombre;
-                }
-                var platos = TablaPlatos_Factura.ObtenerPlatos_Factura("IdFactura", _factura.IdFactura.ToString(), CriterioSQL.IgualA);
-                CargarListView(platos);
-            }
-            buttonImprimir.Enabled = _platos.Count > 0;
+            BuscarDetalleFactura();
         }
 
         private void buttonImprimir_Click(object sender, EventArgs e)
@@ -110,7 +96,7 @@ namespace PDVRestaurante.Pantallas.Restaurante
 
         private void InicializaListView()
         {
-            listViewFactura.DoubleBuffer();
+            listView.DoubleBuffer();
             var properties = typeof(Platos_Factura).GetProperties().
                                   Select(p => new Propiedad
                                   {
@@ -122,7 +108,7 @@ namespace PDVRestaurante.Pantallas.Restaurante
             _columnas = properties.Where(p => p.Order > 0).OrderBy(p => p.Order).ToList();
             foreach (var columna in _columnas)
             {
-                listViewFactura.Columns.Add(columna.DisplayName);
+                listView.Columns.Add(columna.DisplayName);
             }
         }
 
@@ -148,13 +134,42 @@ namespace PDVRestaurante.Pantallas.Restaurante
                 row = row.TrimEnd(',');
                 newListView.Add(new ListViewItem(row.Split(',')));
             }
-            listViewFactura.Items.Clear();
-            listViewFactura.Items.AddRange(newListView.ToArray());
-            listViewFactura.View = View.Details;
-            listViewFactura.AjustarColumnas();
+            listView.Items.Clear();
+            listView.Items.AddRange(newListView.ToArray());
+            listView.View = View.Details;
+            listView.AjustarColumnas();
+        }
+
+        private void BuscarDetalleFactura()
+        {
+            _platos.Clear();
+            _factura = new Factura();
+            _nombreCliente = "";
+            int n;
+            if (int.TryParse(textBuscar.Text, out n))
+            {
+                _factura = TablaFactura.ObtenerFactura(n);
+                if (TablaPersona.ObtenerPersona(_factura.CedulaCliente).TipoP == "F")
+                {
+                    var cliente = TablaCliente.ObtenerClienteFisico(_factura.CedulaCliente);
+                    _nombreCliente = cliente.Nombre1 + " " + cliente.Apellido1;
+                }
+                else
+                {
+                    var cliente = TablaCliente.ObtenerClienteJuridico(_factura.CedulaCliente);
+                    _nombreCliente = cliente.Nombre;
+                }
+                var platos = TablaPlatos_Factura.ObtenerPlatos_Factura("IdFactura", _factura.IdFactura.ToString(), CriterioSQL.IgualA);
+                CargarListView(platos);
+            }
+            buttonImprimir.Enabled = _platos.Count > 0;
         }
 
         #endregion
 
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

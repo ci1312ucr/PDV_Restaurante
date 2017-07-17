@@ -17,9 +17,19 @@ namespace PDVRestaurante.BaseDatos
             return "Mesa_Factura";
         }
 
+        private static string TablaFacturasDeMesa()
+        {
+            return "Mesa_Factura mf inner join Factura f on f.IdFactura = mf.IdFactura";
+        }
+
         private static string Columnas()
         {
             return "IdFactura|NumeroMesa";
+        }
+
+        private static string ColumnasFacturasDeMesa()
+        {
+            return "mf.IdFactura|NumeroMesa|Fecha|Monto|CedulaCliente";
         }
 
         private static string LlavePrincipal()
@@ -48,7 +58,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Mesa_Facturas> ObtenerMesa_Facturas(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var mesa_facturas = new List<Mesa_Facturas>();
-            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(TablaFacturasDeMesa(), ColumnasFacturasDeMesa(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

@@ -1,6 +1,6 @@
-﻿namespace PDVRestaurante.Pantallas.Mantenimiento.Empleados
+﻿namespace PDVRestaurante.Pantallas.Ayuda
 {
-    partial class ModificarEmpleado
+    partial class Ayuda
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.buttonOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // ModificarEmpleado
+            // buttonOK
+            // 
+            this.buttonOK.Location = new System.Drawing.Point(110, 197);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(66, 39);
+            this.buttonOK.TabIndex = 0;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
+            // Ayuda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 500);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ModificarEmpleado";
-            this.Text = "ModificarEmpleado";
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.buttonOK);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Ayuda";
+            this.Text = "Ayuda";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button buttonOK;
     }
 }

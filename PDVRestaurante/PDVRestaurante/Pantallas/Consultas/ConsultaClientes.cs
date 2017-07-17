@@ -94,17 +94,12 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void buttonEliminar_Click(object sender, EventArgs e)
-        {
-
+            this.CambiarPantalla("Mantenimiento.Clientes", "ModificarCliente");
         }
 
         private void buttonCrear_Click(object sender, EventArgs e)
         {
-            //this.CambiarPantalla<CrearCliente>("CrearCliente");
+            this.CambiarPantalla("Mantenimiento.Clientes", "CrearCliente");
         }
 
         private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)

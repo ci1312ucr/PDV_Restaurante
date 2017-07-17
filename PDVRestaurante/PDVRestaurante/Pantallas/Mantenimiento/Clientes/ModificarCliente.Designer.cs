@@ -1,6 +1,6 @@
-﻿namespace PDVRestaurante.Pantallas.Mantenimiento.Empleados
+﻿namespace PDVRestaurante.Pantallas.Mantenimiento.Clientes
 {
-    partial class ModificarEmpleado
+    partial class ModificarCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // ModificarEmpleado
+            // ModificarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ModificarEmpleado";
-            this.Text = "ModificarEmpleado";
+            this.Name = "ModificarCliente";
+            this.Text = "ModificarCliente";
             this.ResumeLayout(false);
 
         }

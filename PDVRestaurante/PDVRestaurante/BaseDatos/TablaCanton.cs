@@ -37,10 +37,5 @@ namespace PDVRestaurante.BaseDatos
             }
             return canton;
         }
-
-        internal static object ObtenerCantones(string v1, string v2, object igualA)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

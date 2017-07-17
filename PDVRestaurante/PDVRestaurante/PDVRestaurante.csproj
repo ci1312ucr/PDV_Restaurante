@@ -112,6 +112,12 @@
     <Compile Include="Objetos\Propiedad.cs" />
     <Compile Include="Objetos\Provincia.cs" />
     <Compile Include="Objetos\Sucursal.cs" />
+    <Compile Include="Pantallas\Ayuda\Ayuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Ayuda\Ayuda.Designer.cs">
+      <DependentUpon>Ayuda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Consultas\ConsultaClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,18 @@
     <Compile Include="Pantallas\Consultas\ConsultaSucursales.Designer.cs">
       <DependentUpon>ConsultaSucursales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Inventario\CorrerInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Inventario\CorrerInventario.Designer.cs">
+      <DependentUpon>CorrerInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Inventario\HistorialInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Inventario\HistorialInventario.Designer.cs">
+      <DependentUpon>HistorialInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Login.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -156,6 +174,18 @@
     <Compile Include="Objetos\PersonaFisica.cs" />
     <Compile Include="Objetos\TipoUsuario.cs" />
     <Compile Include="Objetos\Usuario.cs" />
+    <Compile Include="Pantallas\Mantenimiento\Clientes\CrearCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Clientes\CrearCliente.Designer.cs">
+      <DependentUpon>CrearCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Clientes\ModificarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mantenimiento\Clientes\ModificarCliente.Designer.cs">
+      <DependentUpon>ModificarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,11 +230,11 @@
     <Compile Include="Pantallas\Restaurante\ControlRestaurante.Designer.cs">
       <DependentUpon>ControlRestaurante.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Restaurante\ImprimirFactura.cs">
+    <Compile Include="Pantallas\Restaurante\DetalleFactura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Restaurante\ImprimirFactura.Designer.cs">
-      <DependentUpon>ImprimirFactura.cs</DependentUpon>
+    <Compile Include="Pantallas\Restaurante\DetalleFactura.Designer.cs">
+      <DependentUpon>DetalleFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Restaurante\PagarMesaFactura.cs">
       <SubType>Form</SubType>
@@ -212,8 +242,17 @@
     <Compile Include="Pantallas\Restaurante\PagarMesaFactura.Designer.cs">
       <DependentUpon>PagarMesaFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Restaurante\PagoFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Restaurante\PagoFactura.Designer.cs">
+      <DependentUpon>PagoFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pantallas\Ayuda\Ayuda.resx">
+      <DependentUpon>Ayuda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Consultas\ConsultaClientes.resx">
       <DependentUpon>ConsultaClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,8 +272,17 @@
       <DependentUpon>Login.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mantenimiento\Clientes\CrearCliente.resx">
+      <DependentUpon>CrearCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mantenimiento\Clientes\ModificarCliente.resx">
+      <DependentUpon>ModificarCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Mantenimiento\Empleados\CrearEmpleado.resx">
       <DependentUpon>CrearEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mantenimiento\Empleados\ModificarEmpleado.resx">
+      <DependentUpon>ModificarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Mantenimiento\Sucursales\CrearSucursal.resx">
       <DependentUpon>CrearSucursal.cs</DependentUpon>
@@ -252,11 +300,14 @@
     <EmbeddedResource Include="Pantallas\Restaurante\ControlRestaurante.resx">
       <DependentUpon>ControlRestaurante.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\Restaurante\ImprimirFactura.resx">
-      <DependentUpon>ImprimirFactura.cs</DependentUpon>
+    <EmbeddedResource Include="Pantallas\Restaurante\DetalleFactura.resx">
+      <DependentUpon>DetalleFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Restaurante\PagarMesaFactura.resx">
       <DependentUpon>PagarMesaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Restaurante\PagoFactura.resx">
+      <DependentUpon>PagoFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -290,10 +341,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pantallas\Ayuda\" />
-    <Folder Include="Pantallas\Mantenimiento\Clientes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Scripts\cargaRestaurante.sql" />
     <Content Include="Scripts\creaRestaurante.sql" />

@@ -61,10 +61,18 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Facturas
                 }
                 string tipopago = (string)comboBoxTipoPago.SelectedItem;
                 int mesa = 0;
-                if(!int.TryParse(numericUpDownMesa.Value.ToString(), out mesa) || mesa==0)
+                if(!int.TryParse(numericUpDownMesa.Value.ToString(), out mesa))
                 {
-                    MessageBox.Show("Seleccione una mesa válida (distinta de 0).");
+                    MessageBox.Show("Seleccione una mesa válida.");
                     return;
+                }
+                if (mesa == 0)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Confirme que la orden es un pedido express o para llevar", "Pedido Express", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.No)
+                    {
+                        return;
+                    }
                 }
                 Decimal monto = 0;
                 if (!Decimal.TryParse(textBoxMonto.Text.Substring(1), out monto))
@@ -79,7 +87,7 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Facturas
                     return;
                 }
 
-                if (TablaFactura.InsertarFactura(id, DateTime.Now, monto, tipopago, cliente.Cedula) &&
+                if (TablaFactura.InsertarFactura(id, DateTime.Now, monto, tipopago, cliente.Cedula, 0) &&
                     TablaMesa_Factura.InsertarMesa_Factura(id, mesa) &&
                     InsertarPlatos(id))
                 {
@@ -117,7 +125,7 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Facturas
 
                 foreach (ListViewItem item in listViewPlatos.Items)
                 {
-                    if(item.SubItems[0].Text == p.Nombre)
+                    if(item.SubItems[1].Text == p.IdPlato.ToString())
                     {
                         found = true;
                         cantidad += Int32.Parse(item.SubItems[2].Text);

@@ -33,10 +33,9 @@
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
             this.comboBoxBuscar = new System.Windows.Forms.ComboBox();
             this.labelConsultaEmpleados = new System.Windows.Forms.Label();
-            this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
-            this.listViewEmpleados = new System.Windows.Forms.ListView();
+            this.listView = new System.Windows.Forms.ListView();
             this.comboBoxOrdenar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -87,19 +86,9 @@
             this.labelConsultaEmpleados.TabIndex = 3;
             this.labelConsultaEmpleados.Text = "Buscar por:";
             // 
-            // buttonEliminar
-            // 
-            this.buttonEliminar.Location = new System.Drawing.Point(522, 25);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(96, 35);
-            this.buttonEliminar.TabIndex = 2;
-            this.buttonEliminar.Text = "Eliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = true;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminarEmpleado_Click);
-            // 
             // buttonModificar
             // 
-            this.buttonModificar.Location = new System.Drawing.Point(405, 25);
+            this.buttonModificar.Location = new System.Drawing.Point(524, 25);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(96, 35);
             this.buttonModificar.TabIndex = 1;
@@ -117,20 +106,20 @@
             this.buttonLimpiarFiltro.UseVisualStyleBackColor = true;
             this.buttonLimpiarFiltro.Click += new System.EventHandler(this.buttonLimpiarFiltro_Click);
             // 
-            // listViewEmpleados
+            // listView
             // 
-            this.listViewEmpleados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewEmpleados.FullRowSelect = true;
-            this.listViewEmpleados.Location = new System.Drawing.Point(12, 142);
-            this.listViewEmpleados.MultiSelect = false;
-            this.listViewEmpleados.Name = "listViewEmpleados";
-            this.listViewEmpleados.Size = new System.Drawing.Size(776, 346);
-            this.listViewEmpleados.TabIndex = 10;
-            this.listViewEmpleados.UseCompatibleStateImageBehavior = false;
-            this.listViewEmpleados.View = System.Windows.Forms.View.Details;
-            this.listViewEmpleados.Resize += new System.EventHandler(this.listViewEmpleados_Ajuste);
+            this.listView.FullRowSelect = true;
+            this.listView.Location = new System.Drawing.Point(12, 142);
+            this.listView.MultiSelect = false;
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(776, 346);
+            this.listView.TabIndex = 10;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.Resize += new System.EventHandler(this.listViewEmpleados_Ajuste);
             // 
             // comboBoxOrdenar
             // 
@@ -161,10 +150,9 @@
             this.ControlBox = false;
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listViewEmpleados);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.buttonLimpiarFiltro);
             this.Controls.Add(this.buttonCrear);
-            this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.comboBoxBuscar);
@@ -177,7 +165,6 @@
             this.Name = "ConsultaEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConsultaEmpleado";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,13 +173,12 @@
         #endregion
         private System.Windows.Forms.ComboBox comboBoxBuscar;
         private System.Windows.Forms.Label labelConsultaEmpleados;
-        private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.TextBox textBoxBuscar;
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.Button buttonCrear;
         private System.Windows.Forms.Button buttonLimpiarFiltro;
-        private System.Windows.Forms.ListView listViewEmpleados;
+        private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ComboBox comboBoxOrdenar;
         private System.Windows.Forms.Label label1;
     }
