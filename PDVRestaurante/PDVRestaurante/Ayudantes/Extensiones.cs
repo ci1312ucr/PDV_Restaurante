@@ -24,5 +24,26 @@ namespace PDVRestaurante.Ayudantes
                 column.Width = columnWidth;
             }
         }
+
+        public static void CambiarPantalla<TipoPantalla>(this Form formActual, string nombreSiguienteForm)
+        {
+            var siguienteForm = formActual.ParentForm.MdiChildren.ToList().Find(f => f.Name == nombreSiguienteForm);
+            if (siguienteForm == null)
+            {
+                var tipo = typeof(TipoPantalla);
+                var pantallaSiguiente = new Form();
+                pantallaSiguiente = (Form)Activator.CreateInstance(tipo);
+                pantallaSiguiente.MdiParent = formActual.ParentForm;
+                pantallaSiguiente.Dock = DockStyle.Fill;
+                pantallaSiguiente.StartPosition = FormStartPosition.CenterParent;
+                formActual.Hide();
+                pantallaSiguiente.Show();
+            }
+            else
+            {
+                formActual.Hide();
+                siguienteForm.Show();
+            }
+        }
     }
 }

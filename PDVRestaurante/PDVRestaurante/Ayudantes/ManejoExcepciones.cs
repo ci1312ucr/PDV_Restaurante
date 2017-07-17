@@ -10,7 +10,7 @@ namespace PDVRestaurante.Ayudantes
     {
         public static void LogearExcepcion(Exception ex)
         {
-
+            throw new Exception();
         }
     }
 }

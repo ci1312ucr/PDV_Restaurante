@@ -136,6 +136,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.ControlBox = false;
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewFacturas);
@@ -150,6 +151,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConsultaFacturas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConsultaFacturas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);

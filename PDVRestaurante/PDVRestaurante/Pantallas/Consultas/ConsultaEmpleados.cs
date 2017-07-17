@@ -98,6 +98,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonModificarEmpleado_Click(object sender, EventArgs e)
         {
+            //this.CambiarPantalla<ModificarEmpleado>("ModificarEmpleado");
             var modificarEmpleadoForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "ModificarEmpleado");
             if (modificarEmpleadoForm == null)
             {
@@ -119,18 +120,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonCrearEmpleado_Click(object sender, EventArgs e)
         {
-            var crearEmpleadoForm = this.ParentForm.MdiChildren.ToList().Find(f => f.Name == "CrearEmpleado");
-            if (crearEmpleadoForm == null)
-            {
-                var pantallaCrearEmpleado = new CrearEmpleado();
-                pantallaCrearEmpleado.MdiParent = this.ParentForm;
-                pantallaCrearEmpleado.Dock = DockStyle.Fill;
-                pantallaCrearEmpleado.Show();
-            }
-            else
-            {
-                crearEmpleadoForm.Show();
-            }
+            this.CambiarPantalla<CrearEmpleado>("CrearEmpleado");
         }
 
         private void buttonCerrar_Click(object sender, EventArgs e)
@@ -186,10 +176,5 @@ namespace PDVRestaurante.Pantallas.Consultas
             listViewEmpleados.AjustarColumnas();
         }
         #endregion
-
-        private void comboBoxBuscar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

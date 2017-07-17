@@ -77,7 +77,6 @@
             this.comboBoxBuscar.Name = "comboBoxBuscar";
             this.comboBoxBuscar.Size = new System.Drawing.Size(261, 21);
             this.comboBoxBuscar.TabIndex = 4;
-            this.comboBoxBuscar.SelectedIndexChanged += new System.EventHandler(this.comboBoxBuscar_SelectedIndexChanged);
             // 
             // labelConsultaEmpleados
             // 
@@ -159,6 +158,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.ControlBox = false;
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewEmpleados);
@@ -172,7 +172,10 @@
             this.Controls.Add(this.labelConsultaEmpleados);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ConsultaEmpleados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConsultaEmpleado";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
