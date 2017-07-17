@@ -38,6 +38,7 @@
             this.comboBoxBuscar = new System.Windows.Forms.ComboBox();
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
             this.labelConsultaEmpleados = new System.Windows.Forms.Label();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxOrdenar
@@ -140,11 +141,22 @@
             this.labelConsultaEmpleados.TabIndex = 15;
             this.labelConsultaEmpleados.Text = "Buscar por:";
             // 
+            // buttonCancelar
+            // 
+            this.buttonCancelar.Location = new System.Drawing.Point(412, 25);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(96, 35);
+            this.buttonCancelar.TabIndex = 44;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
             // ConsultaUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView);
@@ -177,5 +189,6 @@
         private System.Windows.Forms.ComboBox comboBoxBuscar;
         private System.Windows.Forms.TextBox textBoxBuscar;
         private System.Windows.Forms.Label labelConsultaEmpleados;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }

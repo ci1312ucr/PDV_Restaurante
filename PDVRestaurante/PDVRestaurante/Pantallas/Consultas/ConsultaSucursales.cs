@@ -145,5 +145,10 @@ namespace PDVRestaurante.Pantallas.Consultas
             listView.View = View.Details;
             listView.AjustarColumnas();
         }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

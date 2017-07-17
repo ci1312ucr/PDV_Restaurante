@@ -34,7 +34,7 @@ namespace PDVRestaurante
             if (_sucursalActual == null)
             {
                 var empleado = TablaEmpleado.ObtenerEmpleado(_usuarioActual.IdEmpleado);
-                _sucursalActual = TablaSucursal.ObtenerSucursal("IdSucursal", empleado.IdSucursal.ToString());
+                _sucursalActual = TablaSucursal.ObtenerSucursalesDetalle("IdSucursal", empleado.IdSucursal.ToString(), CriterioSQL.IgualA).FirstOrDefault();
             }
             return _sucursalActual;
         }
@@ -134,10 +134,16 @@ namespace PDVRestaurante
             MostrarPantalla("Consultas", "ConsultaUsuarios");
         }
 
-        private void MenuInventario_Click(object sender, EventArgs e)
+        private void generarInventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MostrarPantalla("Inventario", "");
+            MostrarPantalla("Inventarios", "GenerarInventario");
         }
+
+        private void verHistorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MostrarPantalla("Inventarios", "HistorialInventario");
+        }
+
 
         private void MenuAyuda_Click(object sender, EventArgs e)
         {
