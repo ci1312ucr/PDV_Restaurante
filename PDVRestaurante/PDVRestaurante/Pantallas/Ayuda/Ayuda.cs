@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PDVRestaurante
+namespace PDVRestaurante.Pantallas.Ayuda
 {
-    public partial class Form1 : Form
+    public partial class Ayuda : Form
     {
-        public Form1()
+        public Ayuda()
         {
             InitializeComponent();
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
