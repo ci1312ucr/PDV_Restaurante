@@ -98,7 +98,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonCrear_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla<CrearFactura>("CrearFactura");
+            this.CambiarPantalla("Mantenimiento.Facturas","CrearFactura");
         }
 
         #region Funciones

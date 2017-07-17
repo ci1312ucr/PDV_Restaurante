@@ -46,7 +46,7 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Sucursales
                 var canton = (Canton)comboBoxCanton.SelectedItem;
                 var distrito = (Distrito)comboBoxDistrito.SelectedItem;
                 int idSucursal = TablaSucursal.ObtenerIdSucursal();
-                if (TablaSucursal.InsertarSucursal(idSucursal, DateTime.Now, distrito.IdDistrito, canton.IdCanton, provincia.IdProvincia, textBoxDetalle.Text.ToLower()))
+                if (TablaSucursal.InsertarSucursal(idSucursal, DateTime.Now, distrito.IdDistrito, canton.IdCanton, provincia.IdProvincia, DBNull.Value, DBNull.Value, textBoxDetalle.Text.ToLower()))
                 {
                     MessageBox.Show("Se agregó la nueva sucursal exitosamente", "Nueva sucursal creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();

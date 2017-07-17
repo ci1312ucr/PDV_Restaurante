@@ -16,7 +16,7 @@ using System.Windows.Forms;
 namespace PDVRestaurante.Pantallas.Consultas
 {
     public partial class ConsultaSucursales : Form
-    { 
+    {
         private List<Propiedad> _columnas;
         private List<Sucursal> _sucursales;
         private string _ordenActual = "IdSucursal";
@@ -27,7 +27,7 @@ namespace PDVRestaurante.Pantallas.Consultas
             InicializaListView();
 
             //Carga la lista de todos los usuarios            
-            CargarListView(TablaSucursal.ObtenerSucursales());
+            CargarListView(TablaSucursal.ObtenerSucursalesDetalle());
 
             //Carga la lista de posibles filtros para búsqueda
             comboBoxBuscar.Items.AddRange(_columnas.ToArray());
@@ -79,7 +79,7 @@ namespace PDVRestaurante.Pantallas.Consultas
                 var sucursal = TablaSucursal.ObtenerSucursal("Detalle", valor);
                 valor = sucursal == null ? "NULL" : sucursal.IdSucursal.ToString();
             }*/
-            CargarListView(TablaSucursal.ObtenerSucursales(columna.Name, valor, criterio));
+            CargarListView(TablaSucursal.ObtenerSucursalesDetalle(columna.Name, valor, criterio));
         }
 
         private void listViewSucursales_Ajuste(object sender, EventArgs e)
@@ -92,12 +92,12 @@ namespace PDVRestaurante.Pantallas.Consultas
             //Limpia el filtro de búsqueda y carga el Grid de nuevo con todos los empleados
             comboBoxBuscar.ResetText();
             textBuscar.Clear();
-            CargarListView(TablaSucursal.ObtenerSucursales());
+            CargarListView(TablaSucursal.ObtenerSucursalesDetalle());
         }
 
         private void buttonCrear_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla<CrearSucursal>("CrearSucursal");
+            this.CambiarPantalla("Mantenimiento.Sucursales", "CrearSucursal");
         }
 
         private void InicializaListView()

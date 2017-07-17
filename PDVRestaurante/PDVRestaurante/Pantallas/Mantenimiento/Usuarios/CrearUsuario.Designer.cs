@@ -186,9 +186,7 @@
             this.Controls.Add(this.textBoxNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CrearUsuario";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CrearUsuario";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

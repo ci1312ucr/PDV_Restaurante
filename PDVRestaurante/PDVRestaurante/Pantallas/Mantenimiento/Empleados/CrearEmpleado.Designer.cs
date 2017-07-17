@@ -48,7 +48,7 @@
             this.buttonCancelar.Location = new System.Drawing.Point(270, 256);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(129, 34);
-            this.buttonCancelar.TabIndex = 19;
+            this.buttonCancelar.TabIndex = 5;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
@@ -60,7 +60,7 @@
             this.buttonCrear.Location = new System.Drawing.Point(87, 255);
             this.buttonCrear.Name = "buttonCrear";
             this.buttonCrear.Size = new System.Drawing.Size(113, 35);
-            this.buttonCrear.TabIndex = 18;
+            this.buttonCrear.TabIndex = 4;
             this.buttonCrear.Text = "Crear";
             this.buttonCrear.UseVisualStyleBackColor = true;
             this.buttonCrear.Click += new System.EventHandler(this.buttonCrear_Click);
@@ -110,12 +110,13 @@
             this.comboBoxCedula.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCedula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCedula.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxCedula.FormattingEnabled = true;
             this.comboBoxCedula.Location = new System.Drawing.Point(160, 82);
             this.comboBoxCedula.Name = "comboBoxCedula";
             this.comboBoxCedula.Size = new System.Drawing.Size(301, 24);
-            this.comboBoxCedula.TabIndex = 12;
+            this.comboBoxCedula.TabIndex = 1;
             // 
             // label5
             // 
@@ -139,7 +140,7 @@
             this.textBoxSalario.Location = new System.Drawing.Point(160, 190);
             this.textBoxSalario.Name = "textBoxSalario";
             this.textBoxSalario.Size = new System.Drawing.Size(301, 22);
-            this.textBoxSalario.TabIndex = 21;
+            this.textBoxSalario.TabIndex = 3;
             this.textBoxSalario.TextChanged += new System.EventHandler(this.textBoxSalario_TextChanged);
             // 
             // comboBoxSucursal
@@ -147,12 +148,13 @@
             this.comboBoxSucursal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSucursal.FormattingEnabled = true;
             this.comboBoxSucursal.Location = new System.Drawing.Point(160, 29);
             this.comboBoxSucursal.Name = "comboBoxSucursal";
             this.comboBoxSucursal.Size = new System.Drawing.Size(301, 24);
-            this.comboBoxSucursal.TabIndex = 22;
+            this.comboBoxSucursal.TabIndex = 0;
             // 
             // textBoxTipoE
             // 
@@ -163,7 +165,7 @@
             this.textBoxTipoE.Location = new System.Drawing.Point(160, 134);
             this.textBoxTipoE.Name = "textBoxTipoE";
             this.textBoxTipoE.Size = new System.Drawing.Size(301, 22);
-            this.textBoxTipoE.TabIndex = 23;
+            this.textBoxTipoE.TabIndex = 2;
             // 
             // CrearEmpleado
             // 
@@ -183,7 +185,6 @@
             this.Controls.Add(this.comboBoxCedula);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CrearEmpleado";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CrearEmpleado";
             this.ResumeLayout(false);
             this.PerformLayout();

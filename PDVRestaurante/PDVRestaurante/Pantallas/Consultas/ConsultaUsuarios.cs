@@ -101,7 +101,7 @@ namespace PDVRestaurante.Pantallas.Consultas
 
         private void buttonCrear_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla<CrearUsuario>("CrearUsuario");
+            this.CambiarPantalla("Mantenimiento.Usuarios", "CrearUsuario");
         }
 
         private void comboBoxOrdenar_SelectedIndexChanged(object sender, EventArgs e)

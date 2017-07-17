@@ -33,11 +33,6 @@ namespace PDVRestaurante.BaseDatos
             return "f.IdFactura|f.Fecha|f.Monto|f.TipoPago|f.CedulaCliente|e.Nombre1 + ' ' + e.Apellido1 AS Cliente";
         }
 
-        private static string ColumnasFacturaSiguienteId()
-        {
-            return "max(IdFactura) + 1";
-        }
-
         private static string LlavePrincipal()
         {
             return "IdFactura";
@@ -69,6 +64,20 @@ namespace PDVRestaurante.BaseDatos
             if (dataSet.Tables.Count > 0)
             {
                 factura = Convertidor.DataSetAObjecto<Factura>(dataSet).FirstOrDefault();
+                var platos = TablaPlatos_Factura.ObtenerPlatos_Factura("IdFactura", factura.IdFactura.ToString(), CriterioSQL.IgualA);
+                decimal total = 0;
+                foreach(var plato in platos)
+                {
+                    total += plato.Cantidad * plato.Precio;
+                }
+                total += total * 13 / 100;
+                total += total * 10 / 100;
+                if (total != factura.Monto)
+                {
+                    factura.Monto = total;
+                    TablaFactura.ModificarFactura(factura.IdFactura, factura.IdFactura, factura.Fecha, factura.Monto,
+                                                  factura.TipoPago, factura.CedulaCliente, factura.Cancelada);
+                }
             }
             return factura;
         }

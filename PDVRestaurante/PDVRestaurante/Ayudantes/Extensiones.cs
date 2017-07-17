@@ -25,24 +25,53 @@ namespace PDVRestaurante.Ayudantes
             }
         }
 
-        public static void CambiarPantalla<TipoPantalla>(this Form formActual, string nombreSiguienteForm, params object[] args)
+        public static void CambiarPantalla(this Form pantallaActual, string areaPantalla, string nombrePantalla, params object[] args)
         {
-            var siguienteForm = formActual.ParentForm.MdiChildren.ToList().Find(f => f.Name == nombreSiguienteForm);
+            Form formPadre;
+            if (pantallaActual.IsMdiContainer)
+            {
+                formPadre = pantallaActual;
+            } else
+            {
+                formPadre = pantallaActual.ParentForm;
+            }
+            var siguienteForm = formPadre.MdiChildren.ToList().Find(f => f.Name == nombrePantalla);
             if (siguienteForm == null)
             {
-                var tipo = typeof(TipoPantalla);
-                var pantallaSiguiente = new Form();
-                pantallaSiguiente = (Form)Activator.CreateInstance(tipo, args);
-                pantallaSiguiente.MdiParent = formActual.ParentForm;
-                pantallaSiguiente.Dock = DockStyle.Fill;
-                pantallaSiguiente.StartPosition = FormStartPosition.CenterParent;
-                formActual.Hide();
-                pantallaSiguiente.Show();
+                var pantallaType = Type.GetType("PDVRestaurante.Pantallas." + areaPantalla + "." + nombrePantalla);
+                if (pantallaType != null)
+                {
+                    try
+                    {
+                        formPadre.EsconderPantallasHijo();
+
+                        var pantallaSiguiente = new Form();
+                        pantallaSiguiente = (Form)Activator.CreateInstance(pantallaType, args);
+                        pantallaSiguiente.MdiParent = formPadre;
+                        pantallaSiguiente.FormBorderStyle = FormBorderStyle.None;
+                        pantallaSiguiente.Dock = DockStyle.Fill;
+                        pantallaSiguiente.StartPosition = FormStartPosition.CenterParent;
+                        pantallaSiguiente.WindowState = FormWindowState.Maximized;
+                        pantallaSiguiente.Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Se produjo un error al tratar de abrir la pantalla >> " + ex.Message, "Error al abrir pantalla", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             else
             {
-                formActual.Hide();
+                formPadre.EsconderPantallasHijo();
                 siguienteForm.Show();
+            }
+        }
+
+        public static void EsconderPantallasHijo(this Form formPadre)
+        {
+            foreach(var form in formPadre.MdiChildren)
+            {
+                form.Hide();
             }
         }
     }

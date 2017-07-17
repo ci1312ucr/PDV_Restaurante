@@ -20,25 +20,20 @@ namespace PDVRestaurante.BaseDatos
             return "Sucursal";
         }
 
+        private static string TablaSucursalDistritoProvinciaCantonGerente()
+        {
+            return "Sucursal s INNER JOIN Distrito d ON s.IdDistrito = d.IdDistrito and d.IdCanton = s.IdCanton and d.IdProvincia = s.IdProvincia INNER JOIN Canton c ON s.IdCanton = c.IdCanton and c.IdProvincia = s.IdProvincia INNER JOIN Provincia p ON s.IdProvincia = p.IdProvincia INNER JOIN PersonaFisica pf ON s.IdGerente = pf.CodPerFisica";
+        }
+
         private static string Columnas()
         {
             return "IdSucursal|FechaApertura|IdDistrito|IdCanton|IdProvincia|IdGerente|FechaInicio|Detalle";
         }
 
-        private static string Columnas2()
-        {
-            return "IdSucursal|FechaApertura|IdDistrito|IdCanton|IdProvincia|Detalle";
-        }
-
         private static string LlavePrincipal()
         {
             return "IdSucursal";
-        }
-
-        private static string TablaSucursalDistritoProvinciaCantonGerente()
-        {
-            return "Sucursal s INNER JOIN Distrito d ON s.IdDistrito = d.IdDistrito and d.IdCanton = s.IdCanton and d.IdProvincia = s.IdProvincia INNER JOIN Canton c ON s.IdCanton = c.IdCanton and c.IdProvincia = s.IdProvincia INNER JOIN Provincia p ON s.IdProvincia = p.IdProvincia INNER JOIN PersonaFisica pf ON s.IdGerente = pf.CodPerFisica";
-        }
+        }        
 
         private static string ColumnasSucursalDistritooProvinciaCantonGerente()
         {
@@ -47,11 +42,9 @@ namespace PDVRestaurante.BaseDatos
 
         public static bool InsertarSucursal(params object[] parametros)
         {
-            MessageBox.Show("1");
-            if (parametros.Count() == Columnas2().Split('|').Count())
+            if (parametros.Count() == Columnas().Split('|').Count())
             {
-                MessageBox.Show("2");
-                InterpreteSQL.Insertar(Tabla(), Columnas2(), parametros);
+                InterpreteSQL.Insertar(Tabla(), Columnas(), parametros);
             }
             return true;
         }
@@ -80,7 +73,7 @@ namespace PDVRestaurante.BaseDatos
         public static List<Sucursal> ObtenerSucursales(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var sucursales = new List<Sucursal>();
-            var dataSet = InterpreteSQL.Obtener(TablaSucursalDistritoProvinciaCantonGerente(), ColumnasSucursalDistritooProvinciaCantonGerente(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {
@@ -89,10 +82,10 @@ namespace PDVRestaurante.BaseDatos
             return sucursales;
         }
 
-        public static List<Sucursal> ObtenerSucursalesN(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
+        public static List<Sucursal> ObtenerSucursalesDetalle(string columnasFiltro = null, string valoresFiltro = null, string criteriosFiltro = null)
         {
             var sucursales = new List<Sucursal>();
-            var dataSet = InterpreteSQL.Obtener(Tabla(), Columnas(), columnasFiltro, valoresFiltro, criteriosFiltro);
+            var dataSet = InterpreteSQL.Obtener(TablaSucursalDistritoProvinciaCantonGerente(), ColumnasSucursalDistritooProvinciaCantonGerente(), columnasFiltro, valoresFiltro, criteriosFiltro);
 
             if (dataSet.Tables.Count > 0)
             {

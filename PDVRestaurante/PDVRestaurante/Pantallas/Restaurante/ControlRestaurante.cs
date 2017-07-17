@@ -21,17 +21,17 @@ namespace PDVRestaurante.Pantallas.Restaurante
 
         private void buttonNuevaFactura_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla<CrearFactura>("CrearFactura");
+            this.CambiarPantalla("Mantenimiento.Facturas", "CrearFactura");
         }
 
-        private void buttonImprimirFactura_Click(object sender, EventArgs e)
+        private void buttonDetalleFactura_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla<ImprimirFactura>("ImprimirFactura");
+            this.CambiarPantalla("Restaurante", "DetalleFactura", 0);
         }
 
         private void buttonPagarFactura_Click(object sender, EventArgs e)
         {
-            this.CambiarPantalla<PagarMesaFactura>("PagarMesaFactura");
+            this.CambiarPantalla("Restaurante", "PagarMesaFactura");
         }
     }
 }

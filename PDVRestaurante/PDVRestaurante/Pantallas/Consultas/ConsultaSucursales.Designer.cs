@@ -31,7 +31,6 @@
             this.buttonCrear = new System.Windows.Forms.Button();
             this.buttonLimpiarFiltro = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
-            this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.comboBoxBuscar = new System.Windows.Forms.ComboBox();
             this.comboBoxOrdenar = new System.Windows.Forms.ComboBox();
@@ -64,21 +63,12 @@
             // 
             // buttonModificar
             // 
-            this.buttonModificar.Location = new System.Drawing.Point(405, 25);
+            this.buttonModificar.Location = new System.Drawing.Point(524, 25);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(96, 35);
             this.buttonModificar.TabIndex = 2;
             this.buttonModificar.Text = "Modificar";
             this.buttonModificar.UseVisualStyleBackColor = true;
-            // 
-            // buttonEliminar
-            // 
-            this.buttonEliminar.Location = new System.Drawing.Point(522, 25);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(96, 35);
-            this.buttonEliminar.TabIndex = 3;
-            this.buttonEliminar.Text = "Eliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = true;
             // 
             // buttonBuscar
             // 
@@ -172,7 +162,6 @@
             this.Controls.Add(this.comboBoxOrdenar);
             this.Controls.Add(this.comboBoxBuscar);
             this.Controls.Add(this.buttonBuscar);
-            this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonLimpiarFiltro);
             this.Controls.Add(this.buttonCrear);
@@ -182,7 +171,6 @@
             this.MinimizeBox = false;
             this.Name = "ConsultaSucursales";
             this.Text = "ConsultaSucursal";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Resize += new System.EventHandler(this.listViewSucursales_Ajuste);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -194,7 +182,6 @@
         private System.Windows.Forms.Button buttonCrear;
         private System.Windows.Forms.Button buttonLimpiarFiltro;
         private System.Windows.Forms.Button buttonModificar;
-        private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.ComboBox comboBoxBuscar;
         private System.Windows.Forms.ComboBox comboBoxOrdenar;

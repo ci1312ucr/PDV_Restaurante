@@ -1,6 +1,6 @@
 ﻿namespace PDVRestaurante.Pantallas.Restaurante
 {
-    partial class ImprimirFactura
+    partial class DetalleFactura
     {
         /// <summary>
         /// Required designer variable.
@@ -31,8 +31,9 @@
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.textBuscar = new System.Windows.Forms.TextBox();
             this.labelConsultaFacturas = new System.Windows.Forms.Label();
-            this.listViewFactura = new System.Windows.Forms.ListView();
+            this.listView = new System.Windows.Forms.ListView();
             this.buttonImprimir = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonBuscar
@@ -62,31 +63,41 @@
             this.labelConsultaFacturas.TabIndex = 31;
             this.labelConsultaFacturas.Text = "Digite el número de factura:";
             // 
-            // listViewFactura
+            // listView
             // 
-            this.listViewFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewFactura.FullRowSelect = true;
-            this.listViewFactura.Location = new System.Drawing.Point(12, 153);
-            this.listViewFactura.MultiSelect = false;
-            this.listViewFactura.Name = "listViewFactura";
-            this.listViewFactura.Size = new System.Drawing.Size(776, 335);
-            this.listViewFactura.TabIndex = 34;
-            this.listViewFactura.UseCompatibleStateImageBehavior = false;
-            this.listViewFactura.View = System.Windows.Forms.View.Details;
+            this.listView.FullRowSelect = true;
+            this.listView.Location = new System.Drawing.Point(12, 153);
+            this.listView.MultiSelect = false;
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(776, 335);
+            this.listView.TabIndex = 34;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
             // 
             // buttonImprimir
             // 
-            this.buttonImprimir.Location = new System.Drawing.Point(294, 97);
+            this.buttonImprimir.Location = new System.Drawing.Point(190, 97);
             this.buttonImprimir.Name = "buttonImprimir";
             this.buttonImprimir.Size = new System.Drawing.Size(169, 37);
             this.buttonImprimir.TabIndex = 35;
-            this.buttonImprimir.Text = "IMPRIMIR";
+            this.buttonImprimir.Text = "Imprimir";
             this.buttonImprimir.UseVisualStyleBackColor = true;
             this.buttonImprimir.Click += new System.EventHandler(this.buttonImprimir_Click);
             // 
-            // ImprimirFactura
+            // buttonCancelar
+            // 
+            this.buttonCancelar.Location = new System.Drawing.Point(403, 97);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(169, 37);
+            this.buttonCancelar.TabIndex = 36;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
+            // DetalleFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,8 +105,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonImprimir);
-            this.Controls.Add(this.listViewFactura);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.textBuscar);
             this.Controls.Add(this.labelConsultaFacturas);
@@ -103,10 +115,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ImprimirFactura";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Name = "DetalleFactura";
             this.Text = "ImprimirFactura";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,7 +127,8 @@
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.TextBox textBuscar;
         private System.Windows.Forms.Label labelConsultaFacturas;
-        private System.Windows.Forms.ListView listViewFactura;
+        private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.Button buttonImprimir;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }

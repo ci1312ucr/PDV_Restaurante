@@ -20,8 +20,8 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Empleados
             InitializeComponent();
             comboBoxCedula.DataSource = TablaPersona.ObtenerPersonas();
             comboBoxCedula.DisplayMember = "Cedula";
-            comboBoxSucursal.DataSource = TablaSucursal.ObtenerSucursalesN();
-            comboBoxSucursal.DisplayMember = "IdSucursal";
+            comboBoxSucursal.DataSource = TablaSucursal.ObtenerSucursales();
+            comboBoxSucursal.DisplayMember = "Detalle";
 
         }
 
@@ -45,9 +45,10 @@ namespace PDVRestaurante.Pantallas.Mantenimiento.Empleados
 
             try
             {
-                var empleado = (Cliente)comboBoxCedula.SelectedItem;
+                var persona = (Persona)comboBoxCedula.SelectedItem;
                 var sucursal = (Sucursal)comboBoxSucursal.SelectedItem;
-                if (TablaEmpleado.InsertarEmpleado(empleado.Cedula,textBoxTipoE.Text,Convert.ToDecimal(textBoxSalario.Text),sucursal.IdSucursal,DateTime.Now))
+                if (TablaEmpleado.InsertarEmpleado(persona.Cedula,textBoxTipoE.Text,Convert.ToDecimal(textBoxSalario.Text),
+                                                   sucursal.IdSucursal,DateTime.Now))
                 {
                     MessageBox.Show("Se agregó el nuevo empleado exitosamente", "Nuevo empleado creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();
